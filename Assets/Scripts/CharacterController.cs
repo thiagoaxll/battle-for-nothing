@@ -6,23 +6,29 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class CharacterController : InputImplementation
+public class CharacterController : OldInputImplementation
 {
     [Header("Configurações")] public int id;
 
     public int moveSpeed;
     public int jumpForce;
+    public JoystickIndex joystickIndex;
 
     public Rigidbody2D playerRb;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
-        StartController();
+        SetJoystick(joystickIndex);
     }
 
     private void Update()
     {
-        playerRb.velocity = new Vector2(ButtonDirection().x * moveSpeed * Time.deltaTime, playerRb.velocity.y);
+        Move();
+    }
+
+    private void Move()
+    {
+        playerRb.velocity = new Vector2(ButtonDirection().x * moveSpeed * Time.deltaTime, ButtonDirection().y * moveSpeed * Time.deltaTime);
     }
 }
