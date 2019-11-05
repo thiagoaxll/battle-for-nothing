@@ -37,6 +37,12 @@ namespace CustomSystem
             };
             return direction;
         }
+
+        protected virtual bool ButtonA(bool holdButton = false)
+        {
+            return holdButton ?
+                Input.GetButtonDown(joystickNumber + "ButtonA") : Input.GetButton(joystickNumber + "ButtonA");
+        }
     }
 
     public enum JoystickIndex
