@@ -68,6 +68,13 @@ namespace CustomSystem
                 ? Input.GetButton(joystickNumber + "ButtonLb")
                 : Input.GetButtonDown(joystickNumber + "ButtonLb");
         }
+
+        protected virtual bool ButtonRb(bool holdButton = false)
+        {
+            return holdButton
+                ? Input.GetButton(joystickNumber + "ButtonRb")
+                : Input.GetButtonDown(joystickNumber + "ButtonRb");
+        }
     }
 
     public enum JoystickIndex

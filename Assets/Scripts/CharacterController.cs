@@ -4,24 +4,28 @@ using System;
 
 public class CharacterController : OldInputImplementation
 {
-    [Header("Configurações")] public int id;
+    [Header("Configuration")] public int id;
     public int moveSpeed;
     public int jumpForce;
     public int weaponRotateSpeed;
     public int projectileSpeed;
     public JoystickIndex joystickIndex;
 
-    [SerializeField] private Transform groundCheckPosition;
+    [Header("References")] [SerializeField]
+    private Transform groundCheckPosition;
+
     [SerializeField] private LayerMask ground;
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject weapon;
     [SerializeField] private Transform spawnProjectilePosition;
 
-    private Rigidbody2D playerRb;
+    [Header("Control")]
+    public int hp;
     [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool isOnGround;
     [SerializeField] private bool lookingLeft;
-    [SerializeField] private bool canMove;
+
+    private Rigidbody2D playerRb;
     private float groundCheckRadius = 0.2f;
     private Vector2 direction;
 
@@ -57,7 +61,7 @@ public class CharacterController : OldInputImplementation
             }
         }
 
-        if (ButtonLb(true))
+        if (ButtonLb(true) || ButtonRb(true))
         {
             moveSpeed = 0;
             var v = ButtonDirection();
@@ -76,8 +80,6 @@ public class CharacterController : OldInputImplementation
             {
                 RotateWeapon(new Vector2(v.x * -1, v.y));
             }
-
-            canMove = false;
         }
         else
         {
@@ -123,10 +125,10 @@ public class CharacterController : OldInputImplementation
             weapon.transform.rotation, rotation, weaponRotateSpeed * Time.deltaTime
         );
     }
-    
+
     private void Shoot(Vector2 direct)
     {
-        var temp = Instantiate(projectile, transform.position, Quaternion.identity);
+        var temp = Instantiate(projectile, spawnProjectilePosition.position, Quaternion.identity);
 
         float angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -137,7 +139,7 @@ public class CharacterController : OldInputImplementation
             temp.GetComponent<Rigidbody2D>().velocity = new Vector2
             (
                 direct.x * projectileSpeed * Time.deltaTime, direct.y * projectileSpeed * Time.deltaTime * -1
-            ).normalized;
+            );
         }
         else
         {
@@ -172,4 +174,14 @@ public class CharacterController : OldInputImplementation
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
     }
+
+    public void takeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    
 }
