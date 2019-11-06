@@ -38,10 +38,35 @@ namespace CustomSystem
             return direction;
         }
 
+        protected virtual Vector2 RightAnalog()
+        {
+            var direction = new Vector2
+            {
+                x = Input.GetAxisRaw(joystickNumber + "ButtonRightHorizontal"),
+                y = Input.GetAxisRaw(joystickNumber + "ButtonRightVertical")
+            };
+            return direction;
+        }
+
         protected virtual bool ButtonA(bool holdButton = false)
         {
-            return holdButton ?
-                Input.GetButtonDown(joystickNumber + "ButtonA") : Input.GetButton(joystickNumber + "ButtonA");
+            return holdButton
+                ? Input.GetButton(joystickNumber + "ButtonA")
+                : Input.GetButtonDown(joystickNumber + "ButtonA");
+        }
+
+        protected virtual bool ButtonX(bool holdButton = false)
+        {
+            return holdButton
+                ? Input.GetButton(joystickNumber + "ButtonX")
+                : Input.GetButtonDown(joystickNumber + "ButtonX");
+        }
+
+        protected virtual bool ButtonLb(bool holdButton = false)
+        {
+            return holdButton
+                ? Input.GetButton(joystickNumber + "ButtonLb")
+                : Input.GetButtonDown(joystickNumber + "ButtonLb");
         }
     }
 
