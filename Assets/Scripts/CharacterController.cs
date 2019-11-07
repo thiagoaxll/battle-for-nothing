@@ -1,12 +1,19 @@
 ﻿using CustomSystem;
 using UnityEngine;
 using System;
+using System.Collections;
+using UnityEngine.UI;
 
 public class CharacterController : OldInputImplementation
 {
     [Header("Configuration")] public int id;
+    public int maxHealth;
     public int moveSpeed;
     public int jumpForce;
+    public int dashForce;
+    public float dashDuration;
+    public float dashCoolDown;
+    public int doubleJumpForce;
     public int weaponRotateSpeed;
     public int projectileSpeed;
     public JoystickIndex joystickIndex;
@@ -14,14 +21,14 @@ public class CharacterController : OldInputImplementation
     [Header("References")] [SerializeField]
     private Transform groundCheckPosition;
 
+    [SerializeField] private Image hpBar;
+
     [SerializeField] private LayerMask ground;
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject weapon;
     [SerializeField] private Transform spawnProjectilePosition;
 
-    [Header("Control")]
-    public int hp;
-    [SerializeField] private bool canDoubleJump = true;
+    [Header("Control")] [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool isOnGround;
     [SerializeField] private bool lookingLeft;
 
@@ -30,9 +37,13 @@ public class CharacterController : OldInputImplementation
     private Vector2 direction;
 
     private int auxMoveSpeed;
+    private int currentHealth;
+    private bool canMove = true;
+    private bool canDash = true;
 
     private void Start()
     {
+        currentHealth = maxHealth;
         auxMoveSpeed = moveSpeed;
         playerRb = GetComponent<Rigidbody2D>();
         SetJoystick(joystickIndex);
@@ -40,13 +51,16 @@ public class CharacterController : OldInputImplementation
 
     private void Update()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
 
         if (ButtonA(true))
         {
             if (isOnGround)
             {
-                Jump();
+                Jump(jumpForce);
             }
             else
             {
@@ -54,7 +68,7 @@ public class CharacterController : OldInputImplementation
                 {
                     if (canDoubleJump)
                     {
-                        Jump();
+                        Jump(doubleJumpForce);
                         canDoubleJump = false;
                     }
                 }
@@ -99,6 +113,11 @@ public class CharacterController : OldInputImplementation
             Shoot(ButtonDirection());
         }
 
+        if (ButtonY() && canDash)
+        {
+            Dash();
+        }
+
         CheckGroundCollision();
         CheckPlayerDirection(ButtonDirection().x);
     }
@@ -126,6 +145,51 @@ public class CharacterController : OldInputImplementation
         );
     }
 
+
+    private void CheckGroundCollision()
+    {
+        isOnGround = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, ground);
+        if (isOnGround)
+        {
+            canDoubleJump = true;
+        }
+    }
+
+    private void Move()
+    {
+        playerRb.velocity = new Vector2(ButtonDirection().x * moveSpeed * Time.deltaTime, playerRb.velocity.y);
+    }
+
+    private void Jump(float force)
+    {
+        var jumpVector = new Vector2(playerRb.velocity.x, force * Time.deltaTime);
+        playerRb.velocity = jumpVector;
+    }
+
+    private void Dash()
+    {
+        playerRb.gravityScale = 0;
+        canMove = false;
+        canDash = false;
+        var velocity = new Vector2(jumpForce * transform.localScale.x * Time.deltaTime, 0);
+        playerRb.velocity = velocity;
+        StartCoroutine(DashDurationDelay(dashDuration));
+        StartCoroutine(DashCoolDown(dashCoolDown));
+    }
+
+    private IEnumerator DashDurationDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        playerRb.gravityScale = 1;
+        canMove = true;
+    }
+
+    private IEnumerator DashCoolDown(float coolDown)
+    {
+        yield return new WaitForSeconds(coolDown);
+        canDash = true;
+    }
+
     private void Shoot(Vector2 direct)
     {
         var temp = Instantiate(projectile, spawnProjectilePosition.position, Quaternion.identity);
@@ -149,39 +213,42 @@ public class CharacterController : OldInputImplementation
     }
 
 
-    private void CheckGroundCollision()
-    {
-        isOnGround = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, ground);
-        if (isOnGround)
-        {
-            canDoubleJump = true;
-        }
-    }
-
-    private void Move()
-    {
-        playerRb.velocity = new Vector2(ButtonDirection().x * moveSpeed * Time.deltaTime, playerRb.velocity.y);
-    }
-
-    private void Jump()
-    {
-        var jumpVector = new Vector2(playerRb.velocity.x, jumpForce * Time.deltaTime);
-        playerRb.velocity = jumpVector;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        hp -= damage;
-        if (hp <= 0)
+        currentHealth -= damage;
+        UpdateHpBar();
+        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
     }
-    
+
+    private void UpdateHpBar()
+    {
+        hpBar.fillAmount = (currentHealth * 1f / maxHealth);
+    }
+
+    public void KnockBack(float knockBackForce, float projectilePosition)
+    {
+        if (projectilePosition > transform.position.x)
+        {
+            knockBackForce *= -1;
+        }
+
+        canMove = false;
+        playerRb.velocity = new Vector2(knockBackForce * Time.deltaTime, playerRb.velocity.y);
+        StartCoroutine(DelayAfterKnockBack());
+    }
+
+    IEnumerator DelayAfterKnockBack()
+    {
+        yield return new WaitForSeconds(0.2f);
+        canMove = true;
+    }
 }

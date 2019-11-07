@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   durationTime: 5
+  knockBackForce: 300
   projectileRb: {fileID: 0}
 --- !u!50 &1641438687623452115
 Rigidbody2D:

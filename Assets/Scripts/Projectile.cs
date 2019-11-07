@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     public float durationTime;
+    public float knockBackForce;
     public Rigidbody2D projectileRb;
 
     private void Start()
@@ -19,13 +20,15 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CharacterController>().takeDamage(damage);
+            other.GetComponent<CharacterController>().TakeDamage(damage);
+            other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);
             Destroy(this.gameObject);
         }
 
         if (other.CompareTag("Ground"))
         {
             projectileRb.velocity = Vector2.zero;
+            GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
