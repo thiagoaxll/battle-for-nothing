@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -9,6 +6,7 @@ public class Projectile : MonoBehaviour
     public float durationTime;
     public float knockBackForce;
     public Rigidbody2D projectileRb;
+    public int whomShoot;
 
     private void Start()
     {
@@ -20,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CharacterController>().TakeDamage(damage);
+            other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
             other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);
             Destroy(this.gameObject);
         }

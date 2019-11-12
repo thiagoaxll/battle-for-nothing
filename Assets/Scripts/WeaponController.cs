@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using CustomSystem;
+﻿using CustomSystem;
 using UnityEngine;
 
 public class WeaponController : OldInputImplementation
