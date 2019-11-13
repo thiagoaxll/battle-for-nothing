@@ -26,10 +26,11 @@ public class CharacterController : OldInputImplementation
     [SerializeField] private Image coolDownBar;
 
     [SerializeField] private LayerMask ground;
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private GameObject weapon;
+    [SerializeField] protected GameObject projectile;
+    [SerializeField] protected GameObject weapon;
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private Transform spawnProjectilePosition;
+    [SerializeField] private GameObject playerCanvas;
 
     [Header("Control")] [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool isOnGround;
@@ -47,6 +48,7 @@ public class CharacterController : OldInputImplementation
     private bool aiming;
     private bool canUseSkill;
     private float auxCoolDownSkill;
+    protected Vector2 playerDirection;
 
     private void Start()
     {
@@ -55,6 +57,7 @@ public class CharacterController : OldInputImplementation
         playerRb = GetComponent<Rigidbody2D>();
         SetJoystick(joystickIndex);
         CustomStart();
+        playerCanvas.transform.SetParent(null);
     }
 
     protected virtual void CustomStart()
@@ -63,7 +66,7 @@ public class CharacterController : OldInputImplementation
 
     private void Update()
     {
-        var playerDirection = ButtonDirection();
+        playerDirection = ButtonDirection();
         if (canMove)
         {
             Move();
@@ -103,6 +106,7 @@ public class CharacterController : OldInputImplementation
         CheckPlayerDirection(playerDirection.x);
         CustomUpdate();
         CoolDownStatus();
+        playerCanvas.transform.position = transform.position;
     }
 
     private void CoolDownStatus()
@@ -278,7 +282,7 @@ public class CharacterController : OldInputImplementation
         canDash = true;
     }
 
-    private void Shoot(Vector2 direct)
+    protected virtual void Shoot(Vector2 direct)
     {
         var temp = Instantiate(projectile, spawnProjectilePosition.position, Quaternion.identity);
         temp.GetComponent<Projectile>().whomShoot = id;
