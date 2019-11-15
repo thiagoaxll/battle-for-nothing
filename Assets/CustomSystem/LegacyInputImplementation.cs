@@ -2,7 +2,7 @@
 
 namespace CustomSystem
 {
-    public class OldInputImplementation : MonoBehaviour
+    public class LegacyInputImplementation : MonoBehaviour
     {
         public string joystickNumber;
 
@@ -48,11 +48,17 @@ namespace CustomSystem
             return direction;
         }
 
-        protected virtual bool ButtonA(bool holdButton = false)
+        protected virtual bool ButtonA(ButtonState buttonState = ButtonState.ButtonDown)
         {
-            return holdButton
-                ? Input.GetButton(joystickNumber + "ButtonA")
-                : Input.GetButtonDown(joystickNumber + "ButtonA");
+            if (buttonState == ButtonState.ButtonDown)
+            {
+                return Input.GetButtonDown(joystickNumber + "ButtonA");
+            }
+            if (buttonState == ButtonState.Button)
+            {
+                return Input.GetButton(joystickNumber + "ButtonA");
+            }
+            return Input.GetButtonUp(joystickNumber + "ButtonA");
         }
 
         protected virtual bool ButtonX(bool holdButton = false)
@@ -61,13 +67,14 @@ namespace CustomSystem
                 ? Input.GetButton(joystickNumber + "ButtonX")
                 : Input.GetButtonDown(joystickNumber + "ButtonX");
         }
+
         protected virtual bool ButtonY(bool holdButton = false)
         {
             return holdButton
                 ? Input.GetButton(joystickNumber + "ButtonY")
                 : Input.GetButtonDown(joystickNumber + "ButtonY");
         }
-        
+
         protected virtual bool ButtonB(bool holdButton = false)
         {
             return holdButton
@@ -88,6 +95,13 @@ namespace CustomSystem
                 ? Input.GetButton(joystickNumber + "ButtonRb")
                 : Input.GetButtonDown(joystickNumber + "ButtonRb");
         }
+    }
+
+    public enum ButtonState
+    {
+        ButtonUp,
+        ButtonDown,
+        Button
     }
 
     public enum JoystickIndex

@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
 
     public void SpawnPlayer(int player)
     {
-        var position = spawnPositions[Random.Range(0, spawnPositions.Length - 1)].position;
-        var temp = Instantiate(players[player], position, Quaternion.identity);
+//        var position = spawnPositions[Random.Range(0, spawnPositions.Length - 1)].position;
+//        var temp = Instantiate(players[player], position, Quaternion.identity);
     }
 }

@@ -36,9 +36,9 @@ public class MrSan : CharacterController
         weapon.SetActive(true);
     }
 
-    protected override void Shoot(Vector2 direct)
+    protected override void Shoot(Vector2 direct, GameObject bullet)
     {
-        base.Shoot(direct);
+        base.Shoot(direct, projectile);
         if (!especialEnable) return;
         auxEspecialShootQuantity++;
         if (auxEspecialShootQuantity < especialShootQuantity) return;

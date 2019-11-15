@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Projectile : MonoBehaviour
     public float knockBackForce;
     public Rigidbody2D projectileRb;
     public int whomShoot;
+    public bool stayAlive;
 
     private void Start()
     {
@@ -18,15 +20,29 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
-            other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);
-            Destroy(this.gameObject);
+            if (other.GetComponent<CharacterController>().id != whomShoot)
+            {
+                other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
+                other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);
+                Destroy(this.gameObject);
+            }
         }
 
         if (other.CompareTag("Ground"))
         {
-            projectileRb.velocity = Vector2.zero;
-            GetComponent<BoxCollider2D>().enabled = false;
+            if (!stayAlive)
+            {
+                projectileRb.velocity = Vector2.zero;
+            }
+
+            try
+            {
+                GetComponent<BoxCollider2D>().enabled = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }

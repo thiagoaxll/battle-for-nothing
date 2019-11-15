@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using CustomSystem;
+using TMPro;
 using UnityEngine;
 
 public class HudController : MonoBehaviour
@@ -26,6 +27,6 @@ public class HudController : MonoBehaviour
 
     public void UpdateTime(float time)
     {
-        textTime.SetText(time.ToString("F0"));
+        textTime.SetText(ShowMinutesSeconds.ConvertSecondsToMinutes(time));
     }
 }

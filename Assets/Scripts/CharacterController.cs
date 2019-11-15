@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 
-public class CharacterController : OldInputImplementation
+public class CharacterController : LegacyInputImplementation
 {
     [Header("Configuration")] public int id;
     public int maxHealth;
@@ -12,6 +12,7 @@ public class CharacterController : OldInputImplementation
     public int jumpForce;
     public int dashForce;
     public float coolDownSkill;
+    public float midAirDuration;
     public float dashDuration;
     public float dashCoolDown;
     public int doubleJumpForce;
@@ -49,12 +50,18 @@ public class CharacterController : OldInputImplementation
     private bool canUseSkill;
     private float auxCoolDownSkill;
     protected Vector2 playerDirection;
+    private float defaultGravity;
+    private bool canMidAir = true;
+    [SerializeField] private bool isMidAir;
+    [SerializeField] private float auxMidAirDuration;
 
     private void Start()
     {
+        auxMidAirDuration = midAirDuration;
         currentHealth = maxHealth;
         auxMoveSpeed = moveSpeed;
         playerRb = GetComponent<Rigidbody2D>();
+        defaultGravity = playerRb.gravityScale;
         SetJoystick(joystickIndex);
         CustomStart();
         playerCanvas.transform.SetParent(null);
@@ -72,15 +79,19 @@ public class CharacterController : OldInputImplementation
             Move();
         }
 
-        if (ButtonA(true))
+        if (ButtonA())
         {
             CheckForJump();
         }
 
+        if (ButtonA(ButtonState.ButtonUp))
+        {
+            CancelJump();
+        }
+
         if (ButtonLb(true) || ButtonRb(true))
         {
-            MidAirEffect();
-            Aim();
+            CheckMidAirStatus();
         }
         else
         {
@@ -107,6 +118,27 @@ public class CharacterController : OldInputImplementation
         CustomUpdate();
         CoolDownStatus();
         playerCanvas.transform.position = transform.position;
+    }
+
+    private void CheckMidAirStatus()
+    {
+        Aim();
+        if (canMidAir && !isOnGround)
+        {
+            auxMidAirDuration = midAirDuration;
+            canMidAir = false;
+            isMidAir = true;
+        }
+
+        if (isMidAir)
+        {
+            MidAirEffect();
+            auxMidAirDuration -= Time.deltaTime;
+            if (auxMidAirDuration <= 0)
+            {
+                isMidAir = false;
+            }
+        }
     }
 
     private void CoolDownStatus()
@@ -137,9 +169,9 @@ public class CharacterController : OldInputImplementation
         coolDownBar.fillAmount = 0;
     }
 
-    private void CheckForShoot(Vector2 playerDirection)
+    private void CheckForShoot(Vector2 shootDirection)
     {
-        Shoot(aiming ? playerDirection : Vector2.zero);
+        Shoot(aiming ? shootDirection : Vector2.zero, projectile);
     }
 
     private void CheckForJump()
@@ -161,7 +193,7 @@ public class CharacterController : OldInputImplementation
     {
         if (canDash)
         {
-            playerRb.gravityScale = 1f;
+            playerRb.gravityScale = defaultGravity;
         }
 
         aiming = false;
@@ -178,14 +210,11 @@ public class CharacterController : OldInputImplementation
 
     private void MidAirEffect()
     {
-        if (!isDashing)
-        {
-            Vector2 currentSpeed = playerRb.velocity;
-            currentSpeed.x /= 2;
-            currentSpeed.y /= 2;
-            playerRb.velocity = currentSpeed;
-            playerRb.gravityScale = 0.9f;
-        }
+        var currentSpeed = playerRb.velocity;
+        currentSpeed.x /= 2;
+        currentSpeed.y /= 2;
+        playerRb.velocity = currentSpeed;
+        playerRb.gravityScale = 2f;
     }
 
     private void Aim()
@@ -251,18 +280,31 @@ public class CharacterController : OldInputImplementation
     private void Jump(float force)
     {
         var jumpVector = new Vector2(playerRb.velocity.x, force * Time.deltaTime);
+//        var resetY = new Vector2(playerRb.velocity.x, 0);
+//        playerRb.angularVelocity = 0;
+//        playerRb.velocity = resetY;
         playerRb.velocity = jumpVector;
     }
 
-    private void Dash(Vector2 playerDirection)
+    private void CancelJump()
+    {
+        if (playerRb.velocity.y > 0)
+        {
+            var velocity = playerRb.velocity;
+            velocity.y *= 0.25f;
+            playerRb.velocity = velocity;
+        }
+    }
+
+    private void Dash(Vector2 dashDirection)
     {
         playerRb.gravityScale = 0;
         canMove = false;
         canDash = false;
         isDashing = true;
         StartCoroutine(DashEffect());
-        var velocity = new Vector2(jumpForce * Time.deltaTime * playerDirection.x,
-            jumpForce * Time.deltaTime * playerDirection.y * -1);
+        var velocity = new Vector2(jumpForce * Time.deltaTime * dashDirection.x,
+            jumpForce * Time.deltaTime * dashDirection.y * -1);
         playerRb.velocity = velocity;
         StartCoroutine(DashDurationDelay(dashDuration));
         StartCoroutine(DashCoolDown(dashCoolDown));
@@ -271,7 +313,7 @@ public class CharacterController : OldInputImplementation
     private IEnumerator DashDurationDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        playerRb.gravityScale = 1;
+        playerRb.gravityScale = defaultGravity;
         canMove = true;
         isDashing = false;
     }
@@ -282,11 +324,11 @@ public class CharacterController : OldInputImplementation
         canDash = true;
     }
 
-    protected virtual void Shoot(Vector2 direct)
+    protected virtual void Shoot(Vector2 direct, GameObject bullet)
     {
-        var temp = Instantiate(projectile, spawnProjectilePosition.position, Quaternion.identity);
+        var temp = Instantiate(bullet, spawnProjectilePosition.position, Quaternion.identity);
         temp.GetComponent<Projectile>().whomShoot = id;
-        float angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
+        var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, weaponRotateSpeed);
 
@@ -319,6 +361,7 @@ public class CharacterController : OldInputImplementation
         {
             GameController.instance.SetPlayerScore(whomShoot);
             GameController.instance.SpawnPlayer(id);
+            Destroy(playerCanvas);
             Destroy(this.gameObject);
         }
     }
@@ -357,6 +400,17 @@ public class CharacterController : OldInputImplementation
             yield return new WaitForSeconds(0.1f);
             var temp = Instantiate(dashEffect, transform.position, Quaternion.identity);
             Destroy(temp, 1f);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.CompareTag($"Ground"))
+        {
+            playerRb.velocity = Vector2.zero;
+            playerRb.angularVelocity = 0;
+            canMidAir = true;
+            isMidAir = false;
         }
     }
 }

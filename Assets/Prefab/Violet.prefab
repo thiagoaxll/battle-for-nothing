@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169776720313528887}
+  - component: {fileID: 2369845200924967838}
   - component: {fileID: 1169776720313528884}
   - component: {fileID: 1169776720313528885}
   - component: {fileID: 1169776720313528881}
   - component: {fileID: 2332709487408086070}
-  - component: {fileID: 2369845200924967838}
   m_Layer: 0
   m_Name: Violet
   m_TagString: Player
@@ -38,6 +38,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2369845200924967838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169776720313528874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cef4018a79afd429e2da682269ef67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystickNumber: 
+  id: 0
+  maxHealth: 6
+  moveSpeed: 500
+  jumpForce: 1100
+  dashForce: 1000
+  coolDownSkill: 0.1
+  midAirDuration: 0
+  dashDuration: 0.25
+  dashCoolDown: 1.3
+  doubleJumpForce: 800
+  weaponRotateSpeed: 10
+  projectileSpeed: 800
+  joystickIndex: 1
+  groundCheckPosition: {fileID: 2332709486224745160}
+  hpBar: {fileID: 5775027508392502549}
+  coolDownBar: {fileID: 4354227372659573135}
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
+  projectile: {fileID: 1641438687623452113, guid: 22d47425562a98d4681e7ef6b5b866dc,
+    type: 3}
+  weapon: {fileID: 2332709485774341151}
+  dashEffect: {fileID: 402939679333515178, guid: b7657b952d327e6428480bde3200b18a,
+    type: 3}
+  spawnProjectilePosition: {fileID: 2332709487165165755}
+  playerCanvas: {fileID: 5775027508247993498}
+  canDoubleJump: 1
+  isOnGround: 0
+  lookingLeft: 0
+  groundCheckRadius: 0.2
+  canDash: 1
+  isDashing: 0
+  isMidAir: 0
+  auxMidAirDuration: 0
 --- !u!212 &1169776720313528884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -144,50 +191,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.021106243, y: -0.09811035}
   m_Size: {x: 0.39834118, y: 0.79506}
   m_Direction: 0
---- !u!114 &2369845200924967838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169776720313528874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10cef4018a79afd429e2da682269ef67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystickNumber: 
-  id: 0
-  maxHealth: 6
-  moveSpeed: 350
-  jumpForce: 450
-  dashForce: 1000
-  coolDownSkill: 0.1
-  dashDuration: 0.45
-  dashCoolDown: 1.3
-  doubleJumpForce: 300
-  weaponRotateSpeed: 10
-  projectileSpeed: 800
-  joystickIndex: 0
-  groundCheckPosition: {fileID: 2332709486224745160}
-  hpBar: {fileID: 5775027508392502549}
-  coolDownBar: {fileID: 4354227372659573135}
-  ground:
-    serializedVersion: 2
-    m_Bits: 256
-  projectile: {fileID: 1641438687623452113, guid: 22d47425562a98d4681e7ef6b5b866dc,
-    type: 3}
-  weapon: {fileID: 2332709485774341151}
-  dashEffect: {fileID: 402939679333515178, guid: b7657b952d327e6428480bde3200b18a,
-    type: 3}
-  spawnProjectilePosition: {fileID: 2332709487165165755}
-  playerCanvas: {fileID: 5775027508247993498}
-  canDoubleJump: 1
-  isOnGround: 0
-  lookingLeft: 0
-  groundCheckRadius: 0.2
-  canDash: 1
-  isDashing: 0
 --- !u!1 &2332709485774341151
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2332709485774341150}
   - component: {fileID: 2332709485774341137}
-  - component: {fileID: 2332709485774341136}
   m_Layer: 0
   m_Name: bow
   m_TagString: Untagged
@@ -270,24 +272,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2332709485774341136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2332709485774341151}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4097a0901bfe4a942a91d3ce00f886e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystickNumber: 
-  rotationSpeed: 10
-  projectileSpeed: 600
-  direction: {x: 0, y: 0}
-  projectile: {fileID: 1641438687623452113, guid: 22d47425562a98d4681e7ef6b5b866dc,
-    type: 3}
 --- !u!1 &2332709486224745161
 GameObject:
   m_ObjectHideFlags: 0

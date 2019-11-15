@@ -293,11 +293,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6215489382583440404}
+  - component: {fileID: 2114214867098038811}
   - component: {fileID: 6215489382583440407}
   - component: {fileID: 6215489382583440406}
   - component: {fileID: 6215489382583440402}
   - component: {fileID: 7360370496647617045}
-  - component: {fileID: 2114214867098038811}
   m_Layer: 0
   m_Name: Karoi
   m_TagString: Player
@@ -322,6 +322,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114214867098038811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215489382583440393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27eb47cf94b1df24386eed1c93290bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystickNumber: 
+  id: 0
+  maxHealth: 6
+  moveSpeed: 500
+  jumpForce: 1100
+  dashForce: 1000
+  coolDownSkill: 6
+  midAirDuration: 0.7
+  dashDuration: 0.25
+  dashCoolDown: 1.3
+  doubleJumpForce: 800
+  weaponRotateSpeed: 10
+  projectileSpeed: 800
+  joystickIndex: 0
+  groundCheckPosition: {fileID: 7360370495646729451}
+  hpBar: {fileID: 1612077529480168246}
+  coolDownBar: {fileID: 8797616579723274156}
+  ground:
+    serializedVersion: 2
+    m_Bits: 256
+  projectile: {fileID: 1641438687623452113, guid: d30b2d69a8c541d48b7ad17fda9b006b,
+    type: 3}
+  weapon: {fileID: 7360370496264053308}
+  dashEffect: {fileID: 402939679333515178, guid: b7657b952d327e6428480bde3200b18a,
+    type: 3}
+  spawnProjectilePosition: {fileID: 7360370497395095192}
+  playerCanvas: {fileID: 1612077530165885625}
+  canDoubleJump: 1
+  isOnGround: 0
+  lookingLeft: 0
+  groundCheckRadius: 0.1
+  canDash: 1
+  isDashing: 0
+  isMidAir: 0
+  auxMidAirDuration: 0
+  skillDuration: 3
+  skillEnable: 0
 --- !u!212 &6215489382583440407
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -403,10 +452,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -428,52 +477,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.021106243, y: -0.09811035}
   m_Size: {x: 0.39834118, y: 0.79506}
   m_Direction: 0
---- !u!114 &2114214867098038811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215489382583440393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27eb47cf94b1df24386eed1c93290bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystickNumber: 
-  id: 0
-  maxHealth: 6
-  moveSpeed: 350
-  jumpForce: 450
-  dashForce: 1000
-  coolDownSkill: 6
-  dashDuration: 0.45
-  dashCoolDown: 1.3
-  doubleJumpForce: 350
-  weaponRotateSpeed: 10
-  projectileSpeed: 800
-  joystickIndex: 0
-  groundCheckPosition: {fileID: 7360370495646729451}
-  hpBar: {fileID: 1612077529480168246}
-  coolDownBar: {fileID: 8797616579723274156}
-  ground:
-    serializedVersion: 2
-    m_Bits: 256
-  projectile: {fileID: 1641438687623452113, guid: d30b2d69a8c541d48b7ad17fda9b006b,
-    type: 3}
-  weapon: {fileID: 7360370496264053308}
-  dashEffect: {fileID: 402939679333515178, guid: b7657b952d327e6428480bde3200b18a,
-    type: 3}
-  spawnProjectilePosition: {fileID: 7360370497395095192}
-  playerCanvas: {fileID: 1612077530165885625}
-  canDoubleJump: 1
-  isOnGround: 0
-  lookingLeft: 0
-  groundCheckRadius: 0.2
-  canDash: 1
-  isDashing: 0
-  skillDuration: 3
-  skillEnable: 0
 --- !u!1 &7360370495646729450
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7360370495646729450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.036, y: -0.438, z: 0}
+  m_LocalPosition: {x: 0.036, y: -0.455, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6215489382583440404}
@@ -514,7 +517,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7360370496264053309}
   - component: {fileID: 7360370496264053298}
-  - component: {fileID: 7360370496264053299}
   m_Layer: 0
   m_Name: knai
   m_TagString: Untagged
@@ -586,24 +588,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7360370496264053299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360370496264053308}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4097a0901bfe4a942a91d3ce00f886e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  joystickNumber: 
-  rotationSpeed: 10
-  projectileSpeed: 600
-  direction: {x: 0, y: 0}
-  projectile: {fileID: 1641438687623452113, guid: 22d47425562a98d4681e7ef6b5b866dc,
-    type: 3}
 --- !u!1 &7360370497395095195
 GameObject:
   m_ObjectHideFlags: 0
