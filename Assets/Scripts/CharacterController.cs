@@ -8,17 +8,22 @@ public class CharacterController : LegacyInputImplementation
 {
     [Header("Configuration")] public int id;
     public int maxHealth;
-    public int moveSpeed;
-    public int jumpForce;
+    public float moveSpeed;
+    public float jumpForce;
     public int dashForce;
     public float coolDownSkill;
     public float midAirDuration;
     public float dashDuration;
     public float dashCoolDown;
-    public int doubleJumpForce;
+    public float doubleJumpForce;
     public int weaponRotateSpeed;
     public int projectileSpeed;
     public JoystickIndex joystickIndex;
+
+    private float damageScenarioMultiply = 1;
+    private float shootDamageMultiply = 1;
+    private float takeDamageMultiply = 1;
+    private float knockBackMultiply = 1;
 
     [Header("References")] [SerializeField]
     private Transform groundCheckPosition;
@@ -31,7 +36,8 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] protected GameObject weapon;
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private Transform spawnProjectilePosition;
-    [SerializeField] private GameObject playerCanvas;
+    [SerializeField] public GameObject playerCanvas;
+    [SerializeField] public GameObject deathEffect;
 
     [Header("Control")] [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool isOnGround;
@@ -41,8 +47,8 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] private float groundCheckRadius;
     private Vector2 direction;
 
-    private int auxMoveSpeed;
-    private int currentHealth;
+    private float auxMoveSpeed;
+    [SerializeField] private int currentHealth;
     private bool canMove = true;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing;
@@ -54,17 +60,23 @@ public class CharacterController : LegacyInputImplementation
     private bool canMidAir = true;
     [SerializeField] private bool isMidAir;
     [SerializeField] private float auxMidAirDuration;
+    private PowerUpHandler powerUpHandler;
+
+    private void Awake()
+    {
+        playerRb = GetComponent<Rigidbody2D>();
+        powerUpHandler = GetComponent<PowerUpHandler>();
+        playerCanvas.transform.SetParent(null);
+    }
 
     private void Start()
     {
         auxMidAirDuration = midAirDuration;
         currentHealth = maxHealth;
         auxMoveSpeed = moveSpeed;
-        playerRb = GetComponent<Rigidbody2D>();
         defaultGravity = playerRb.gravityScale;
         SetJoystick(joystickIndex);
         CustomStart();
-        playerCanvas.transform.SetParent(null);
     }
 
     protected virtual void CustomStart()
@@ -117,7 +129,8 @@ public class CharacterController : LegacyInputImplementation
         CheckPlayerDirection(playerDirection.x);
         CustomUpdate();
         CoolDownStatus();
-        playerCanvas.transform.position = transform.position;
+        var position = transform.position;
+        playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
     }
 
     private void CheckMidAirStatus()
@@ -178,6 +191,7 @@ public class CharacterController : LegacyInputImplementation
     {
         if (isOnGround)
         {
+            JumpEffect(0.8f * transform.localScale.x, 1.5f);
             Jump(jumpForce);
         }
         else
@@ -200,11 +214,11 @@ public class CharacterController : LegacyInputImplementation
         moveSpeed = auxMoveSpeed;
         if (lookingLeft)
         {
-            RotateWeapon(new Vector2(-180, 0));
+            RotateWeapon(new Vector2(180, 0));
         }
         else
         {
-            RotateWeapon(new Vector2(-180, 0));
+            RotateWeapon(new Vector2(180, 0));
         }
     }
 
@@ -221,21 +235,21 @@ public class CharacterController : LegacyInputImplementation
     {
         aiming = true;
         moveSpeed = auxMoveSpeed / 5;
-        var v = ButtonDirection();
+        var v = playerDirection;
         if (lookingLeft)
         {
             if (Math.Abs(v.x) > 0 || Math.Abs(v.y) > 0)
             {
-                RotateWeapon(new Vector2(v.x, v.y * -1));
+                RotateWeapon(new Vector2(v.x * -1, v.y));
             }
             else
             {
-                RotateWeapon(new Vector2(-180, 0));
+                RotateWeapon(new Vector2(180, -1));
             }
         }
         else
         {
-            RotateWeapon(new Vector2(v.x * -1, v.y));
+            RotateWeapon(new Vector2(v.x, v.y * -1));
         }
     }
 
@@ -280,9 +294,6 @@ public class CharacterController : LegacyInputImplementation
     private void Jump(float force)
     {
         var jumpVector = new Vector2(playerRb.velocity.x, force * Time.deltaTime);
-//        var resetY = new Vector2(playerRb.velocity.x, 0);
-//        playerRb.angularVelocity = 0;
-//        playerRb.velocity = resetY;
         playerRb.velocity = jumpVector;
     }
 
@@ -326,7 +337,9 @@ public class CharacterController : LegacyInputImplementation
 
     protected virtual void Shoot(Vector2 direct, GameObject bullet)
     {
+        direct.Normalize();
         var temp = Instantiate(bullet, spawnProjectilePosition.position, Quaternion.identity);
+        temp.GetComponent<Projectile>().damage *= Mathf.RoundToInt(shootDamageMultiply);
         temp.GetComponent<Projectile>().whomShoot = id;
         var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -355,15 +368,22 @@ public class CharacterController : LegacyInputImplementation
 
     public void TakeDamage(int damage, int whomShoot)
     {
-        currentHealth -= damage;
+        currentHealth -= Mathf.RoundToInt(damage * takeDamageMultiply);
         UpdateHpBar();
         if (currentHealth <= 0)
         {
+            powerUpHandler.DropPowerUp();
             GameController.instance.SetPlayerScore(whomShoot);
             GameController.instance.SpawnPlayer(id);
+            DeathEffect();
             Destroy(playerCanvas);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    private void DeathEffect()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
     }
 
     private void UpdateHpBar()
@@ -373,6 +393,7 @@ public class CharacterController : LegacyInputImplementation
 
     public void KnockBack(float knockBackForce, float projectilePosition)
     {
+        knockBackForce *= knockBackMultiply;
         if (projectilePosition > transform.position.x)
         {
             knockBackForce *= -1;
@@ -397,20 +418,75 @@ public class CharacterController : LegacyInputImplementation
     {
         while (isDashing)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
             var temp = Instantiate(dashEffect, transform.position, Quaternion.identity);
+            temp.transform.localScale = transform.localScale;
             Destroy(temp, 1f);
         }
     }
 
+    private void JumpEffect(float scaleEffectX, float scaleEffectY)
+    {
+        var transform1 = transform;
+        Vector2 scale = transform1.localScale;
+        scale.x = scaleEffectX;
+        scale.y = scaleEffectY;
+        transform1.localScale = scale;
+        StartCoroutine(DelayJumpEffect());
+    }
+
+    private IEnumerator DelayJumpEffect()
+    {
+        yield return new WaitForSeconds(0.1f);
+        var transform1 = transform;
+        Vector2 scale = transform1.localScale;
+        
+        scale.x = transform1.localScale.x > 0 ? 1 : -1;
+        scale.y = 1;
+        transform1.localScale = scale;
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.CompareTag($"Ground"))
+        if (other.transform.CompareTag("Ground"))
         {
+            JumpEffect(1.25f * transform.localScale.x, 0.75f);
             playerRb.velocity = Vector2.zero;
             playerRb.angularVelocity = 0;
             canMidAir = true;
             isMidAir = false;
         }
+    }
+
+    public void SetMultiplyMoveSpeed(float multiply)
+    {
+        moveSpeed *= multiply;
+        auxMoveSpeed = moveSpeed;
+    }
+
+    public void SetMultiplyJumpForce(float multiply)
+    {
+        jumpForce *= multiply;
+        doubleJumpForce *= multiply;
+    }
+
+    public void SetMultiplyKnockBack(float multiply)
+    {
+        knockBackMultiply *= multiply;
+    }
+
+    public void SetMultiplyShootDamage(float multiply)
+    {
+        shootDamageMultiply *= multiply;
+    }
+
+    public void SetMultiplyTakeDamage(float multiply)
+    {
+        takeDamageMultiply *= multiply;
+    }
+
+    public void SetMultiplyScenarioDamage(float multiply)
+    {
+        damageScenarioMultiply *= multiply;
     }
 }
