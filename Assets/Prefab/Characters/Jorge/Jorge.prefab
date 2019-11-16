@@ -334,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2601064061178433494}
   - component: {fileID: 2601064061178433477}
+  - component: {fileID: 7513293229181545311}
   - component: {fileID: 2601064061178433493}
   - component: {fileID: 2601064061178433492}
   - component: {fileID: 2601064061178433488}
@@ -413,8 +414,26 @@ MonoBehaviour:
   isDashing: 0
   isMidAir: 0
   auxMidAirDuration: 0
+  audioHolder: {fileID: 0}
   especialBullet: {fileID: 1641438687623452113, guid: 8555d55f3099e5a49ae69dae3d549a6e,
     type: 3}
+--- !u!114 &7513293229181545311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601064061178433483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43080b89622bb748a156d40397071f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpEffect: {fileID: 8300000, guid: bea04a14c3ee1754da8c8cbfcafe9d33, type: 3}
+  pickUpPowerUp: {fileID: 8300000, guid: 4e3687148ca314049a040df8d8ee52cc, type: 3}
+  death: {fileID: 8300000, guid: f90fa60b66f44b146bf854769f8fe048, type: 3}
+  shoot: {fileID: 8300000, guid: 37c3da90dd6d98749b0f8b334413edd7, type: 3}
+  dash: {fileID: 8300000, guid: 1ea6967d1a374594d9919b0e177f5b3b, type: 3}
 --- !u!212 &2601064061178433493
 SpriteRenderer:
   m_ObjectHideFlags: 0

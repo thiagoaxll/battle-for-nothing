@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   durationTime: 3
-  knockBackForce: 10
+  knockBackForce: 300
   projectileRb: {fileID: 0}
   whomShoot: 0
   stayAlive: 1

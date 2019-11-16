@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
+using CustomSystem.Audio;
 using UnityEngine.UI;
 
 public class CharacterController : LegacyInputImplementation
@@ -61,6 +62,7 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] private bool isMidAir;
     [SerializeField] private float auxMidAirDuration;
     private PowerUpHandler powerUpHandler;
+    [HideInInspector]public AudioHolder audioHolder;
 
     private void Awake()
     {
@@ -71,6 +73,7 @@ public class CharacterController : LegacyInputImplementation
 
     private void Start()
     {
+        audioHolder = GetComponent<AudioHolder>();
         auxMidAirDuration = midAirDuration;
         currentHealth = maxHealth;
         auxMoveSpeed = moveSpeed;
@@ -112,11 +115,12 @@ public class CharacterController : LegacyInputImplementation
 
         if (ButtonX())
         {
-            CheckForShoot(playerDirection);
+            CheckShootDirection(playerDirection);
         }
 
         if (ButtonY() && canDash)
         {
+            SoundManager.instance.PlayAudio(audioHolder.dash);
             Dash(playerDirection);
         }
 
@@ -182,8 +186,9 @@ public class CharacterController : LegacyInputImplementation
         coolDownBar.fillAmount = 0;
     }
 
-    private void CheckForShoot(Vector2 shootDirection)
+    private void CheckShootDirection(Vector2 shootDirection)
     {
+        SoundManager.instance.PlayAudio(audioHolder.shoot);
         Shoot(aiming ? shootDirection : Vector2.zero, projectile);
     }
 
@@ -293,6 +298,7 @@ public class CharacterController : LegacyInputImplementation
 
     private void Jump(float force)
     {
+        SoundManager.instance.PlayAudio(audioHolder.jumpEffect);
         var jumpVector = new Vector2(playerRb.velocity.x, force * Time.deltaTime);
         playerRb.velocity = jumpVector;
     }
@@ -372,6 +378,7 @@ public class CharacterController : LegacyInputImplementation
         UpdateHpBar();
         if (currentHealth <= 0)
         {
+            SoundManager.instance.PlayAudio(audioHolder.death);
             powerUpHandler.DropPowerUp();
             GameController.instance.SetPlayerScore(whomShoot);
             GameController.instance.SpawnPlayer(id);
@@ -442,6 +449,7 @@ public class CharacterController : LegacyInputImplementation
         Vector2 scale = transform1.localScale;
         
         scale.x = transform1.localScale.x > 0 ? 1 : -1;
+        scale.y = 1;
         scale.y = 1;
         transform1.localScale = scale;
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using CustomSystem.Audio;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -23,6 +24,7 @@ public class PowerUpHandler : MonoBehaviour
         {
             if (pickedPowerUps < maxPowerUps)
             {
+                SoundManager.instance.PlayAudio(characterController.audioHolder.pickUpPowerUp);
                 CheckForPowerUps(other.gameObject);
                 PickUpPowerUp(other.gameObject);
                 pickedPowerUps++;
