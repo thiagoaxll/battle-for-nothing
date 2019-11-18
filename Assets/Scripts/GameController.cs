@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public bool gameRunning = true;
     public Transform[] spawnPositions;
     public Transform powerUpSpawnPosition;
     public GameObject[] players;
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         auxMatchDuration = matchDuration;
 
         for (int i = 0; i < players.Length; i++)
@@ -61,12 +63,30 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (!gameRunning) return;
         auxMatchDuration -= Time.deltaTime;
         HudController.instance.UpdateTime(auxMatchDuration);
         if (auxMatchDuration <= 0)
         {
-            SceneManager.LoadScene("Area");
+            CheckWinner();
         }
+    }
+
+    private void CheckWinner()
+    {
+        gameRunning = false;
+        var winner = 0;
+        var winnerScore = playerScore[0];
+        for (int i = 0; i < playerScore.Length; i++)
+        {
+            if (playerScore[i] > winnerScore)
+            {
+                winnerScore = playerScore[i];
+                winner = i;
+            }
+        }
+
+        HudController.instance.ShowWinner(winner);
     }
 
     public void SetPlayerScore(int player)
@@ -74,10 +94,15 @@ public class GameController : MonoBehaviour
         playerScore[player]++;
         HudController.instance.UpdateScore(player, playerScore[player]);
     }
-    
+
     public void SpawnPlayer(int player)
     {
         var position = spawnPositions[Random.Range(0, spawnPositions.Length - 1)].position;
         Instantiate(players[player], position, Quaternion.identity);
+    }
+
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

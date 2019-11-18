@@ -88,6 +88,7 @@ public class CharacterController : LegacyInputImplementation
 
     private void Update()
     {
+        if(!GameController.instance.gameRunning) return;
         playerDirection = ButtonDirection();
         if (canMove)
         {
@@ -168,6 +169,7 @@ public class CharacterController : LegacyInputImplementation
         else if (auxCoolDownSkill >= coolDownSkill && !canUseSkill)
         {
             canUseSkill = true;
+            coolDownBar.color = Color.green;
         }
     }
 
@@ -175,6 +177,7 @@ public class CharacterController : LegacyInputImplementation
     {
         canUseSkill = false;
         auxCoolDownSkill = 0;
+        coolDownBar.color = Color.white;
     }
 
     protected virtual void CustomUpdate()
