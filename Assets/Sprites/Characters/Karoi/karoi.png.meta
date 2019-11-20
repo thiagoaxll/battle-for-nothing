@@ -44,6 +44,33 @@ TextureImporter:
   - first:
       213: 1664940441798113763
     second: karoi_13
+  - first:
+      213: 2346278149017452017
+    second: karoi_14
+  - first:
+      213: 2820130871273553151
+    second: karoi_15
+  - first:
+      213: -3560079691822396580
+    second: karoi_16
+  - first:
+      213: 5534483240124728327
+    second: karoi_17
+  - first:
+      213: -5047895607595061914
+    second: karoi_18
+  - first:
+      213: 3779340149413979247
+    second: karoi_19
+  - first:
+      213: -5698959907418352117
+    second: karoi_20
+  - first:
+      213: -2697047192048653419
+    second: karoi_21
+  - first:
+      213: 6301873200979766267
+    second: karoi_22
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -166,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 333654ae183ce7f4a8b5a53e47ac1462
+      spriteID: 7d532035ecd60e24ba1122a0a1bd8b25
       internalID: 6659455479943658840
       vertices: []
       indices: 
@@ -187,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec9f285db931d0d47a78b47d1e85d92c
+      spriteID: ae6316a7fa3905349b7ef7ba5ab5ff16
       internalID: 6591877943708610420
       vertices: []
       indices: 
@@ -208,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd3c72f4be9cdde4ca7ccf1f74b3f681
+      spriteID: d10b18f4fb7309246814e1c7e5207ad7
       internalID: -2659772174518751276
       vertices: []
       indices: 
@@ -229,7 +256,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44da05cef428be94080318320f65f302
+      spriteID: e4694a4bdc63f534c96ba8d98599a802
       internalID: 6413107705427096457
       vertices: []
       indices: 
@@ -250,7 +277,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53c62060130f85b4aa9aee297fd42b45
+      spriteID: 9e4dfc58cd5ba4a43ba91ebe581ef4ce
       internalID: -4440709132606347751
       vertices: []
       indices: 
@@ -271,7 +298,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02eb409776c87fa42b0b76de19fe79bd
+      spriteID: ee2133931823c1945b2e8d2cf6ad3365
       internalID: 2320473568791069956
       vertices: []
       indices: 
@@ -292,7 +319,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09ab9d6e390953e4a9a34eed8c1db626
+      spriteID: 297202e3447d3af46a82b4a3998efea2
       internalID: -3189204543222812280
       vertices: []
       indices: 
@@ -313,7 +340,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d9875eb411e17242871b6727644886d
+      spriteID: 0023cef6e74a8f246b65feac2467df7f
       internalID: -7380860308193904864
       vertices: []
       indices: 
@@ -334,7 +361,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f66d2f2b7888d554c9d2996b5ffff057
+      spriteID: 32358d10d26055c40b98b34c43746f6d
       internalID: 1116313069341912971
       vertices: []
       indices: 
@@ -355,7 +382,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9d0252a399e28e428a9b2f028beacaa
+      spriteID: 871879deab1816946ab13880929ab180
       internalID: 1748400004183858222
       vertices: []
       indices: 
@@ -376,7 +403,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1b0d40d9da9e5046beb01153c5a817a
+      spriteID: 3d41966ab6073544faa0245eb9fc698d
       internalID: -5014672140761221298
       vertices: []
       indices: 
@@ -397,7 +424,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18b48fbc92e0be5479877a779f1d2f35
+      spriteID: d9dabefd41a123c458e91bcb7f6a3521
       internalID: -3395706241427004531
       vertices: []
       indices: 
@@ -418,7 +445,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f10146e62b00204598e6d041ac4d390
+      spriteID: 910c18de51aee2e49b9d4629ec208434
       internalID: -2027195165558444343
       vertices: []
       indices: 
@@ -439,8 +466,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e44e33b1eac38a449ec9c733c3f29b4
+      spriteID: b67fa3246dd4c864ab1fe8deb2fb0b80
       internalID: 1664940441798113763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 835a2b3ac39f8164a87f9c4e0d1ea415
+      internalID: 2346278149017452017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28de4b08a65f00048b2959f7a9e1cfe9
+      internalID: 2820130871273553151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73aa858b128d0b4490547cab47da38c
+      internalID: -3560079691822396580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc77203e3a606f41aa3ef09eeed5e55
+      internalID: 5534483240124728327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933425f8e346a54478dad48bca0f50be
+      internalID: -5047895607595061914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e10cb7b0dce1c384c88d76c556548bc3
+      internalID: 3779340149413979247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_20
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c11c89fc340ec74585898bd6315bcdf
+      internalID: -5698959907418352117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4d97cd86543c347ba313c023fe2b04
+      internalID: -2697047192048653419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: karoi_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 451d194db65759c44a986c3d22a1f076
+      internalID: 6301873200979766267
       vertices: []
       indices: 
       edges: []

@@ -532,7 +532,6 @@ MonoBehaviour:
   doubleJumpForce: 800
   weaponRotateSpeed: 10
   projectileSpeed: 800
-  joystickIndex: 3
   groundCheckPosition: {fileID: 1461897808694665918}
   hpBar: {fileID: 7220328272271172963}
   coolDownBar: {fileID: 611245027403678201}
@@ -546,6 +545,7 @@ MonoBehaviour:
     type: 3}
   spawnProjectilePosition: {fileID: 1461897808559673549}
   playerCanvas: {fileID: 7220328273212726508}
+  indicatorTxt: {fileID: 8181598987567132727}
   deathEffect: {fileID: 2865642305280925037, guid: c6beb97a13a0bf34990e5b2a81e0a9b3,
     type: 3}
   canDoubleJump: 1
@@ -558,6 +558,7 @@ MonoBehaviour:
   isMidAir: 0
   auxMidAirDuration: 1
   audioHolder: {fileID: 0}
+  whoControlMe: 0
 --- !u!114 &1526010914077335089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1122,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468e0e5e5c6f0a24a81fe37b68736c47, type: 3}
+--- !u!114 &8181598987567132727 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8561459832923504146, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 529888419930459685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8708808448733073880 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9187745186282446845, guid: 468e0e5e5c6f0a24a81fe37b68736c47,

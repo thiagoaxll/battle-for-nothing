@@ -1,4 +1,5 @@
-﻿using CustomSystem;
+﻿using System;
+using CustomSystem;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class HudController : LegacyInputImplementation
     public GameObject endMatchBg;
     public GameObject winnerHolder;
     public GameObject[] winnerObject;
+    public GameObject[] portraits;
+    public GameObject[] portraitsHolder;
 
     public MenuSelect menuSelect;
 
@@ -24,6 +27,21 @@ public class HudController : LegacyInputImplementation
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        InstantiatePortraits();
+    }
+
+    private void InstantiatePortraits()
+    {
+        for (int i = 0; i < portraits.Length; i++)
+        {
+            var temp = Instantiate(portraits[MatchInformation.instance.characterInfo[i].whoControl], transform.position, Quaternion.identity);
+            temp.transform.SetParent(portraitsHolder[i].transform);
+            temp.transform.localPosition = Vector2.zero;
         }
     }
 

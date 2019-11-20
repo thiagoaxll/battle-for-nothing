@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<CharacterController>().id != whomShoot)
+            if (other.GetComponent<CharacterController>().whoControlMe != whomShoot)
             {
                 other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
                 other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);

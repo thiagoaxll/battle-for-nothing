@@ -12,6 +12,7 @@ public class MenuSelect : LegacyInputImplementation
     [SerializeField] private bool enableMenuSelect;
     [SerializeField] private bool changedMenu;
 
+
     public bool Enable
     {
         set => enableMenuSelect = value;
@@ -61,4 +62,11 @@ public class MenuSelect : LegacyInputImplementation
     {
         buttons[currentButtonSelected].Select();
     }
+}
+
+public enum CurrentMenu
+{
+    MainMenu,
+    ConfigMenu,
+    CharacterSelect
 }

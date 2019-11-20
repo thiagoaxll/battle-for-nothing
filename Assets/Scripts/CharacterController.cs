@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using CustomSystem.Audio;
+using TMPro;
 using UnityEngine.UI;
 
 public class CharacterController : LegacyInputImplementation
@@ -19,7 +20,6 @@ public class CharacterController : LegacyInputImplementation
     public float doubleJumpForce;
     public int weaponRotateSpeed;
     public int projectileSpeed;
-    public JoystickIndex joystickIndex;
 
     private float damageScenarioMultiply = 1;
     private float shootDamageMultiply = 1;
@@ -38,6 +38,7 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private Transform spawnProjectilePosition;
     [SerializeField] public GameObject playerCanvas;
+    [SerializeField] public TextMeshProUGUI indicatorTxt ;
     [SerializeField] public GameObject deathEffect;
 
     [Header("Control")] [SerializeField] private bool canDoubleJump = true;
@@ -62,7 +63,8 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] private bool isMidAir;
     [SerializeField] private float auxMidAirDuration;
     private PowerUpHandler powerUpHandler;
-    [HideInInspector]public AudioHolder audioHolder;
+    [HideInInspector] public AudioHolder audioHolder;
+    public int whoControlMe;
 
     private void Awake()
     {
@@ -78,7 +80,30 @@ public class CharacterController : LegacyInputImplementation
         currentHealth = maxHealth;
         auxMoveSpeed = moveSpeed;
         defaultGravity = playerRb.gravityScale;
-        SetJoystick(joystickIndex);
+
+
+        if (whoControlMe == 0)
+        {
+            SetJoystick(JoystickIndex.JoystickOne);
+        }
+
+        if (whoControlMe == 1)
+        {
+            SetJoystick(JoystickIndex.JoystickTwo);
+        }
+
+        if (whoControlMe == 2)
+        {
+            SetJoystick(JoystickIndex.JoystickThree);
+        }
+
+        if (whoControlMe == 3)
+        {
+            SetJoystick(JoystickIndex.JoystickFour);
+        }
+
+        indicatorTxt.SetText("P" + (whoControlMe + 1));
+        
         CustomStart();
     }
 
@@ -88,7 +113,7 @@ public class CharacterController : LegacyInputImplementation
 
     private void Update()
     {
-        if(!GameController.instance.gameRunning) return;
+        if (!GameController.instance.gameRunning) return;
         playerDirection = ButtonDirection();
         if (canMove)
         {
@@ -349,7 +374,7 @@ public class CharacterController : LegacyInputImplementation
         direct.Normalize();
         var temp = Instantiate(bullet, spawnProjectilePosition.position, Quaternion.identity);
         temp.GetComponent<Projectile>().damage *= Mathf.RoundToInt(shootDamageMultiply);
-        temp.GetComponent<Projectile>().whomShoot = id;
+        temp.GetComponent<Projectile>().whomShoot = whoControlMe;
         var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, weaponRotateSpeed);
@@ -363,6 +388,12 @@ public class CharacterController : LegacyInputImplementation
         }
         else
         {
+            if (transform.localScale.x < 0)
+            {
+                var tempDirect = new Vector2(temp.transform.localScale.x * -1, temp.transform.localScale.y);
+                temp.transform.localScale = tempDirect;
+            }
+            
             temp.GetComponent<Rigidbody2D>().velocity =
                 new Vector2(Time.deltaTime * projectileSpeed * transform.localScale.x, 0);
         }
@@ -384,7 +415,7 @@ public class CharacterController : LegacyInputImplementation
             SoundManager.instance.PlayAudio(audioHolder.death);
             powerUpHandler.DropPowerUp();
             GameController.instance.SetPlayerScore(whomShoot);
-            GameController.instance.SpawnPlayer(id);
+            GameController.instance.SpawnPlayer(id, whoControlMe);
             DeathEffect();
             Destroy(playerCanvas);
             Destroy(gameObject);
@@ -450,7 +481,7 @@ public class CharacterController : LegacyInputImplementation
         yield return new WaitForSeconds(0.1f);
         var transform1 = transform;
         Vector2 scale = transform1.localScale;
-        
+
         scale.x = transform1.localScale.x > 0 ? 1 : -1;
         scale.y = 1;
         scale.y = 1;

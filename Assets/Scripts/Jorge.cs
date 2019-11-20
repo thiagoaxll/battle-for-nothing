@@ -7,7 +7,7 @@ public class Jorge : CharacterController
     protected override void EspecialSkill()
     {
         base.EspecialSkill();
-        especialBullet.GetComponent<EspecialProjectile>().whomShoot = id;
+        especialBullet.GetComponent<EspecialProjectile>().whomShoot = whoControlMe;
         Shoot(playerDirection, especialBullet);
         ResetCoolDown();
     }

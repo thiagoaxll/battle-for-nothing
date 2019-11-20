@@ -83,6 +83,84 @@ TextureImporter:
   - first:
       213: 1839169173976297863
     second: character_0_26
+  - first:
+      213: 903088846717298682
+    second: jorge_0
+  - first:
+      213: -4050509212294536195
+    second: jorge_1
+  - first:
+      213: 1830841311575925648
+    second: jorge_2
+  - first:
+      213: 3351220056718702358
+    second: jorge_3
+  - first:
+      213: -2632597174045690312
+    second: jorge_4
+  - first:
+      213: 3264911176053768795
+    second: jorge_5
+  - first:
+      213: -1942098775213994418
+    second: jorge_6
+  - first:
+      213: 6042513281751472862
+    second: jorge_7
+  - first:
+      213: 2158442727967457148
+    second: jorge_8
+  - first:
+      213: 2224138732752955308
+    second: jorge_9
+  - first:
+      213: 4940348000433382425
+    second: jorge_10
+  - first:
+      213: -5421034615123576744
+    second: jorge_11
+  - first:
+      213: -3892839405196150490
+    second: jorge_12
+  - first:
+      213: -97050617394392275
+    second: jorge_13
+  - first:
+      213: 3028601588187910694
+    second: jorge_14
+  - first:
+      213: -6874882629860205773
+    second: jorge_15
+  - first:
+      213: -2276098360047669430
+    second: jorge_16
+  - first:
+      213: 9001034318332387540
+    second: jorge_17
+  - first:
+      213: -372017781420515206
+    second: jorge_18
+  - first:
+      213: 4270967262575937878
+    second: jorge_19
+  - first:
+      213: -4438985995776326042
+    second: jorge_20
+  - first:
+      213: -5917063218808466885
+    second: jorge_21
+  - first:
+      213: 7037022519048255730
+    second: jorge_22
+  - first:
+      213: -4733304383698360811
+    second: jorge_23
+  - first:
+      213: -8277178604314980935
+    second: jorge_24
+  - first:
+      213: 4748830002274765506
+    second: jorge_25
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -191,7 +269,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_0_0
+      name: jorge_0
       rect:
         serializedVersion: 2
         x: 0
@@ -199,20 +277,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 469b9b2ffc7fffd4b836487efe507e55
-      internalID: -8105146781628552869
+      spriteID: dc7ab1f828ed32e4db52f93e98adbad5
+      internalID: 903088846717298682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_1
+      name: jorge_1
       rect:
         serializedVersion: 2
         x: 16
@@ -220,20 +298,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7911f7faad05ce4b84c01be44930d30
-      internalID: 4777170686074706578
+      spriteID: 6a582367ed045cc48b419150d1528295
+      internalID: -4050509212294536195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_2
+      name: jorge_2
       rect:
         serializedVersion: 2
         x: 32
@@ -241,20 +319,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f50b242388012fd4694467767a407580
-      internalID: -4241509927296095654
+      spriteID: 5612525483eef9d4a9e606f761404b04
+      internalID: 1830841311575925648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_3
+      name: jorge_3
       rect:
         serializedVersion: 2
         x: 48
@@ -262,20 +340,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46b2c4efc3baeff42a028b39cfdba760
-      internalID: 3254582456746093130
+      spriteID: 1e812c5cb3d79bf4ba127c0288bb15fb
+      internalID: 3351220056718702358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_4
+      name: jorge_4
       rect:
         serializedVersion: 2
         x: 0
@@ -283,20 +361,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53d73fcf0f330734c8aa470e45545d92
-      internalID: -3762133185526489750
+      spriteID: a22121af428a753438c4d15d5c827c1f
+      internalID: -2632597174045690312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_5
+      name: jorge_5
       rect:
         serializedVersion: 2
         x: 16
@@ -304,125 +382,251 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e06c0cf1d8a4518409b90fdfa1436bfd
-      internalID: 1776628157186418360
+      spriteID: eac03667321b1aa4d8111ca69a724428
+      internalID: 3264911176053768795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 581fdbaf36cb7e641aa4638528248fb8
-      internalID: 3597901828100108684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_7
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 208
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e43e1a18c9332bf488c67e5b4eb7009d
-      internalID: 1720128955004782042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_8
+      name: jorge_6
       rect:
         serializedVersion: 2
         x: 32
-        y: 208
+        y: 224
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc8445f4208181944af16371d9b6edd9
-      internalID: 9198220758537333558
+      spriteID: 7fcb08545e3ba844089b24d3f42f3e29
+      internalID: -1942098775213994418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_9
+      name: jorge_7
       rect:
         serializedVersion: 2
         x: 48
-        y: 208
+        y: 224
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e119b7f1782e440b295975e2682586
-      internalID: -5844814061392316952
+      spriteID: 8d0ecfa4f5bdac545aa188483b2489ea
+      internalID: 6042513281751472862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_10
+      name: jorge_8
       rect:
         serializedVersion: 2
         x: 64
-        y: 208
+        y: 224
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce72632384be356438f5d5ac31af3e55
-      internalID: -182976315957403507
+      spriteID: f4edeb101e0fdbb44a4318501aeff428
+      internalID: 2158442727967457148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_11
+      name: jorge_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d77ea2067a89df46aa5e1a230cafad6
+      internalID: 2224138732752955308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61037d36f6f6fb24382e10059cb54f8b
+      internalID: 4940348000433382425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_11
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ced4dd6e07d7894bb48dde8abf19925
+      internalID: -5421034615123576744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ce6914b9846d5449e9fb20a19ae63c
+      internalID: -3892839405196150490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_13
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef4e2528d7263b4ebaebefb48137769
+      internalID: -97050617394392275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bba4148bda4a3834c9868d8a13994d80
+      internalID: 3028601588187910694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_15
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15642d6d8e8324441a3fbcc3c4c5fd14
+      internalID: -6874882629860205773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee7f5cb0dd820d4b9a7100308b61146
+      internalID: -2276098360047669430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_17
       rect:
         serializedVersion: 2
         x: 0
@@ -430,20 +634,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 755ed4d7b58e6da4ba097456eeef8dd8
-      internalID: -4391128039510649072
+      spriteID: f3131891a1aa0774190db5d2deb8b769
+      internalID: 9001034318332387540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_12
+      name: jorge_18
       rect:
         serializedVersion: 2
         x: 0
@@ -451,209 +655,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1228b7689613394ba2671ec541aaca4
-      internalID: -7462763642822192363
+      spriteID: ffe9864079dc3544898adab711f5f6b0
+      internalID: -372017781420515206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_13
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 521eba8f6ea3a114db570333021075a7
-      internalID: -7080457040682324641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_14
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3204447591108f5448e61341e75ef2fd
-      internalID: 2781279690327752763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_15
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b9e74e8ab01e194cbdf6c1af43130f9
-      internalID: -2897775715972271543
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_16
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c175b3decfb32ab469358ac39f22186a
-      internalID: 1061874725215366676
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_17
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4cecee2cb597bc479f04e89d83039ce
-      internalID: -2051389218458839297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_18
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c13e4d6b8164d84eb0c11598d8028aa
-      internalID: 2888908450980080372
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_19
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0207c384292e7f245a662df52b112ee7
-      internalID: 9104610622649603526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_20
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b344f1e40308ba4997206ad039aa452
-      internalID: -1984663085218112146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_21
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 176
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd4f027efb2fe8a4593079c8de4828fc
-      internalID: -4772694032793478960
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_0_22
+      name: jorge_19
       rect:
         serializedVersion: 2
         x: 0
@@ -661,20 +676,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd678e469510e824b82715fcc324c3f2
-      internalID: -8956140199472236261
+      spriteID: 335ff036087b20544b760e5c56e7865e
+      internalID: 4270967262575937878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_23
+      name: jorge_20
       rect:
         serializedVersion: 2
         x: 16
@@ -682,20 +697,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 438b0f567151ab640a18826ef51492d1
-      internalID: -2035113257553515305
+      spriteID: 3d4bbf9f1f57071468f86baa9b6f26ec
+      internalID: -4438985995776326042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_24
+      name: jorge_21
       rect:
         serializedVersion: 2
         x: 32
@@ -703,20 +718,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee2bdde15c19a944e81c568d2d3197e2
-      internalID: 8628692444213741502
+      spriteID: 5f8307d694857de4787eb610b388bd14
+      internalID: -5917063218808466885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_25
+      name: jorge_22
       rect:
         serializedVersion: 2
         x: 48
@@ -724,35 +739,77 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4feef6ee191943e4fbed4494ecc95e2d
-      internalID: 7691151516689714908
+      spriteID: 3fb30040f11e0e845962fb1133f08678
+      internalID: 7037022519048255730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_0_26
+      name: jorge_23
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
+        x: 0
+        y: 144
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e54017bebca0cb342bb92fea85181633
-      internalID: 1839169173976297863
+      spriteID: e388c9ac5f6d03a4bb55f15fbfe32680
+      internalID: -4733304383698360811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a244cfc45b0a5634eb18c647d11b4b6c
+      internalID: -8277178604314980935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jorge_25
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e5128287a320840a59b63a714ed512
+      internalID: 4748830002274765506
       vertices: []
       indices: 
       edges: []

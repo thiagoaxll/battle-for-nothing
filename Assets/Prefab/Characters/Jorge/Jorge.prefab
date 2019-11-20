@@ -283,7 +283,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 8b53b6076c6bac644a6e603ec61a7f77, type: 3}
+  m_Sprite: {fileID: 4270967262575937878, guid: 4e7c0acceaea0bc4883ce374ac353f36,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -336,10 +337,10 @@ GameObject:
   - component: {fileID: 2601064061178433477}
   - component: {fileID: 7513293229181545311}
   - component: {fileID: 2601064061178433493}
-  - component: {fileID: 2601064061178433492}
   - component: {fileID: 2601064061178433488}
   - component: {fileID: 1476132475397210583}
   - component: {fileID: 2601064061178433476}
+  - component: {fileID: 8385662537906466546}
   m_Layer: 0
   m_Name: Jorge
   m_TagString: Player
@@ -389,7 +390,6 @@ MonoBehaviour:
   doubleJumpForce: 800
   weaponRotateSpeed: 10
   projectileSpeed: 800
-  joystickIndex: 1
   groundCheckPosition: {fileID: 1476132474210770729}
   hpBar: {fileID: 7207501763870742772}
   coolDownBar: {fileID: 598529020102212718}
@@ -403,6 +403,7 @@ MonoBehaviour:
     type: 3}
   spawnProjectilePosition: {fileID: 1476132475690659162}
   playerCanvas: {fileID: 7207501764271497595}
+  indicatorTxt: {fileID: 7539452909709972830}
   deathEffect: {fileID: 6442930534013765959, guid: 8b0928bc70c9e6d4e9452c03dd450c35,
     type: 3}
   canDoubleJump: 1
@@ -415,6 +416,7 @@ MonoBehaviour:
   isMidAir: 0
   auxMidAirDuration: 0
   audioHolder: {fileID: 0}
+  whoControlMe: 0
   especialBullet: {fileID: 1641438687623452113, guid: 8555d55f3099e5a49ae69dae3d549a6e,
     type: 3}
 --- !u!114 &7513293229181545311
@@ -472,8 +474,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -8105146781628552869, guid: 4e7c0acceaea0bc4883ce374ac353f36,
-    type: 3}
+  m_Sprite: {fileID: 903088846717298682, guid: 4e7c0acceaea0bc4883ce374ac353f36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -484,25 +485,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2601064061178433492
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601064061178433483}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 97101b75fc76b104f8b141594adcf9f2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &2601064061178433488
 Rigidbody2D:
   serializedVersion: 4
@@ -560,6 +542,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!95 &8385662537906466546
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601064061178433483}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 298e651488f645241b45b43156923121, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3742925269237978574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,6 +1129,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468e0e5e5c6f0a24a81fe37b68736c47, type: 3}
+--- !u!114 &7539452909709972830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8561459832923504146, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 2193796324378438476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7057285421768242353 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9187745186282446845, guid: 468e0e5e5c6f0a24a81fe37b68736c47,

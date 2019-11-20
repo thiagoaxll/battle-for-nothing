@@ -10,14 +10,13 @@ namespace CustomSystem.Audio
         public static SoundManager instance;
 
         public AudioMixer audioMixer;
-
-        [SerializeField] private AudioSource masterAudioSource;
+        
         [SerializeField] private AudioSource effectAudioSource;
         [SerializeField] private AudioSource musicAudioSource;
         [SerializeField] private float masterVolume;
         [SerializeField] private float effectVolume;
         [SerializeField] private float musicVolume;
-
+        
 
         public float ChangeMasterVolume
         {
@@ -50,6 +49,7 @@ namespace CustomSystem.Audio
         }
         private void Start()
         {
+            DontDestroyOnLoad(this);
             ApplyVolumeChanges();
         }
 

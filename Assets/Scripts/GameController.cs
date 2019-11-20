@@ -39,7 +39,8 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             var position = spawnPositions[i].position;
-            Instantiate(players[i], position, Quaternion.identity);
+            var temp = Instantiate(players[MatchInformation.instance.characterInfo[i].whoControl], position, Quaternion.identity);
+            temp.GetComponent<CharacterController>().whoControlMe = i;
         }
 
         StartCoroutine(DelaySpawnPowerUp());
@@ -86,7 +87,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        HudController.instance.ShowWinner(winner);
+        HudController.instance.ShowWinner(MatchInformation.instance.characterInfo[winner].whoControl);
     }
 
     public void SetPlayerScore(int player)
@@ -95,10 +96,11 @@ public class GameController : MonoBehaviour
         HudController.instance.UpdateScore(player, playerScore[player]);
     }
 
-    public void SpawnPlayer(int player)
+    public void SpawnPlayer(int player, int whoControlMe)
     {
         var position = spawnPositions[Random.Range(0, spawnPositions.Length - 1)].position;
-        Instantiate(players[player], position, Quaternion.identity);
+        var temp = Instantiate(players[player], position, Quaternion.identity);
+        temp.GetComponent<CharacterController>().whoControlMe = whoControlMe;
     }
 
     public void ChangeScene(string scene)

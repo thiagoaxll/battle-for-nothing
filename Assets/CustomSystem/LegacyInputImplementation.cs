@@ -22,9 +22,6 @@ namespace CustomSystem
                 case JoystickIndex.JoystickFour:
                     joystickNumber = "J4";
                     break;
-                default:
-                    joystickNumber = "J1";
-                    break;
             }
         }
 
