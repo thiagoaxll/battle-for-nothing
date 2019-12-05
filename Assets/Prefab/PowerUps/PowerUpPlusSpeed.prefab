@@ -116,7 +116,7 @@ MonoBehaviour:
   takeDamage: 0.5
   knockBack: 0
   jump: 2
-  speed: 2
+  speed: 1.3
   scenario: 0
 --- !u!50 &-1317626754687097899
 Rigidbody2D:

@@ -10,15 +10,7 @@ public class TempChanceScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            SceneManager.LoadScene("Area");
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SceneManager.LoadScene("scene1");
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            SceneManager.LoadScene("scene2");
+            SceneManager.LoadScene("Menu");
         }
     }
 }

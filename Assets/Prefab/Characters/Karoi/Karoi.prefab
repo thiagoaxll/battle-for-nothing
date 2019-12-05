@@ -483,17 +483,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 0
-  maxHealth: 6
-  moveSpeed: 500
-  jumpForce: 1100
+  maxHealth: 100
+  currentHealth: 0
+  moveSpeed: 600
+  jumpForce: 1200
   dashForce: 1000
-  coolDownSkill: 6
+  fireRate: 0.15
+  coolDownSkill: 5
   midAirDuration: 0.7
-  dashDuration: 0.25
-  dashCoolDown: 1.3
+  dashDuration: 0.3
+  dashCoolDown: 1
   doubleJumpForce: 800
   weaponRotateSpeed: 10
-  projectileSpeed: 800
+  projectileSpeed: 1500
   groundCheckPosition: {fileID: 7360370495646729451}
   hpBar: {fileID: 1612077529480168246}
   coolDownBar: {fileID: 8797616579723274156}
@@ -507,6 +509,7 @@ MonoBehaviour:
     type: 3}
   spawnProjectilePosition: {fileID: 7360370497395095192}
   playerCanvas: {fileID: 1612077530165885625}
+  shield: {fileID: 6344182534397854372, guid: 0634ed2d344b54148a14dd71a44c36c2, type: 3}
   indicatorTxt: {fileID: 7107972533927722659}
   deathEffect: {fileID: 4359779029135928130, guid: d75ca0baeb27fc74f996f1ab580a50d4,
     type: 3}
@@ -514,10 +517,10 @@ MonoBehaviour:
   isOnGround: 0
   lookingLeft: 0
   groundCheckRadius: 0.1
-  currentHealth: 0
   canDash: 1
   isDashing: 0
   isMidAir: 0
+  canShoot: 0
   auxMidAirDuration: 0
   audioHolder: {fileID: 0}
   whoControlMe: 0
@@ -802,7 +805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7360370497395095195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.027, y: -0.039, z: 0}
+  m_LocalPosition: {x: 0.012, y: 0.017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7360370496264053309}
@@ -1003,6 +1006,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Indicator
       objectReference: {fileID: 0}
+    - target: {fileID: 8561459832923504146, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_text
+      value: P1
+      objectReference: {fileID: 0}
     - target: {fileID: 9187745186282446845, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1107,11 +1115,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8561459832923504146, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_text
-      value: P1
       objectReference: {fileID: 0}
     - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
         type: 3}

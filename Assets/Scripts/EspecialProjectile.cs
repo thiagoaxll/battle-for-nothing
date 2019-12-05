@@ -24,6 +24,14 @@ public class EspecialProjectile : MonoBehaviour
             InstantiateProjectiles(new Vector2(1f, 0f));
             Destroy(this.gameObject);
         }
+        
+        if (other.CompareTag("Shield"))
+        {
+            if (other.GetComponentInParent<CharacterController>().whoControlMe != whomShoot)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void InstantiateProjectiles(Vector2 direct)

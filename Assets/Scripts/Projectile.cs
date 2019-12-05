@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int damage;
+    public float damage;
     public float durationTime;
     public float knockBackForce;
     public Rigidbody2D projectileRb;
     public int whomShoot;
+    public int whoControlMe;
     public bool stayAlive;
 
     private void Start()
@@ -18,6 +19,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
+        if (other.CompareTag("Shield"))
+        {
+            if (other.GetComponentInParent<CharacterController>().whoControlMe != whomShoot)
+            {
+                Destroy(gameObject);
+            }
+            
+        }
+        
         if (other.CompareTag("Player"))
         {
             if (other.GetComponent<CharacterController>().whoControlMe != whomShoot)

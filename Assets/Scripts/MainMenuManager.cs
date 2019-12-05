@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -48,12 +49,20 @@ public class MainMenuManager : MonoBehaviour
         for (int i = 0; i < alreadySelected.Length; i++)
         {
             allSelected = alreadySelected[i];
-            if(!allSelected) break;
+            if (!allSelected) break;
         }
 
         if (allSelected)
         {
-            ChanceScene("Arena_0");
+            int map = Random.Range(0, 2);
+            if (map == 0)
+            {
+                ChanceScene("Arena_0");
+            }
+            else
+            {
+                ChanceScene("Arena_1");
+            }
         }
     }
 

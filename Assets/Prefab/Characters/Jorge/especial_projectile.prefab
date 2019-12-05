@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1641438687623452140}
   - component: {fileID: 1641438687623452141}
   - component: {fileID: 1641438687623452114}
-  - component: {fileID: 1641438687623452115}
   - component: {fileID: 8617932175320032088}
+  - component: {fileID: 1641438687623452115}
   - component: {fileID: 727769283747053673}
   m_Layer: 0
   m_Name: especial_projectile
@@ -97,12 +97,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07588aa810932f43bd1d96d9a36c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 25
   durationTime: 5
   knockBackForce: 300
   projectileRb: {fileID: 0}
   whomShoot: 0
   stayAlive: 0
+--- !u!114 &8617932175320032088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641438687623452113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372fe33dd782e6c42a82cf4303cc1821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationTime: 10
+  especialObject: {fileID: 1641438687623452113, guid: 1d071edad6cfa254ba38579d48f4918f,
+    type: 3}
+  whomShoot: 1
+  projectileJrVelocity: 700
 --- !u!50 &1641438687623452115
 Rigidbody2D:
   serializedVersion: 4
@@ -124,23 +141,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8617932175320032088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641438687623452113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 372fe33dd782e6c42a82cf4303cc1821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  durationTime: 10
-  especialObject: {fileID: 1641438687623452113, guid: 1d071edad6cfa254ba38579d48f4918f,
-    type: 3}
-  whomShoot: 1
-  projectileJrVelocity: 700
 --- !u!58 &727769283747053673
 CircleCollider2D:
   m_ObjectHideFlags: 0

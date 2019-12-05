@@ -10,9 +10,11 @@ public class CharacterController : LegacyInputImplementation
 {
     [Header("Configuration")] public int id;
     public int maxHealth;
+    public float currentHealth;
     public float moveSpeed;
     public float jumpForce;
     public int dashForce;
+    public float fireRate;
     public float coolDownSkill;
     public float midAirDuration;
     public float dashDuration;
@@ -38,7 +40,8 @@ public class CharacterController : LegacyInputImplementation
     [SerializeField] private GameObject dashEffect;
     [SerializeField] private Transform spawnProjectilePosition;
     [SerializeField] public GameObject playerCanvas;
-    [SerializeField] public TextMeshProUGUI indicatorTxt ;
+    [SerializeField] public GameObject shield;
+    [SerializeField] public TextMeshProUGUI indicatorTxt;
     [SerializeField] public GameObject deathEffect;
 
     [Header("Control")] [SerializeField] private bool canDoubleJump = true;
@@ -50,7 +53,6 @@ public class CharacterController : LegacyInputImplementation
     private Vector2 direction;
 
     private float auxMoveSpeed;
-    [SerializeField] private int currentHealth;
     private bool canMove = true;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing;
@@ -61,20 +63,24 @@ public class CharacterController : LegacyInputImplementation
     private float defaultGravity;
     private bool canMidAir = true;
     [SerializeField] private bool isMidAir;
+    [SerializeField] private bool canShoot = true;
     [SerializeField] private float auxMidAirDuration;
     private PowerUpHandler powerUpHandler;
     [HideInInspector] public AudioHolder audioHolder;
     public int whoControlMe;
+    private float auxFireRate;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         powerUpHandler = GetComponent<PowerUpHandler>();
         playerCanvas.transform.SetParent(null);
+        StartCoroutine(DelayStayImmune());
     }
 
     private void Start()
     {
+        auxFireRate = fireRate;
         audioHolder = GetComponent<AudioHolder>();
         auxMidAirDuration = midAirDuration;
         currentHealth = maxHealth;
@@ -82,29 +88,43 @@ public class CharacterController : LegacyInputImplementation
         defaultGravity = playerRb.gravityScale;
 
 
+        CheckJoystick();
+
+        indicatorTxt.SetText("P" + (whoControlMe + 1));
+
+        CustomStart();
+    }
+
+    private void CheckJoystick()
+    {
         if (whoControlMe == 0)
         {
             SetJoystick(JoystickIndex.JoystickOne);
         }
 
-        if (whoControlMe == 1)
+        else if (whoControlMe == 1)
         {
             SetJoystick(JoystickIndex.JoystickTwo);
         }
 
-        if (whoControlMe == 2)
+        else if (whoControlMe == 2)
         {
             SetJoystick(JoystickIndex.JoystickThree);
         }
-
-        if (whoControlMe == 3)
+        else
         {
             SetJoystick(JoystickIndex.JoystickFour);
         }
+    }
 
-        indicatorTxt.SetText("P" + (whoControlMe + 1));
-        
-        CustomStart();
+    IEnumerator DelayStayImmune()
+    {
+        var temp = Instantiate(shield, transform.position, Quaternion.identity);
+        temp.transform.SetParent(transform);
+        transform.tag = "Untagged";
+        yield return new WaitForSeconds(2.5f);
+        transform.tag = "Player";
+        Destroy(temp);
     }
 
     protected virtual void CustomStart()
@@ -130,7 +150,11 @@ public class CharacterController : LegacyInputImplementation
             CancelJump();
         }
 
-        if (ButtonLb(true) || ButtonRb(true))
+        if (ButtonRb(true))
+        {
+            LockToAim();
+        }
+        else if (ButtonLb(true))
         {
             CheckMidAirStatus();
         }
@@ -139,7 +163,7 @@ public class CharacterController : LegacyInputImplementation
             NormalState();
         }
 
-        if (ButtonX())
+        if (ButtonX() && canShoot)
         {
             CheckShootDirection(playerDirection);
         }
@@ -161,6 +185,29 @@ public class CharacterController : LegacyInputImplementation
         CoolDownStatus();
         var position = transform.position;
         playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
+        FireRateCalculate();
+    }
+
+    private void FireRateCalculate()
+    {
+        if (!canShoot)
+        {
+            auxFireRate -= Time.deltaTime;
+            if (auxFireRate <= 0)
+            {
+                canShoot = true;
+                auxFireRate = fireRate;
+            }
+        }
+    }
+
+    private void LockToAim()
+    {
+        if (isOnGround)
+        {
+            Aim();
+            playerRb.velocity = Vector2.zero;
+        }
     }
 
     private void CheckMidAirStatus()
@@ -217,6 +264,7 @@ public class CharacterController : LegacyInputImplementation
     private void CheckShootDirection(Vector2 shootDirection)
     {
         SoundManager.instance.PlayAudio(audioHolder.shoot);
+        canShoot = false;
         Shoot(aiming ? shootDirection : Vector2.zero, projectile);
     }
 
@@ -373,7 +421,7 @@ public class CharacterController : LegacyInputImplementation
     {
         direct.Normalize();
         var temp = Instantiate(bullet, spawnProjectilePosition.position, Quaternion.identity);
-        temp.GetComponent<Projectile>().damage *= Mathf.RoundToInt(shootDamageMultiply);
+        temp.GetComponent<Projectile>().damage *= shootDamageMultiply;
         temp.GetComponent<Projectile>().whomShoot = whoControlMe;
         var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -393,7 +441,7 @@ public class CharacterController : LegacyInputImplementation
                 var tempDirect = new Vector2(temp.transform.localScale.x * -1, temp.transform.localScale.y);
                 temp.transform.localScale = tempDirect;
             }
-            
+
             temp.GetComponent<Rigidbody2D>().velocity =
                 new Vector2(Time.deltaTime * projectileSpeed * transform.localScale.x, 0);
         }
@@ -406,12 +454,14 @@ public class CharacterController : LegacyInputImplementation
         Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
     }
 
-    public void TakeDamage(int damage, int whomShoot)
+    public void TakeDamage(float damage, int whomShoot)
     {
-        currentHealth -= Mathf.RoundToInt(damage * takeDamageMultiply);
+        currentHealth -= damage * takeDamageMultiply;
         UpdateHpBar();
         if (currentHealth <= 0)
         {
+//            GetComponent<CircleCollider2D>().enabled = false;
+            transform.tag = "Untagged";
             SoundManager.instance.PlayAudio(audioHolder.death);
             powerUpHandler.DropPowerUp();
             GameController.instance.SetPlayerScore(whomShoot);
