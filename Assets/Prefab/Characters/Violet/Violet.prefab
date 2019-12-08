@@ -521,19 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 3
-  maxHealth: 100
+  characterStatus: {fileID: 11400000, guid: 1bea0dfa16532e1468b79d8acd1e9d33, type: 2}
   currentHealth: 0
-  moveSpeed: 500
-  jumpForce: 1000
-  dashForce: 800
-  fireRate: 0.2
-  coolDownSkill: 3
-  midAirDuration: 1
-  dashDuration: 0.2
-  dashCoolDown: 1.1
-  doubleJumpForce: 800
-  weaponRotateSpeed: 10
-  projectileSpeed: 1000
   groundCheckPosition: {fileID: 1461897808694665918}
   hpBar: {fileID: 7220328272271172963}
   coolDownBar: {fileID: 611245027403678201}

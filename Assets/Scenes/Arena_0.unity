@@ -2285,7 +2285,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2669,14 +2669,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo:
-  - whoControl: 3
-    myId: 0
   - whoControl: 2
-    myId: 1
+    myId: 0
   - whoControl: 1
-    myId: 2
-  - whoControl: 3
     myId: 1
+  - whoControl: 3
+    myId: 2
+  - whoControl: 0
+    myId: 3
 --- !u!4 &761374811
 Transform:
   m_ObjectHideFlags: 0
@@ -6057,7 +6057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1635065313
 Grid:
   m_ObjectHideFlags: 0

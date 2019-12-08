@@ -3,25 +3,29 @@ using UnityEngine;
 using System;
 using System.Collections;
 using CustomSystem.Audio;
+using Prefab;
 using TMPro;
 using UnityEngine.UI;
 
 public class CharacterController : LegacyInputImplementation
 {
     [Header("Configuration")] public int id;
-    public int maxHealth;
+
+    public CharacterStatus characterStatus;
+
+//    public int maxHealth;
     public float currentHealth;
-    public float moveSpeed;
-    public float jumpForce;
-    public int dashForce;
-    public float fireRate;
-    public float coolDownSkill;
-    public float midAirDuration;
-    public float dashDuration;
-    public float dashCoolDown;
-    public float doubleJumpForce;
-    public int weaponRotateSpeed;
-    public int projectileSpeed;
+//    public float moveSpeed;
+//    public float jumpForce;
+//    public int dashForce;
+//    public float fireRate;
+//    public float coolDownSkill;
+//    public float midAirDuration;
+//    public float dashDuration;
+//    public float dashCoolDown;
+//    public float doubleJumpForce;
+//    public int weaponRotateSpeed;
+//    public int projectileSpeed;
 
     private float damageScenarioMultiply = 1;
     private float shootDamageMultiply = 1;
@@ -80,11 +84,11 @@ public class CharacterController : LegacyInputImplementation
 
     private void Start()
     {
-        auxFireRate = fireRate;
+        auxFireRate = characterStatus.fireRate;
         audioHolder = GetComponent<AudioHolder>();
-        auxMidAirDuration = midAirDuration;
-        currentHealth = maxHealth;
-        auxMoveSpeed = moveSpeed;
+        auxMidAirDuration = characterStatus.midAirDuration;
+        currentHealth = characterStatus.maxHealth;
+        auxMoveSpeed = characterStatus.moveSpeed;
         defaultGravity = playerRb.gravityScale;
 
 
@@ -196,7 +200,7 @@ public class CharacterController : LegacyInputImplementation
             if (auxFireRate <= 0)
             {
                 canShoot = true;
-                auxFireRate = fireRate;
+                auxFireRate = characterStatus.fireRate;
             }
         }
     }
@@ -215,7 +219,7 @@ public class CharacterController : LegacyInputImplementation
         Aim();
         if (canMidAir && !isOnGround)
         {
-            auxMidAirDuration = midAirDuration;
+            auxMidAirDuration = characterStatus.midAirDuration;
             canMidAir = false;
             isMidAir = true;
         }
@@ -233,12 +237,12 @@ public class CharacterController : LegacyInputImplementation
 
     private void CoolDownStatus()
     {
-        if (auxCoolDownSkill < coolDownSkill)
+        if (auxCoolDownSkill < characterStatus.coolDownSkill)
         {
             auxCoolDownSkill += Time.deltaTime;
-            coolDownBar.fillAmount = (auxCoolDownSkill * 1f / coolDownSkill);
+            coolDownBar.fillAmount = (auxCoolDownSkill * 1f / characterStatus.coolDownSkill);
         }
-        else if (auxCoolDownSkill >= coolDownSkill && !canUseSkill)
+        else if (auxCoolDownSkill >= characterStatus.coolDownSkill && !canUseSkill)
         {
             canUseSkill = true;
             coolDownBar.color = Color.green;
@@ -273,13 +277,13 @@ public class CharacterController : LegacyInputImplementation
         if (isOnGround)
         {
             JumpEffect(0.8f * transform.localScale.x, 1.5f);
-            Jump(jumpForce);
+            Jump(characterStatus.jumpForce);
         }
         else
         {
             if (!ButtonA()) return;
             if (!canDoubleJump) return;
-            Jump(doubleJumpForce);
+            Jump(characterStatus.doubleJumpForce);
             canDoubleJump = false;
         }
     }
@@ -292,7 +296,7 @@ public class CharacterController : LegacyInputImplementation
         }
 
         aiming = false;
-        moveSpeed = auxMoveSpeed;
+        characterStatus.moveSpeed = auxMoveSpeed;
         if (lookingLeft)
         {
             RotateWeapon(new Vector2(180, 0));
@@ -315,7 +319,7 @@ public class CharacterController : LegacyInputImplementation
     private void Aim()
     {
         aiming = true;
-        moveSpeed = auxMoveSpeed / 5;
+        characterStatus.moveSpeed = auxMoveSpeed / 5;
         var v = playerDirection;
         if (lookingLeft)
         {
@@ -353,7 +357,7 @@ public class CharacterController : LegacyInputImplementation
         var angle = Mathf.Atan2(direct.y, direct.x) * Mathf.Rad2Deg;
         var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         weapon.transform.rotation = Quaternion.Slerp(
-            weapon.transform.rotation, rotation, weaponRotateSpeed * Time.deltaTime
+            weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed * Time.deltaTime
         );
     }
 
@@ -369,7 +373,9 @@ public class CharacterController : LegacyInputImplementation
 
     private void Move()
     {
-        playerRb.velocity = new Vector2(ButtonDirection().x * moveSpeed * Time.deltaTime, playerRb.velocity.y);
+        playerRb.velocity = new Vector2(
+            ButtonDirection().x * characterStatus.moveSpeed * Time.deltaTime, playerRb.velocity.y
+        );
     }
 
     private void Jump(float force)
@@ -396,11 +402,11 @@ public class CharacterController : LegacyInputImplementation
         canDash = false;
         isDashing = true;
         StartCoroutine(DashEffect());
-        var velocity = new Vector2(jumpForce * Time.deltaTime * dashDirection.x,
-            jumpForce * Time.deltaTime * dashDirection.y * -1);
+        var velocity = new Vector2(characterStatus.dashForce * Time.deltaTime * dashDirection.x,
+            characterStatus.dashForce * Time.deltaTime * dashDirection.y * -1);
         playerRb.velocity = velocity;
-        StartCoroutine(DashDurationDelay(dashDuration));
-        StartCoroutine(DashCoolDown(dashCoolDown));
+        StartCoroutine(DashDurationDelay(characterStatus.dashDuration));
+        StartCoroutine(DashCoolDown(characterStatus.dashCoolDown));
     }
 
     private IEnumerator DashDurationDelay(float delay)
@@ -425,13 +431,14 @@ public class CharacterController : LegacyInputImplementation
         temp.GetComponent<Projectile>().whomShoot = whoControlMe;
         var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, weaponRotateSpeed);
+        temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed);
 
         if (Math.Abs(direct.x) > 0 || Math.Abs(direct.y) > 0)
         {
             temp.GetComponent<Rigidbody2D>().velocity = new Vector2
             (
-                direct.x * projectileSpeed * Time.deltaTime, direct.y * projectileSpeed * Time.deltaTime * -1
+                direct.x * characterStatus.projectileSpeed * Time.deltaTime, 
+                direct.y * characterStatus.projectileSpeed * Time.deltaTime * -1
             );
         }
         else
@@ -443,7 +450,7 @@ public class CharacterController : LegacyInputImplementation
             }
 
             temp.GetComponent<Rigidbody2D>().velocity =
-                new Vector2(Time.deltaTime * projectileSpeed * transform.localScale.x, 0);
+                new Vector2(Time.deltaTime * characterStatus.projectileSpeed * transform.localScale.x, 0);
         }
     }
 
@@ -479,7 +486,7 @@ public class CharacterController : LegacyInputImplementation
 
     private void UpdateHpBar()
     {
-        hpBar.fillAmount = (currentHealth * 1f / maxHealth);
+        hpBar.fillAmount = (currentHealth * 1f / characterStatus.maxHealth);
     }
 
     public void KnockBack(float knockBackForce, float projectilePosition)
@@ -552,14 +559,14 @@ public class CharacterController : LegacyInputImplementation
 
     public void SetMultiplyMoveSpeed(float multiply)
     {
-        moveSpeed *= multiply;
-        auxMoveSpeed = moveSpeed;
+        characterStatus.moveSpeed *= multiply;
+        auxMoveSpeed = characterStatus.moveSpeed;
     }
 
     public void SetMultiplyJumpForce(float multiply)
     {
-        jumpForce *= multiply;
-        doubleJumpForce *= multiply;
+        characterStatus.jumpForce *= multiply;
+        characterStatus.doubleJumpForce *= multiply;
     }
 
     public void SetMultiplyKnockBack(float multiply)
