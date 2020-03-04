@@ -140,7 +140,7 @@ public class CharacterController : LegacyInputImplementation
         playerDirection = ButtonDirection();
         if (canMove)
         {
-            Move();
+            Move(playerDirection.x);
         }
 
         if (ButtonA())
@@ -375,10 +375,10 @@ public class CharacterController : LegacyInputImplementation
         }
     }
 
-    private void Move()
+    private void Move(float directionX)
     {
         playerRb.velocity = new Vector2(
-            ButtonDirection().x * characterStatus.moveSpeed * Time.deltaTime, playerRb.velocity.y
+            directionX * characterStatus.moveSpeed * Time.deltaTime, playerRb.velocity.y
         );
     }
 

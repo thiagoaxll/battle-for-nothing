@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2acfca5301abde46b04c29d911a789f, type: 3}
   m_Name: MrSan
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: MrSan
   id: 2
   maxHealth: 100
-  moveSpeed: 0
-  jumpForce: 0
-  doubleJumpForce: 0
-  dashForce: 0
-  fireRate: 0
-  coolDownSkill: 0
-  midAirDuration: 0
-  dashDuration: 0
-  dashCoolDown: 0
-  weaponRotateSpeed: 0
-  projectileSpeed: 0
+  moveSpeed: 715
+  jumpForce: 1300
+  doubleJumpForce: 909.99994
+  dashForce: 1000
+  fireRate: 0.5
+  coolDownSkill: 2
+  midAirDuration: 2
+  dashDuration: 0.3
+  dashCoolDown: 2
+  weaponRotateSpeed: 10
+  projectileSpeed: 500

@@ -51,10 +51,12 @@ namespace CustomSystem
             {
                 return Input.GetButtonDown(joystickNumber + "ButtonA");
             }
+
             if (buttonState == ButtonState.Button)
             {
                 return Input.GetButton(joystickNumber + "ButtonA");
             }
+
             return Input.GetButtonUp(joystickNumber + "ButtonA");
         }
 
