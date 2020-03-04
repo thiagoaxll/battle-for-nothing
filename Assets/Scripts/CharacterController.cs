@@ -134,7 +134,6 @@ public class CharacterController : LegacyInputImplementation
     protected virtual void CustomStart()
     {
     }
-
     private void Update()
     {
         if (!GameController.instance.gameRunning) return;
@@ -187,9 +186,14 @@ public class CharacterController : LegacyInputImplementation
         CheckPlayerDirection(playerDirection.x);
         CustomUpdate();
         CoolDownStatus();
+        MakeIndividualHudFollowPlayer();
+        FireRateCalculate();
+    }
+
+    private void MakeIndividualHudFollowPlayer()
+    {
         var position = transform.position;
         playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
-        FireRateCalculate();
     }
 
     private void FireRateCalculate()
