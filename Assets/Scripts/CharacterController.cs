@@ -163,7 +163,7 @@ public class CharacterController : LegacyInputImplementation
         }
         else
         {
-            NormalState();
+            PlayerNotAiming();
         }
 
         if (ButtonX() && canShoot)
@@ -292,23 +292,16 @@ public class CharacterController : LegacyInputImplementation
         }
     }
 
-    private void NormalState()
+    private void PlayerNotAiming()
     {
         if (canDash)
         {
             playerRb.gravityScale = defaultGravity;
         }
-
+        
         aiming = false;
         characterStatus.moveSpeed = auxMoveSpeed;
-        if (lookingLeft)
-        {
-            RotateWeapon(new Vector2(180, 0));
-        }
-        else
-        {
-            RotateWeapon(new Vector2(180, 0));
-        }
+        RotateWeapon(new Vector2(180, 0));
     }
 
     private void MidAirEffect()

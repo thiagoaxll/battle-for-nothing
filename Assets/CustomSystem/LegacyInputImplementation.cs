@@ -24,7 +24,7 @@ namespace CustomSystem
                     break;
             }
         }
-
+        
         protected virtual Vector2 ButtonDirection()
         {
             var direction = new Vector2
