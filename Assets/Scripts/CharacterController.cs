@@ -134,14 +134,13 @@ public class CharacterController : LegacyInputImplementation
     protected virtual void CustomStart()
     {
     }
-
     private void Update()
     {
         if (!GameController.instance.gameRunning) return;
         playerDirection = ButtonDirection();
         if (canMove)
         {
-            Move();
+            Move(playerDirection.x);
         }
 
         if (ButtonA())
@@ -164,7 +163,7 @@ public class CharacterController : LegacyInputImplementation
         }
         else
         {
-            NormalState();
+            PlayerNotAiming();
         }
 
         if (ButtonX() && canShoot)
@@ -187,9 +186,14 @@ public class CharacterController : LegacyInputImplementation
         CheckPlayerDirection(playerDirection.x);
         CustomUpdate();
         CoolDownStatus();
+        MakeIndividualHudFollowPlayer();
+        FireRateCalculate();
+    }
+
+    private void MakeIndividualHudFollowPlayer()
+    {
         var position = transform.position;
         playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
-        FireRateCalculate();
     }
 
     private void FireRateCalculate()
@@ -288,23 +292,16 @@ public class CharacterController : LegacyInputImplementation
         }
     }
 
-    private void NormalState()
+    private void PlayerNotAiming()
     {
         if (canDash)
         {
             playerRb.gravityScale = defaultGravity;
         }
-
+        
         aiming = false;
         characterStatus.moveSpeed = auxMoveSpeed;
-        if (lookingLeft)
-        {
-            RotateWeapon(new Vector2(180, 0));
-        }
-        else
-        {
-            RotateWeapon(new Vector2(180, 0));
-        }
+        RotateWeapon(new Vector2(180, 0));
     }
 
     private void MidAirEffect()
@@ -371,10 +368,10 @@ public class CharacterController : LegacyInputImplementation
         }
     }
 
-    private void Move()
+    private void Move(float directionX)
     {
         playerRb.velocity = new Vector2(
-            ButtonDirection().x * characterStatus.moveSpeed * Time.deltaTime, playerRb.velocity.y
+            directionX * characterStatus.moveSpeed * Time.deltaTime, playerRb.velocity.y
         );
     }
 
