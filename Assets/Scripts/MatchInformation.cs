@@ -22,7 +22,7 @@ public class MatchInformation : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void SetSelectedCharacter(CharacterInfo[] selected)
