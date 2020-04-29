@@ -8,13 +8,14 @@ namespace CustomSystem
         public static NavigationController instance;
         public INavigationSystem currentNavigationSystem;
         public GameObject[] menus;
+        public Menus currentMenu;
 
         public int currentNavigationX;
         public int currentNavigationY;
         public int maxNavigationX;
         public int maxNavigationY;
 
-        private float _delayToChangeDirection = 0.25f;
+        private float _delayToChangeDirection = 0.18f;
         private float _auxDelayToChangeDirection;
         
         
@@ -46,9 +47,9 @@ namespace CustomSystem
 
         private void ChangeSelectedOption(float x, float y)
         {
-            float analogStickDeadZone = 0.03f;
+            float analogStickDeadZone = 0.1f;
             _auxDelayToChangeDirection += Time.deltaTime;
-            if(Math.Abs(x) < analogStickDeadZone|| Math.Abs(y) < analogStickDeadZone) return;
+            if(Math.Abs(x) < analogStickDeadZone && Math.Abs(y) < analogStickDeadZone) return;
             if (_auxDelayToChangeDirection >= _delayToChangeDirection)
             {
                 _auxDelayToChangeDirection = 0;
@@ -82,20 +83,6 @@ namespace CustomSystem
             }
             currentNavigationSystem.OnUpdateHud();
         }
-        
-        public void ChangeMenu(int menuIndex, Action action)
-        {
-            switch (menuIndex)
-            {
-                case 0:
-                    SetCurrentMenu(action == Action.OnConfirm ? 1 : 0);
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-            }
-        }
 
         private void SetCurrentMenu(int index)
         {
@@ -106,6 +93,16 @@ namespace CustomSystem
             menus[index].SetActive(true);
             currentNavigationX = 0;
             currentNavigationY = 0;
+        }
+
+        public void ChangeMenu(Menus menu)
+        {
+            currentMenu = menu;
+            foreach (var temp in this.menus)
+            {
+                temp.SetActive(false);
+            }
+            menus[(int) menu].SetActive(true);
         }
     }
 
@@ -119,10 +116,11 @@ namespace CustomSystem
         void OnUp();
         void OnDown();
     }
-
-    public enum Action
+    
+    public enum Menus
     {
-        OnConfirm,
-        OnCancel
+        MainMenu,
+        Settings,
+        CharacterSelection
     }
 }

@@ -1,10 +1,11 @@
-﻿using TMPro;
+﻿using System;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
-namespace CustomSystem.Menu
+namespace CustomSystem.MenuScripts
 {
-    public class MenuOne : MonoBehaviour, INavigationSystem
+    public class MainMenu : MonoBehaviour, INavigationSystem
     {
         [SerializeField] private int menuIndex;
         [SerializeField] private int menuIndexMax;
@@ -20,15 +21,10 @@ namespace CustomSystem.Menu
         private void Start()
         {
             menuIndexMax = buttons.Length;
+            NavigationController.instance.ChangeMenu(Menus.MainMenu);
         }
-
-        public void SelectCharacterMenu()
-        {
-            MainMenuManager.instance.RandomCharacters();
-            MainMenuManager.currentMenu = MainMenuManager.CurrentMenu.CharacterSelect;
-            MainMenuManager.instance.ChangeMenu();
-        }
-
+        
+        
         private bool CheckOptionsIndex(bool moveUp)
         {
             if (moveUp)
@@ -39,6 +35,11 @@ namespace CustomSystem.Menu
             {
                 return menuIndex > 0;
             }
+        }
+
+        private void OnEnable()
+        {
+            NavigationController.instance.currentNavigationSystem = this;
         }
 
         public int MenuIndex { get; set; } = 0;
@@ -72,6 +73,21 @@ namespace CustomSystem.Menu
 
         public void OnConfirm()
         {
+            switch (menuIndex)
+            {
+                case 0:
+                    print("CHARACTER SELECTION **");
+                    NavigationController.instance.ChangeMenu(Menus.CharacterSelection);
+                    break;
+                case 1:
+                    print("SETTINGS *|*");
+                    NavigationController.instance.ChangeMenu(Menus.Settings);
+                    break;
+                case 2:
+                    print("QUIT **");
+                    Application.Quit();
+                    break;
+            } 
         }
 
         public void OnCancel()
