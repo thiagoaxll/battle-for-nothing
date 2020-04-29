@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: MrSan
   id: 2
   maxHealth: 100
-  moveSpeed: 715
-  jumpForce: 1300
-  doubleJumpForce: 909.99994
-  dashForce: 1000
+  moveSpeed: 1430
+  jumpForce: 2600
+  doubleJumpForce: 1819.9998
+  dashForce: 2000
   fireRate: 0.5
   coolDownSkill: 2
   midAirDuration: 2
   dashDuration: 0.3
   dashCoolDown: 2
   weaponRotateSpeed: 10
-  projectileSpeed: 500
+  projectileSpeed: 3000

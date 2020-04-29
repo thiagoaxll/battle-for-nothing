@@ -10469,6 +10469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuIndex: 0
+  menuIndexMax: 0
   buttons:
   - {fileID: 816962078}
   - {fileID: 185165989}
@@ -11183,7 +11184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2000360523
 RectTransform:
   m_ObjectHideFlags: 0
