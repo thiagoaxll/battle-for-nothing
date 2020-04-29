@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace CustomSystem.Menu
@@ -7,6 +8,8 @@ namespace CustomSystem.Menu
     {
         [SerializeField] private int menuIndex;
         [SerializeField] private int menuIndexMax;
+        [SerializeField] private Color selectedColor;
+        [SerializeField] private Color notSelectedColor;
         public Button[] buttons;
 
         private void Awake()
@@ -37,9 +40,22 @@ namespace CustomSystem.Menu
                 return menuIndex > 0;
             }
         }
-        
+
+        public int MenuIndex { get; set; } = 0;
+
+        public void OnChangeMenu()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void OnUpdateHud()
         {
+            foreach (var temp in buttons)
+            {
+                temp.GetComponentInChildren<TextMeshProUGUI>().color = notSelectedColor;
+            }
+            buttons[menuIndex].GetComponentInChildren<TextMeshProUGUI>().color = selectedColor;
+            
             switch (menuIndex)
             {
                 case 0:
