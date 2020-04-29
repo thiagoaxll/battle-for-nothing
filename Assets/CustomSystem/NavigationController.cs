@@ -14,7 +14,7 @@ namespace CustomSystem
         public int maxNavigationX;
         public int maxNavigationY;
 
-        private float _delayToChangeDirection = 0.5f;
+        private float _delayToChangeDirection = 0.25f;
         private float _auxDelayToChangeDirection;
         
         
@@ -36,21 +36,53 @@ namespace CustomSystem
             ChangeSelectedOption(ButtonDirection().x, ButtonDirection().y);
             if (ButtonA())
             {
-                currentNavigationSystem.OnConfirm(currentNavigationX, currentNavigationY);
+                currentNavigationSystem.OnConfirm();
+            }
+            else if (ButtonB())
+            {
+                currentNavigationSystem.OnCancel();
             }
         }
 
         private void ChangeSelectedOption(float x, float y)
         {
+            float analogStickDeadZone = 0.03f;
             _auxDelayToChangeDirection += Time.deltaTime;
-            if(x == 0 || y == 0) return;;
+            if(Math.Abs(x) < analogStickDeadZone|| Math.Abs(y) < analogStickDeadZone) return;
             if (_auxDelayToChangeDirection >= _delayToChangeDirection)
             {
                 _auxDelayToChangeDirection = 0;
+                CheckJoystickDirection(x, y);
             }
         }
 
-
+        private void CheckJoystickDirection(float x, float y)
+        {
+            if (Math.Abs(x) > Mathf.Abs(y))
+            {
+                if (x > 0)
+                {
+                    currentNavigationSystem.OnRight();
+                }
+                else
+                {
+                    currentNavigationSystem.OnLeft();
+                }
+            }
+            else
+            {
+                if (y > 0)
+                {
+                    currentNavigationSystem.OnUp();
+                }
+                else
+                {
+                    currentNavigationSystem.OnDown();
+                }
+            }
+            currentNavigationSystem.OnUpdateHud();
+        }
+        
         public void ChangeMenu(int menuIndex, Action action)
         {
             switch (menuIndex)
@@ -79,13 +111,13 @@ namespace CustomSystem
 
     public interface INavigationSystem
     {
-        
-        void OnConfirm(int x, int y);
+        void OnUpdateHud();
+        void OnConfirm();
         void OnCancel();
-        Vector2 OnLeft(int x, int y);
-        Vector2 OnRight(int x, int y);
-        Vector2 OnUp(int x, int y);
-        Vector2 OnDown(int x, int y);
+        void OnLeft();
+        void OnRight();
+        void OnUp();
+        void OnDown();
     }
 
     public enum Action
