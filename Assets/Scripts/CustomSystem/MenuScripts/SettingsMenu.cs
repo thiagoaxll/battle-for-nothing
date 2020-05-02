@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using CustomSystem.MenuControllers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,9 @@ namespace CustomSystem.MenuScripts
     {
     
         [SerializeField] private int menuIndex;
+        [SerializeField] private int menuIndexMax;
         [SerializeField] private int menuHorizontalIndex;
         [SerializeField] private int menuHorizontalIndexMax;
-        [SerializeField] private int menuIndexMax;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color notSelectedColor;
         public GameObject[] options;
@@ -51,14 +52,12 @@ namespace CustomSystem.MenuScripts
         {
             volMusic = vol;
             musicSlider.value = volMusic;
-            print("Music: " + volMusic);
         }
         
         public void SetEffectVol(float vol)
         {
             volEffect = vol;
             effectSlider.value = volEffect;
-            print("Effect: " + volEffect);
         }
 
         public void OnUpdateHud()
@@ -76,14 +75,9 @@ namespace CustomSystem.MenuScripts
             {
                 case 0:
                     musicSlider.Select();
-                    print("START");
                     break;
                 case 1:
                     effectSlider.Select();
-                    print("SETTINGS");
-                    break;
-                case 2:
-                    print("QUIT");
                     break;
             }
         }
@@ -116,15 +110,14 @@ namespace CustomSystem.MenuScripts
                     }
                     else
                     {
-                        NavigationController.instance.ChangeMenu(Menus.MainMenu);
+                        MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.MainMenu);
                     }
                     break;
                 default:
                     if (!controlSettingsOpen)
                     {
-                        NavigationController.instance.ChangeMenu(Menus.MainMenu);
+                        MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.MainMenu);
                     }
-                    
                     break;
             } 
         }

@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
 
 namespace CustomSystem
 {
@@ -7,17 +7,8 @@ namespace CustomSystem
     {
         public static NavigationController instance;
         public INavigationSystem currentNavigationSystem;
-        public GameObject[] menus;
-        public Menus currentMenu;
-
-        public int currentNavigationX;
-        public int currentNavigationY;
-        public int maxNavigationX;
-        public int maxNavigationY;
-
-        private float _delayToChangeDirection = 0.18f;
+        private const float DelayToChangeDirection = 0.18f;
         private float _auxDelayToChangeDirection;
-        
         
         private void Awake()
         {
@@ -50,7 +41,7 @@ namespace CustomSystem
             float analogStickDeadZone = 0.1f;
             _auxDelayToChangeDirection += Time.deltaTime;
             if(Math.Abs(x) < analogStickDeadZone && Math.Abs(y) < analogStickDeadZone) return;
-            if (_auxDelayToChangeDirection >= _delayToChangeDirection)
+            if (_auxDelayToChangeDirection >= DelayToChangeDirection)
             {
                 _auxDelayToChangeDirection = 0;
                 CheckJoystickDirection(x, y);
@@ -83,27 +74,6 @@ namespace CustomSystem
             }
             currentNavigationSystem.OnUpdateHud();
         }
-
-        private void SetCurrentMenu(int index)
-        {
-            foreach (var temp in menus)
-            {
-                temp.SetActive(false);
-            }
-            menus[index].SetActive(true);
-            currentNavigationX = 0;
-            currentNavigationY = 0;
-        }
-
-        public void ChangeMenu(Menus menu)
-        {
-            currentMenu = menu;
-            foreach (var temp in this.menus)
-            {
-                temp.SetActive(false);
-            }
-            menus[(int) menu].SetActive(true);
-        }
     }
 
     public interface INavigationSystem
@@ -115,12 +85,5 @@ namespace CustomSystem
         void OnRight();
         void OnUp();
         void OnDown();
-    }
-    
-    public enum Menus
-    {
-        MainMenu,
-        Settings,
-        CharacterSelection
     }
 }

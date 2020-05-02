@@ -22,7 +22,4 @@ public class JoystickManager : LegacyInputImplementation
       }
     }
   }
-  
-  
-  
 }

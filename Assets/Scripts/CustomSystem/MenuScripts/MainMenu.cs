@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CustomSystem.MenuControllers;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -21,7 +21,7 @@ namespace CustomSystem.MenuScripts
         private void Start()
         {
             menuIndexMax = buttons.Length;
-            NavigationController.instance.ChangeMenu(Menus.MainMenu);
+            OnUpdateHud();
         }
         
         
@@ -40,13 +40,7 @@ namespace CustomSystem.MenuScripts
         private void OnEnable()
         {
             NavigationController.instance.currentNavigationSystem = this;
-        }
-
-        public int MenuIndex { get; set; } = 0;
-
-        public void OnChangeMenu()
-        {
-            throw new System.NotImplementedException();
+            OnUpdateHud();
         }
 
         public void OnUpdateHud()
@@ -76,15 +70,12 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 0:
-                    print("CHARACTER SELECTION **");
-                    NavigationController.instance.ChangeMenu(Menus.CharacterSelection);
+                    MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.CharacterSelect);
                     break;
                 case 1:
-                    print("SETTINGS *|*");
-                    NavigationController.instance.ChangeMenu(Menus.Settings);
+                    MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.Settings);
                     break;
                 case 2:
-                    print("QUIT **");
                     Application.Quit();
                     break;
             } 
