@@ -9,20 +9,21 @@ namespace CustomSystem
         public INavigationSystem currentNavigationSystem;
         private const float DelayToChangeDirection = 0.18f;
         private float _auxDelayToChangeDirection;
+        public JoystickIndex joystickIndex;
         
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            SetJoystick(JoystickIndex.JoystickOne);
+//            if (instance == null)
+//            {
+//                instance = this;
+//            }
+//            else
+//            {
+//                Destroy(gameObject);
+//            }
+            SetJoystick(joystickIndex);
         }
-
+        
         private void Update()
         {
             ChangeSelectedOption(ButtonDirection().x, ButtonDirection().y);

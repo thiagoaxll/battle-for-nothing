@@ -6,7 +6,7 @@ namespace CustomSystem
     {
         public string joystickNumber;
 
-        protected void SetJoystick(JoystickIndex joystickIndex)
+        public virtual void SetJoystick(JoystickIndex joystickIndex)
         {
             switch (joystickIndex)
             {

@@ -7,8 +7,8 @@ namespace CustomSystem.MenuScripts
 {
     public class MainMenu : MonoBehaviour, INavigationSystem
     {
-        [SerializeField] private int menuIndex;
-        [SerializeField] private int menuIndexMax;
+        [SerializeField] private int menuVerticalIndex;
+        [SerializeField] private int menuVerticalIndexMax;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color notSelectedColor;
         public Button[] buttons;
@@ -20,7 +20,7 @@ namespace CustomSystem.MenuScripts
 
         private void Start()
         {
-            menuIndexMax = buttons.Length;
+            menuVerticalIndexMax = buttons.Length;
             OnUpdateHud();
         }
         
@@ -29,11 +29,11 @@ namespace CustomSystem.MenuScripts
         {
             if (moveUp)
             {
-                return menuIndex < menuIndexMax - 1;
+                return menuVerticalIndex < menuVerticalIndexMax - 1;
             }
             else
             {
-                return menuIndex > 0;
+                return menuVerticalIndex > 0;
             }
         }
 
@@ -49,25 +49,12 @@ namespace CustomSystem.MenuScripts
             {
                 temp.GetComponentInChildren<TextMeshProUGUI>().color = notSelectedColor;
             }
-            buttons[menuIndex].GetComponentInChildren<TextMeshProUGUI>().color = selectedColor;
-            
-            switch (menuIndex)
-            {
-                case 0:
-                    print("START");
-                    break;
-                case 1:
-                    print("SETTINGS");
-                    break;
-                case 2:
-                    print("QUIT");
-                    break;
-            }
+            buttons[menuVerticalIndex].GetComponentInChildren<TextMeshProUGUI>().color = selectedColor;
         }
 
         public void OnConfirm()
         {
-            switch (menuIndex)
+            switch (menuVerticalIndex)
             {
                 case 0:
                     MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.CharacterSelect);
@@ -97,7 +84,7 @@ namespace CustomSystem.MenuScripts
         {
             if (CheckOptionsIndex(true))
             {
-                menuIndex++;
+                menuVerticalIndex++;
             }
         }
 
@@ -105,7 +92,7 @@ namespace CustomSystem.MenuScripts
         {
             if (CheckOptionsIndex(false))
             {
-                menuIndex--;
+                menuVerticalIndex--;
             }
         }
     }
