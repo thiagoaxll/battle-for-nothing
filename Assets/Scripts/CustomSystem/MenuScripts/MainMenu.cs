@@ -11,19 +11,22 @@ namespace CustomSystem.MenuScripts
         [SerializeField] private int menuVerticalIndexMax;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color notSelectedColor;
+        private NavigationController _navigationController;
         public Button[] buttons;
-
-        private void Awake()
-        {
-            NavigationController.instance.currentNavigationSystem = this;
-        }
-
+        
         private void Start()
         {
+            _navigationController = gameObject.AddComponent<NavigationController>();
+            SetupMainMenu();
+        }
+        
+        private void SetupMainMenu()
+        {
+            _navigationController.SetJoystick(JoystickIndex.JoystickOne);
+            _navigationController.currentNavigationSystem = this;
             menuVerticalIndexMax = buttons.Length;
             OnUpdateHud();
         }
-        
         
         private bool CheckOptionsIndex(bool moveUp)
         {
@@ -39,7 +42,6 @@ namespace CustomSystem.MenuScripts
 
         private void OnEnable()
         {
-            NavigationController.instance.currentNavigationSystem = this;
             OnUpdateHud();
         }
 

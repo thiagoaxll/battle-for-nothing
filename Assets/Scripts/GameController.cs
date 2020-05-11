@@ -39,8 +39,8 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             var position = spawnPositions[i].position;
-            var temp = Instantiate(players[MatchInformation.instance.characterInfo[i].whoControl], position, Quaternion.identity);
-            temp.GetComponent<CharacterController>().whoControlMe = i;
+            var temp = Instantiate(players[(int) MatchInformation.instance.characterInfo[i].character], position, Quaternion.identity);
+            temp.GetComponent<CharacterController>().whoControlMe = (int) MatchInformation.instance.characterInfo[i].joystick;
         }
 
         StartCoroutine(DelaySpawnPowerUp());
@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        HudController.instance.ShowWinner(MatchInformation.instance.characterInfo[winner].whoControl);
+        HudController.instance.ShowWinner((int) MatchInformation.instance.characterInfo[winner].character);
     }
 
     public void SetPlayerScore(int player)

@@ -1,6 +1,5 @@
 ﻿namespace CustomSystem.MenuControllers
 {
-    
     public enum MenuCatalog
     {
         MainMenu,

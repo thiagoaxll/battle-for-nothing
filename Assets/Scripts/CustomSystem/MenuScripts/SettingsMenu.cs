@@ -1,7 +1,7 @@
 ﻿using CustomSystem.MenuControllers;
-using TMPro;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
 
 namespace CustomSystem.MenuScripts
 {
@@ -10,8 +10,6 @@ namespace CustomSystem.MenuScripts
     
         [SerializeField] private int menuIndex;
         [SerializeField] private int menuIndexMax;
-        [SerializeField] private int menuHorizontalIndex;
-        [SerializeField] private int menuHorizontalIndexMax;
         [SerializeField] private Color selectedColor;
         [SerializeField] private Color notSelectedColor;
         public GameObject[] options;
@@ -23,18 +21,22 @@ namespace CustomSystem.MenuScripts
         public float volMusic;
         public float volEffect;
 
-        private bool controlSettingsOpen;
-        
-        private void Awake()
-        {
-            NavigationController.instance.currentNavigationSystem = this;
-        }
+        private NavigationController _navigationController;
+        private bool _controlSettingsOpen;
 
         private void Start()
         {
             menuIndexMax = options.Length;
+            _navigationController = gameObject.AddComponent<NavigationController>();
+            SetupSettingsMenu();
         }
         
+        private void SetupSettingsMenu()
+        {
+            _navigationController.SetJoystick(JoystickIndex.JoystickOne);
+            _navigationController.currentNavigationSystem = this;
+            OnUpdateHud();
+        }
         
         private bool CheckOptionsIndex(bool moveUp)
         {
@@ -68,31 +70,13 @@ namespace CustomSystem.MenuScripts
             }
             options[menuIndex].GetComponentInChildren<TextMeshProUGUI>().color = selectedColor;
         }
-
-        private void UpdateDirectionVertical()
-        {
-            switch (menuIndex)
-            {
-                case 0:
-                    musicSlider.Select();
-                    break;
-                case 1:
-                    effectSlider.Select();
-                    break;
-            }
-        }
-        
-        private void OnEnable()
-        {
-            NavigationController.instance.currentNavigationSystem = this;
-        }
         
         public void OnConfirm()
         {
             switch (menuIndex)
             {
                 case 2:
-                    controlSettingsOpen = true;
+                    _controlSettingsOpen = true;
                     controlsInstruction.SetActive(true);
                     break;
             }
@@ -103,10 +87,10 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 2:
-                    if (controlSettingsOpen)
+                    if (_controlSettingsOpen)
                     {
                         controlsInstruction.SetActive(false);
-                        controlSettingsOpen = false;
+                        _controlSettingsOpen = false;
                     }
                     else
                     {
@@ -114,7 +98,7 @@ namespace CustomSystem.MenuScripts
                     }
                     break;
                 default:
-                    if (!controlSettingsOpen)
+                    if (!_controlSettingsOpen)
                     {
                         MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.MainMenu);
                     }
@@ -150,7 +134,7 @@ namespace CustomSystem.MenuScripts
 
         public void OnUp()
         {
-            if(controlSettingsOpen) return;
+            if(_controlSettingsOpen) return;
             if (CheckOptionsIndex(true))
             {
                 menuIndex++;
@@ -159,7 +143,7 @@ namespace CustomSystem.MenuScripts
 
         public void OnDown()
         {
-            if(controlSettingsOpen) return;
+            if(_controlSettingsOpen) return;
             if (CheckOptionsIndex(false))
             {
                 menuIndex--;

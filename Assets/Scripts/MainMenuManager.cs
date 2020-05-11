@@ -78,7 +78,7 @@ public class MainMenuManager : MonoBehaviour
 
         for (int i = 0; i < ramdomizedCharacters.Count; i++)
         {
-            MatchInformation.instance.characterInfo[i].whoControl = ramdomizedCharacters[i];
+            //MatchInformation.instance.characterInfo[i].joystick = ramdomizedCharacters[i];
         }
     }
 
@@ -109,7 +109,7 @@ public class MainMenuManager : MonoBehaviour
                 transform.position, Quaternion.identity);
             charactersSelected[whereToShow].transform.SetParent(charactersHolder[whereToShow].transform);
             charactersSelected[whereToShow].transform.localPosition = Vector2.zero;
-            MatchInformation.instance.characterInfo[whereToShow].whoControl = ramdomizedCharacters[whereToShow];
+            //MatchInformation.instance.characterInfo[whereToShow].whoControl = ramdomizedCharacters[whereToShow];
             CheckForAllSelection();
         }
     }

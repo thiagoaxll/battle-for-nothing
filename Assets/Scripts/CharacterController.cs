@@ -90,8 +90,6 @@ public class CharacterController : LegacyInputImplementation
         currentHealth = characterStatus.maxHealth;
         auxMoveSpeed = characterStatus.moveSpeed;
         defaultGravity = playerRb.gravityScale;
-
-
         CheckJoystick();
 
         indicatorTxt.SetText("P" + (whoControlMe + 1));

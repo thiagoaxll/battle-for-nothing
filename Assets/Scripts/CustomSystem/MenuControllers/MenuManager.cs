@@ -24,7 +24,7 @@ namespace CustomSystem.MenuControllers
 
         private void Start()
         {
-            ChangeCurrentMenuRoutine(MenuCatalog.CharacterSelect);
+            ChangeCurrentMenuRoutine(MenuCatalog.MainMenu);
         }
 
         public void ChangeCurrentMenuRoutine(MenuCatalog menu)

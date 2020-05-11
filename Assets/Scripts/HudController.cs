@@ -41,7 +41,7 @@ public class HudController : LegacyInputImplementation
     {
         for (int i = 0; i < portraits.Length; i++)
         {
-            var temp = Instantiate(portraits[MatchInformation.instance.characterInfo[i].whoControl], transform.position,
+            var temp = Instantiate(portraits[(int) MatchInformation.instance.characterInfo[i].joystick], transform.position,
                 Quaternion.identity);
             temp.transform.SetParent(portraitsHolder[i].transform);
             temp.transform.localPosition = Vector2.zero;

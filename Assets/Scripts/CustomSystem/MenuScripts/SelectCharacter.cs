@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using CustomSystem.MenuControllers;
 using UnityEngine.UI;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CustomSystem.MenuScripts
 {
@@ -70,13 +72,18 @@ namespace CustomSystem.MenuScripts
 
         public void OnConfirm()
         {
-            currentIndex = 0;
             switch (selectCharacterStatus)
             {
                 case (SelectCharacterStatus.SelectingCharacter):
                     currentMaxIndex = characterSelectionMenu.maps.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingMap;
                     characterBackground.color = Color.black;
+                    
+                    SelectedCharacterInfo selectedCharacterInfo;
+                    selectedCharacterInfo.joystick = JoystickIndex.JoystickOne;
+                    selectedCharacterInfo.character = (Characters) currentIndex;
+                    MatchInformation.instance.SetSelectedCharacter(selectedCharacterInfo, (int) joystickIndex);
+
                     break;
                 case (SelectCharacterStatus.SelectingMap):
                     mapBackground.color = Color.black;
@@ -84,6 +91,7 @@ namespace CustomSystem.MenuScripts
                     selectCharacterStatus = SelectCharacterStatus.Finish;
                     break;
             }
+            currentIndex = 0;
         }
 
         public void OnCancel()
@@ -95,7 +103,7 @@ namespace CustomSystem.MenuScripts
                     currentMaxIndex = characterSelectionMenu.characters.Length;
                     if (joystickIndex == JoystickIndex.JoystickOne)
                     {
-                        Debug.Log("Back to main menu");
+                        MenuManager.instance.ChangeCurrentMenuRoutine(MenuCatalog.MainMenu);
                     }
                     break;
                 case (SelectCharacterStatus.SelectingMap):
