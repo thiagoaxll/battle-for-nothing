@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 namespace CustomSystem.Audio
@@ -16,24 +15,23 @@ namespace CustomSystem.Audio
         [SerializeField] private float masterVolume;
         [SerializeField] private float effectVolume;
         [SerializeField] private float musicVolume;
-        
 
-        public float ChangeMasterVolume
+        public void SetMasterVolume(int vol)
         {
-            get => effectVolume;
-            set => effectVolume = value;
+            masterVolume = vol;
+            ApplyVolumeChanges();
         }
 
-        public float ChangeEffectVolume
+        public void SetEffectVolume(float vol)
         {
-            get => effectVolume;
-            set => effectVolume = value;
+            effectVolume = vol;
+            ApplyVolumeChanges();
         }
 
-        public float ChangeMusicVolume
+        public void SetMusicVolume(float vol)
         {
-            get => effectVolume;
-            set => effectVolume = value;
+            musicVolume = vol;
+            ApplyVolumeChanges();
         }
 
         private void Awake()

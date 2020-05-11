@@ -1,4 +1,5 @@
 ﻿using CustomSystem.MenuControllers;
+using CustomSystem.Audio;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -23,9 +24,12 @@ namespace CustomSystem.MenuScripts
 
         private NavigationController _navigationController;
         private bool _controlSettingsOpen;
+        private float _maxVolume = 100;
 
         private void Start()
         {
+            volMusic = musicSlider.value;
+            volEffect = effectSlider.value;
             menuIndexMax = options.Length;
             _navigationController = gameObject.AddComponent<NavigationController>();
             SetupSettingsMenu();
@@ -37,7 +41,7 @@ namespace CustomSystem.MenuScripts
             _navigationController.currentNavigationSystem = this;
             OnUpdateHud();
         }
-        
+
         private bool CheckOptionsIndex(bool moveUp)
         {
             if (moveUp)
@@ -52,14 +56,14 @@ namespace CustomSystem.MenuScripts
 
         public void SetMusicVol(float vol)
         {
-            volMusic = vol;
-            musicSlider.value = volMusic;
+            musicSlider.value = vol;
+            SoundManager.instance.SetMusicVolume(volMusic);
         }
         
         public void SetEffectVol(float vol)
         {
-            volEffect = vol;
-            effectSlider.value = volEffect;
+            effectSlider.value = vol;
+            SoundManager.instance.SetEffectVolume(volEffect);
         }
 
         public void OnUpdateHud()
@@ -111,10 +115,14 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 0:
-                    SetMusicVol(--volMusic);
+                    volMusic -= 10;
+                    if (volMusic <= 0) volMusic = 0;
+                    SetMusicVol(volMusic);
                     break;
                 case 1:
-                    SetEffectVol(--volEffect);
+                    volEffect -= 10;
+                    if (volEffect <= 0) volEffect = 0;
+                    SetEffectVol(volEffect);
                     break;
             }
         }
@@ -124,10 +132,14 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 0:
-                    SetMusicVol(++volMusic);
+                    volMusic += 10;
+                    if (volMusic >= _maxVolume) volMusic = 100;
+                    SetMusicVol(volMusic);
                     break;
                 case 1:
-                    SetEffectVol(++volEffect);
+                    volEffect += 10;
+                    if (volEffect >= _maxVolume) volEffect = 100;
+                    SetEffectVol(volEffect);
                     break;
             }
         }

@@ -19,6 +19,8 @@ namespace CustomSystem.MenuScripts
         
         public int currentIndex;
         public int currentMaxIndex;
+        public int selectedMapIndex;
+        public int selectedCharacterIndex;
 
         private NavigationController _navigationController;
         private GameObject _currentCharacterInstantiated;
@@ -78,17 +80,23 @@ namespace CustomSystem.MenuScripts
                     currentMaxIndex = characterSelectionMenu.maps.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingMap;
                     characterBackground.color = Color.black;
-                    
-                    SelectedCharacterInfo selectedCharacterInfo;
-                    selectedCharacterInfo.joystick = JoystickIndex.JoystickOne;
-                    selectedCharacterInfo.character = (Characters) currentIndex;
-                    MatchInformation.instance.SetSelectedCharacter(selectedCharacterInfo, (int) joystickIndex);
-
+                    selectedCharacterIndex = currentIndex;
+                    MatchInformation.instance.selectedCharacterQuantity++;
                     break;
                 case (SelectCharacterStatus.SelectingMap):
+                    selectedMapIndex = currentIndex;
                     mapBackground.color = Color.black;
                     currentMaxIndex = characterSelectionMenu.maps.Length;
                     selectCharacterStatus = SelectCharacterStatus.Finish;
+                    
+                    SelectedCharacterInfo selectedCharacterInfo;
+                    selectedCharacterInfo.joystick = joystickIndex;
+                    selectedCharacterInfo.character = (Characters) selectedCharacterIndex;
+                    selectedCharacterInfo.selectedMap = selectedMapIndex;
+                    MatchInformation.instance.SetSelectedCharacter(selectedCharacterInfo, (int) joystickIndex);
+                    
+                    MatchInformation.instance.selectedMapQuantity++;
+                    MatchManager.instance.CheckToStartMatchRoutine(MatchInformation.instance.characterInfo);
                     break;
             }
             currentIndex = 0;
@@ -110,12 +118,15 @@ namespace CustomSystem.MenuScripts
                     currentMaxIndex = characterSelectionMenu.characters.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingCharacter;
                     characterBackground.color = Color.white;
+                    MatchInformation.instance.selectedCharacterQuantity--;
                     break;
                 case (SelectCharacterStatus.Finish):
                     currentMaxIndex = characterSelectionMenu.characters.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingCharacter;
                     characterBackground.color = Color.white;
                     mapBackground.color = Color.white;
+                    MatchInformation.instance.selectedCharacterQuantity--;
+                    MatchInformation.instance.selectedMapQuantity--;
                     break;
             }
         }

@@ -1,12 +1,14 @@
-﻿using UnityEngine;
-using CustomSystem;
+﻿using CustomSystem;
+using UnityEngine;
 using System;
 
 public class MatchInformation : MonoBehaviour
 {
+    public int selectedCharacterQuantity;
+    public int selectedMapQuantity;
+    
     public static MatchInformation instance;
     public SelectedCharacterInfo[] characterInfo = new SelectedCharacterInfo[4];
-
 
     private void Awake()
     {
@@ -36,4 +38,5 @@ public struct SelectedCharacterInfo
 {
     public JoystickIndex joystick;
     public Characters character;
+    public int selectedMap;
 }
