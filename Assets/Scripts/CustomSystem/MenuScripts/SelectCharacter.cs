@@ -91,7 +91,7 @@ namespace CustomSystem.MenuScripts
                     
                     SelectedCharacterInfo selectedCharacterInfo;
                     selectedCharacterInfo.joystick = joystickIndex;
-                    selectedCharacterInfo.character = (Characters) selectedCharacterIndex;
+                    selectedCharacterInfo.character = (CharactersRegister) selectedCharacterIndex;
                     selectedCharacterInfo.selectedMap = selectedMapIndex;
                     MatchInformation.instance.SetSelectedCharacter(selectedCharacterInfo, (int) joystickIndex);
                     

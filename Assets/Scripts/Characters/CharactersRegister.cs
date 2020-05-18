@@ -1,4 +1,4 @@
-﻿public enum Characters 
+﻿public enum CharactersRegister
 {
     Karoi,
     Jorge,

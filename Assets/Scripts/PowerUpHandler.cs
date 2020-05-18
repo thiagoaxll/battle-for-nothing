@@ -8,13 +8,13 @@ public class PowerUpHandler : MonoBehaviour
     public Transform[] powerUpPositions;
     public GameObject[] powerUps;
 
-    private CharacterController characterController;
+    private Characters.CharacterController characterController;
     private int maxPowerUps;
     private int pickedPowerUps;
 
     private void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<Characters.CharacterController>();
         maxPowerUps = powerUps.Length;
     }
 

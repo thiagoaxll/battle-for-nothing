@@ -8,8 +8,8 @@ public class MatchManager : MonoBehaviour
     public static MatchManager instance;
     public List<string> maps = new List<string>()
     {
-        "Arena_0",
-        "Arena_1",
+        $"Arena_0",
+        $"Arena_1",
     };
     private void Awake()
     {

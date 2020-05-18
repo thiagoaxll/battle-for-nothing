@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using CharacterController = Characters.CharacterController;
 
 public class GameController : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class GameController : MonoBehaviour
     public GameObject[] players;
     public GameObject[] powerUps;
     public float matchDuration;
+    public bool gamePaused;
 
     public int[] playerScore;
     public int[] playerIndex;
 
-    private float auxMatchDuration;
-    private int currentPowerUpToSpawn;
+    private float _auxMatchDuration;
+    private int _currentPowerUpToSpawn;
 
     private void Awake()
     {
@@ -34,7 +36,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
-        auxMatchDuration = matchDuration;
+        _auxMatchDuration = matchDuration;
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -46,28 +48,34 @@ public class GameController : MonoBehaviour
         StartCoroutine(DelaySpawnPowerUp());
     }
 
+    public void PauseGame(bool pauseGame)
+    {
+        gamePaused = pauseGame;
+        Time.timeScale = pauseGame ? 0 : 1;
+    }
+
     private IEnumerator DelaySpawnPowerUp()
     {
-        while (currentPowerUpToSpawn < powerUps.Length)
+        while (_currentPowerUpToSpawn < powerUps.Length)
         {
             yield return new WaitForSeconds((matchDuration / 2) / powerUps.Length);
             InstantiatePowerUp();
-            currentPowerUpToSpawn++;
+            _currentPowerUpToSpawn++;
         }
     }
 
     private void InstantiatePowerUp()
     {
-        Instantiate(powerUps[currentPowerUpToSpawn], powerUpSpawnPosition.transform.position, Quaternion.identity);
+        Instantiate(powerUps[_currentPowerUpToSpawn], powerUpSpawnPosition.transform.position, Quaternion.identity);
     }
 
 
     private void Update()
     {
         if (!gameRunning) return;
-        auxMatchDuration -= Time.deltaTime;
-        HudController.instance.UpdateTime(auxMatchDuration);
-        if (auxMatchDuration <= 0)
+        _auxMatchDuration -= Time.deltaTime;
+        HudController.instance.UpdateTime(_auxMatchDuration);
+        if (_auxMatchDuration <= 0)
         {
             CheckWinner();
         }

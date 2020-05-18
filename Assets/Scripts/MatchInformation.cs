@@ -1,7 +1,7 @@
 ﻿using CustomSystem;
 using UnityEngine;
-using System;
 
+using System;
 public class MatchInformation : MonoBehaviour
 {
     public int selectedCharacterQuantity;
@@ -33,10 +33,11 @@ public class MatchInformation : MonoBehaviour
     }
 }
 
+
 [Serializable]
 public struct SelectedCharacterInfo
 {
     public JoystickIndex joystick;
-    public Characters character;
+    public CharactersRegister character;
     public int selectedMap;
 }
