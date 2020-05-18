@@ -75,6 +75,7 @@ namespace Characters
         [HideInInspector] public AudioHolder audioHolder;
         public int whoControlMe;
         private float auxFireRate;
+        private JoystickIndex _joystickIndex;
 
         private void Awake()
         {
@@ -103,20 +104,24 @@ namespace Characters
         {
             if (whoControlMe == 0)
             {
+                _joystickIndex = JoystickIndex.JoystickOne;
                 SetJoystick(JoystickIndex.JoystickOne);
             }
 
             else if (whoControlMe == 1)
             {
+                _joystickIndex = JoystickIndex.JoystickTwo;
                 SetJoystick(JoystickIndex.JoystickTwo);
             }
 
             else if (whoControlMe == 2)
             {
+                _joystickIndex = JoystickIndex.JoystickThree;
                 SetJoystick(JoystickIndex.JoystickThree);
             }
             else
             {
+                _joystickIndex = JoystickIndex.JoystickFour;
                 SetJoystick(JoystickIndex.JoystickFour);
             }
         }
@@ -137,6 +142,12 @@ namespace Characters
         private void Update()
         {
             if (!GameController.instance.gameRunning) return;
+            if (GameController.instance.gamePaused) return;
+            if (ButtonStart())
+            {
+                GameController.instance.PauseGame(_joystickIndex);
+            }
+            
             playerDirection = ButtonDirection();
             if (canMove)
             {

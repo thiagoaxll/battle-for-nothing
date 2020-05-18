@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using CustomSystem;
+using CustomSystem.MenuScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -7,13 +10,15 @@ using CharacterController = Characters.CharacterController;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    
+    [SerializeField] private PauseMenu pauseMenu;
     public bool gameRunning = true;
+    public bool gamePaused;
     public Transform[] spawnPositions;
     public Transform powerUpSpawnPosition;
     public GameObject[] players;
     public GameObject[] powerUps;
     public float matchDuration;
-    public bool gamePaused;
 
     public int[] playerScore;
     public int[] playerIndex;
@@ -48,10 +53,19 @@ public class GameController : MonoBehaviour
         StartCoroutine(DelaySpawnPowerUp());
     }
 
-    public void PauseGame(bool pauseGame)
+    public void PauseGame(JoystickIndex joystickIndex)
     {
-        gamePaused = pauseGame;
-        Time.timeScale = pauseGame ? 0 : 1;
+        gamePaused = true;
+        Time.timeScale = 0.3f;
+        HudController.instance.SetPauseMenuVisibility(true);
+        pauseMenu.SetJoystick(joystickIndex);
+    }
+
+    public void ResumeGame()
+    {
+        gamePaused = false;
+        Time.timeScale = 1;
+        HudController.instance.SetPauseMenuVisibility(false);
     }
 
     private IEnumerator DelaySpawnPowerUp()

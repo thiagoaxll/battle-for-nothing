@@ -14,6 +14,7 @@ public class HudController : LegacyInputImplementation
     public GameObject endMatchBg;
     public GameObject buttonsEndMatch;
     public GameObject winnerHolder;
+    public GameObject pauseMenu;
     public GameObject[] winnerObject;
     public GameObject[] portraits;
     public GameObject[] portraitsHolder;
@@ -35,6 +36,11 @@ public class HudController : LegacyInputImplementation
     private void Start()
     {
         InstantiatePortraits();
+    }
+
+    public void SetPauseMenuVisibility(bool show)
+    {
+        pauseMenu.SetActive(show);
     }
 
     private void InstantiatePortraits()
