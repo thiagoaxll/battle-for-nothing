@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
         
         if (other.CompareTag("Shield"))
         {
-            if (other.GetComponentInParent<CharacterController>().whoControlMe != whomShoot)
+            if (other.GetComponentInParent<Characters.CharacterController>().whoControlMe != whomShoot)
             {
                 Destroy(gameObject);
             }
@@ -31,10 +31,10 @@ public class Projectile : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            if (other.GetComponent<CharacterController>().whoControlMe != whomShoot)
+            if (other.GetComponent<Characters.CharacterController>().whoControlMe != whomShoot)
             {
-                other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
-                other.GetComponent<CharacterController>().KnockBack(knockBackForce, transform.position.x);
+                other.GetComponent<Characters.CharacterController>().TakeDamage(damage, whomShoot);
+                other.GetComponent<Characters.CharacterController>().KnockBack(knockBackForce, transform.position.x);
                 Destroy(this.gameObject);
             }
         }

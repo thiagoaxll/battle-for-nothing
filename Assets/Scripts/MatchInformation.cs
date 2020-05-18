@@ -1,11 +1,14 @@
-﻿using UnityEngine;
-using System;
+﻿using CustomSystem;
+using UnityEngine;
 
+using System;
 public class MatchInformation : MonoBehaviour
 {
+    public int selectedCharacterQuantity;
+    public int selectedMapQuantity;
+    
     public static MatchInformation instance;
-    public CharacterInfo[] characterInfo;
-
+    public SelectedCharacterInfo[] characterInfo = new SelectedCharacterInfo[4];
 
     private void Awake()
     {
@@ -19,21 +22,22 @@ public class MatchInformation : MonoBehaviour
         }
     }
 
-
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void SetSelectedCharacter(CharacterInfo[] selected)
+    public void SetSelectedCharacter(SelectedCharacterInfo selected, int index)
     {
-        characterInfo = selected;
+        characterInfo[index] = selected;
     }
+}
 
-    [Serializable]
-    public struct CharacterInfo
-    {
-        public int whoControl;
-        public int myId;
-    }
+
+[Serializable]
+public struct SelectedCharacterInfo
+{
+    public JoystickIndex joystick;
+    public CharactersRegister character;
+    public int selectedMap;
 }

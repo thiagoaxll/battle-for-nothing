@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Characters;
 
 public class EspecialProjectile : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class EspecialProjectile : MonoBehaviour
         
         if (other.CompareTag("Shield"))
         {
-            if (other.GetComponentInParent<CharacterController>().whoControlMe != whomShoot)
+            if (other.GetComponentInParent<Characters.CharacterController>().whoControlMe != whomShoot)
             {
                 Destroy(gameObject);
             }
