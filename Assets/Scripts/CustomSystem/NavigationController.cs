@@ -1,26 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 using System;
 
 namespace CustomSystem
 {
     public class NavigationController : LegacyInputImplementation
     {
-        public static NavigationController instance;
         public INavigationSystem currentNavigationSystem;
-        private const float DelayToChangeDirection = 0.18f;
-        private float _auxDelayToChangeDirection;
         public JoystickIndex joystickIndex;
+        private bool _canChangeDirection = true;
         
         private void Awake()
         {
-//            if (instance == null)
-//            {
-//                instance = this;
-//            }
-//            else
-//            {
-//                Destroy(gameObject);
-//            }
             SetJoystick(joystickIndex);
         }
         
@@ -40,12 +31,16 @@ namespace CustomSystem
         private void ChangeSelectedOption(float x, float y)
         {
             float analogStickDeadZone = 0.1f;
-            _auxDelayToChangeDirection += Time.deltaTime;
             if(Math.Abs(x) < analogStickDeadZone && Math.Abs(y) < analogStickDeadZone) return;
-            if (_auxDelayToChangeDirection >= DelayToChangeDirection)
+            if (_canChangeDirection)
             {
-                _auxDelayToChangeDirection = 0;
                 CheckJoystickDirection(x, y);
+                new Task (async () =>
+                {
+                    _canChangeDirection = false;
+                    await Task.Delay(150);
+                    _canChangeDirection = true;
+                }).Start();
             }
         }
 
@@ -66,11 +61,11 @@ namespace CustomSystem
             {
                 if (y > 0)
                 {
-                    currentNavigationSystem.OnUp();
+                    currentNavigationSystem.OnDown();
                 }
                 else
                 {
-                    currentNavigationSystem.OnDown();
+                    currentNavigationSystem.OnUp();
                 }
             }
             currentNavigationSystem.OnUpdateHud();

@@ -498,7 +498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27b82d164f14e8499a905eec3758ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 210100477}
   gameRunning: 1
+  gamePaused: 0
   spawnPositions:
   - {fileID: 1560242077}
   - {fileID: 419511741}
@@ -518,9 +520,7 @@ MonoBehaviour:
   - {fileID: 6873590003466948981, guid: afe32c16620022d43a0b581d2aa3fb6a, type: 3}
   - {fileID: 6873590003466948981, guid: 074efbcbbc7f35144b97caea6d1aec6e, type: 3}
   matchDuration: 180
-  gamePaused: 0
   playerScore: 00000000000000000000000000000000
-  playerIndex: 00000000000000000000000000000000
 --- !u!1 &185401493
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 210100476}
+  - component: {fileID: 210100477}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -624,6 +625,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &210100477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210100475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6605aba9a6f544439b0abd67e5ec0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuSceneName: Menu
+  selectedColor: {r: 1, g: 0, b: 0, a: 1}
+  notSelectedColor: {r: 1, g: 1, b: 1, a: 1}
+  options:
+  - {fileID: 522725176}
+  - {fileID: 1018006709}
 --- !u!1 &214484756
 GameObject:
   m_ObjectHideFlags: 0
@@ -7939,6 +7958,7 @@ MonoBehaviour:
   endMatchBg: {fileID: 933832434}
   buttonsEndMatch: {fileID: 475196065}
   winnerHolder: {fileID: 1565503182}
+  pauseMenu: {fileID: 210100475}
   winnerObject:
   - {fileID: 1485837538947107919, guid: 7d1137eafc9a1114da92aaeede27aec3, type: 3}
   - {fileID: 8208989989600984439, guid: 997c09d0036708341b8498455c2ca169, type: 3}

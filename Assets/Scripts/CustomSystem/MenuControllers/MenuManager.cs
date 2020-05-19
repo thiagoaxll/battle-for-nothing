@@ -8,7 +8,6 @@ namespace CustomSystem.MenuControllers
     {
         public static MenuManager instance;
         public List<MenuReference> menuReference;
-        [SerializeField] private MenuCatalog currentMenu; 
 
         private void Awake()
         {
@@ -29,14 +28,9 @@ namespace CustomSystem.MenuControllers
 
         public void ChangeCurrentMenuRoutine(MenuCatalog menu)
         {
-            SetCurrentMenu(menu);
             HideUnusedMenus(menuReference, menu);
         }
-        private void SetCurrentMenu(MenuCatalog menu)
-        {
-            currentMenu = menu;
-        }
-
+        
         private void HideUnusedMenus(List<MenuReference> menusList, MenuCatalog menuToEnable)
         {
             menusList.ForEach(x => { x.menu.SetActive(x.menuName == menuToEnable); });

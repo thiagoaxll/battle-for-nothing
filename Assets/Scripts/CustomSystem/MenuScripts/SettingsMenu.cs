@@ -25,9 +25,11 @@ namespace CustomSystem.MenuScripts
         private NavigationController _navigationController;
         private bool _controlSettingsOpen;
         private float _maxVolume = 100;
+        private MenuUtils _menuUtils;
 
         private void Start()
         {
+            _menuUtils = new MenuUtils();
             volMusic = musicSlider.value;
             volEffect = effectSlider.value;
             menuIndexMax = options.Length;
@@ -41,19 +43,7 @@ namespace CustomSystem.MenuScripts
             _navigationController.currentNavigationSystem = this;
             OnUpdateHud();
         }
-
-        private bool CheckOptionsIndex(bool moveUp)
-        {
-            if (moveUp)
-            {
-                return menuIndex < menuIndexMax - 1;
-            }
-            else
-            {
-                return menuIndex > 0;
-            }
-        }
-
+        
         public void SetMusicVol(float vol)
         {
             musicSlider.value = vol;
@@ -147,19 +137,13 @@ namespace CustomSystem.MenuScripts
         public void OnUp()
         {
             if(_controlSettingsOpen) return;
-            if (CheckOptionsIndex(true))
-            {
-                menuIndex++;
-            }
+            menuIndex = _menuUtils.ReturnBoundaryIndex(menuIndex, menuIndexMax, MenuDirection.Up);
         }
 
         public void OnDown()
         {
             if(_controlSettingsOpen) return;
-            if (CheckOptionsIndex(false))
-            {
-                menuIndex--;
-            }
+            menuIndex = _menuUtils.ReturnBoundaryIndex(menuIndex, menuIndexMax, MenuDirection.Down);
         }
     }
 }
