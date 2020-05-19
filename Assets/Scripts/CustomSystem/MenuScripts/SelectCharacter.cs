@@ -1,7 +1,6 @@
 ﻿using CustomSystem.MenuControllers;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace CustomSystem.MenuScripts
 {
@@ -25,10 +24,11 @@ namespace CustomSystem.MenuScripts
         private NavigationController _navigationController;
         private GameObject _currentCharacterInstantiated;
         private GameObject _currentMapInstantiated;
-        
+        private MenuUtils _menuUtils;
         
         private void Start()
         {
+            _menuUtils = new MenuUtils();
             _navigationController = gameObject.AddComponent<NavigationController>();
             SetupCharacterSelection();
         }
@@ -57,15 +57,6 @@ namespace CustomSystem.MenuScripts
             Destroy(_currentMapInstantiated);
             _currentMapInstantiated = Instantiate(characterSelectionMenu.maps[mapIndex], mapHolder.transform, true);
             _currentMapInstantiated.transform.localPosition = Vector2.zero;
-        }
-
-        private int CheckIndexBoundary(int index, int maxIndex, int direction)
-        {
-            if (direction < 0)
-            {
-                return index <= 0 ? 0 : index;
-            }
-            return index < (maxIndex - 1) ? index : maxIndex - 1;
         }
         
         public void OnUpdateHud()
@@ -133,7 +124,7 @@ namespace CustomSystem.MenuScripts
 
         public void OnLeft()
         {
-            currentIndex = CheckIndexBoundary(--currentIndex, currentMaxIndex, -1);
+            currentIndex = _menuUtils.ReturnBoundaryIndex(currentIndex, currentMaxIndex, MenuDirection.Left);
             switch (selectCharacterStatus)
             {
                 case (SelectCharacterStatus.SelectingCharacter):
@@ -147,7 +138,7 @@ namespace CustomSystem.MenuScripts
 
         public void OnRight()
         {
-            currentIndex = CheckIndexBoundary(++currentIndex, currentMaxIndex, 1);
+            currentIndex = _menuUtils.ReturnBoundaryIndex(currentIndex, currentMaxIndex, MenuDirection.Right);
             switch (selectCharacterStatus)
             {
                 case (SelectCharacterStatus.SelectingCharacter):

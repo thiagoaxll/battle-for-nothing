@@ -3094,7 +3094,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[51].positiveButton
-    value: joystick 1 button 8
+    value: joystick 1 button 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[51].altNegativeButton
@@ -3154,7 +3154,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[52].positiveButton
-    value: joystick 2 button 8
+    value: joystick 2 button 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[52].altNegativeButton
@@ -3214,7 +3214,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[53].positiveButton
-    value: joystick 3 button 8
+    value: joystick 3 button 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[53].altNegativeButton
@@ -3274,7 +3274,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[54].positiveButton
-    value: joystick 4 button 8
+    value: joystick 4 button 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_Axes.Array.data[54].altNegativeButton

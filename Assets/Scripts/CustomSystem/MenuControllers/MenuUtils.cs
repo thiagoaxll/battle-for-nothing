@@ -1,20 +1,17 @@
-﻿using UnityEngine;
-
-namespace CustomSystem.MenuControllers
+﻿namespace CustomSystem.MenuControllers
 {
     public class MenuUtils
     {
 
         public int ReturnBoundaryIndex(int currentIndex, int maxIndex, MenuDirection direction)
         {
-            Debug.Log("D" + direction);
-            if (direction == MenuDirection.Up)
+            if (direction == MenuDirection.Up || direction == MenuDirection.Left)
             {
-                if (currentIndex < maxIndex - 1) return ++currentIndex;
+                if (currentIndex > 0) return --currentIndex;
             }
             else
             {
-                if (currentIndex > 0) return --currentIndex;
+                if (currentIndex < maxIndex - 1) return ++currentIndex;
             }
             return currentIndex;
         }
@@ -23,6 +20,8 @@ namespace CustomSystem.MenuControllers
     public enum MenuDirection
     {
         Up,
-        Down
+        Down,
+        Right,
+        Left
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using CustomSystem;
 using CustomSystem.MenuScripts;
 using UnityEngine;
@@ -21,8 +20,7 @@ public class GameController : MonoBehaviour
     public float matchDuration;
 
     public int[] playerScore;
-    public int[] playerIndex;
-
+   
     private float _auxMatchDuration;
     private int _currentPowerUpToSpawn;
 
@@ -34,7 +32,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -56,7 +54,7 @@ public class GameController : MonoBehaviour
     public void PauseGame(JoystickIndex joystickIndex)
     {
         gamePaused = true;
-        Time.timeScale = 0.3f;
+        Time.timeScale = 0;
         HudController.instance.SetPauseMenuVisibility(true);
         pauseMenu.SetJoystick(joystickIndex);
     }

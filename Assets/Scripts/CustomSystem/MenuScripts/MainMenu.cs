@@ -13,9 +13,11 @@ namespace CustomSystem.MenuScripts
         [SerializeField] private Color notSelectedColor;
         private NavigationController _navigationController;
         public Button[] buttons;
+        private MenuUtils _menuUtils;
         
         private void Start()
         {
+            _menuUtils = new MenuUtils();
             _navigationController = gameObject.AddComponent<NavigationController>();
             SetupMainMenu();
         }
@@ -28,18 +30,6 @@ namespace CustomSystem.MenuScripts
             OnUpdateHud();
         }
         
-        private bool CheckOptionsIndex(bool moveUp)
-        {
-            if (moveUp)
-            {
-                return menuVerticalIndex < menuVerticalIndexMax - 1;
-            }
-            else
-            {
-                return menuVerticalIndex > 0;
-            }
-        }
-
         private void OnEnable()
         {
             OnUpdateHud();
@@ -84,18 +74,12 @@ namespace CustomSystem.MenuScripts
 
         public void OnUp()
         {
-            if (CheckOptionsIndex(true))
-            {
-                menuVerticalIndex++;
-            }
+            menuVerticalIndex = _menuUtils.ReturnBoundaryIndex(menuVerticalIndex, menuVerticalIndexMax, MenuDirection.Up);
         }
 
         public void OnDown()
         {
-            if (CheckOptionsIndex(false))
-            {
-                menuVerticalIndex--;
-            }
+            menuVerticalIndex = _menuUtils.ReturnBoundaryIndex(menuVerticalIndex, menuVerticalIndexMax, MenuDirection.Down);
         }
     }
 }

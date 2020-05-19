@@ -1,5 +1,4 @@
-﻿using System;
-using CustomSystem.MenuControllers;
+﻿using CustomSystem.MenuControllers;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
@@ -14,10 +13,8 @@ namespace CustomSystem.MenuScripts
         [SerializeField] private Color notSelectedColor;
         public TextMeshProUGUI[] options;
 
-        private JoystickIndex _joystickIndex;
         private NavigationController _navigationController;
         private MenuUtils _menuUtils;
-
         private int _maxIndex;
         private int _currentIndex;
 
@@ -36,7 +33,6 @@ namespace CustomSystem.MenuScripts
         
         public void SetJoystick(JoystickIndex joystickIndex)
         {
-            _joystickIndex = joystickIndex;
             _navigationController.joystickIndex = joystickIndex;
         }
 
@@ -52,13 +48,11 @@ namespace CustomSystem.MenuScripts
 
         public void OnConfirm()
         {
-            Debug.Log("confirm");
+            GameController.instance.ResumeGame();
             switch (_currentIndex)
             {
-                case 0:
-                    GameController.instance.ResumeGame();
-                    break;
                 case 1:
+                    GameController.instance.ResumeGame();
                     SceneManager.LoadScene(menuSceneName);
                     break;
             }
@@ -79,13 +73,11 @@ namespace CustomSystem.MenuScripts
 
         public void OnUp()
         {
-            Debug.Log("Cima");
             _currentIndex = _menuUtils.ReturnBoundaryIndex(_currentIndex, _maxIndex, MenuDirection.Up);
         }
 
         public void OnDown()
         {
-            Debug.Log("Baixo");
             _currentIndex = _menuUtils.ReturnBoundaryIndex(_currentIndex, _maxIndex, MenuDirection.Down);
         }
     }
