@@ -500,6 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 210100477}
   gameRunning: 1
+  gamePaused: 0
   spawnPositions:
   - {fileID: 1560242077}
   - {fileID: 419511741}
@@ -519,9 +520,7 @@ MonoBehaviour:
   - {fileID: 6873590003466948981, guid: afe32c16620022d43a0b581d2aa3fb6a, type: 3}
   - {fileID: 6873590003466948981, guid: 074efbcbbc7f35144b97caea6d1aec6e, type: 3}
   matchDuration: 180
-  gamePaused: 0
   playerScore: 00000000000000000000000000000000
-  playerIndex: 00000000000000000000000000000000
 --- !u!1 &185401493
 GameObject:
   m_ObjectHideFlags: 0
