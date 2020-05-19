@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using CustomSystem.MenuScripts;
 using CustomSystem;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class HudController : LegacyInputImplementation
 {
     public static HudController instance;
     public TextMeshProUGUI[] playerScores;
     public TextMeshProUGUI textTime;
-
-
-    public GameObject endMatchBg;
-    public GameObject buttonsEndMatch;
-    public GameObject winnerHolder;
+    
+    public GameObject endMatchMenu;
     public GameObject pauseMenu;
-    public GameObject[] winnerObject;
     public GameObject[] portraits;
     public GameObject[] portraitsHolder;
 
@@ -29,7 +24,7 @@ public class HudController : LegacyInputImplementation
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -63,21 +58,10 @@ public class HudController : LegacyInputImplementation
     {
         textTime.SetText(ShowMinutesSeconds.ConvertSecondsToMinutes(time));
     }
-
-    public void ShowWinner(int winner)
+    
+    public void SetEndMatchVisibility(int winnerIndex)
     {
-        endMatchBg.SetActive(true);
-        var tempObject = Instantiate(winnerObject[winner], winnerHolder.transform.position, Quaternion.identity);
-        tempObject.transform.SetParent(winnerHolder.transform);
-        tempObject.transform.localPosition = Vector2.zero;
-        StartCoroutine(DelayToShowRestartMenu());
-    }
-
-    private IEnumerator DelayToShowRestartMenu()
-    {
-        yield return new WaitForSeconds(2f);
-        buttonsEndMatch.SetActive(true);
-        menuSelect.Enable = true;
-        menuSelect.SelectButton(0);
+        endMatchMenu.SetActive(true);
+        endMatchMenu.GetComponent<EndMatchMenu>().ShowWinnerObject(winnerIndex);
     }
 }

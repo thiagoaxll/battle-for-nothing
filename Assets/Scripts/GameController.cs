@@ -106,8 +106,8 @@ public class GameController : MonoBehaviour
                 winner = i;
             }
         }
-
-        HudController.instance.ShowWinner((int) MatchInformation.instance.characterInfo[winner].character);
+        
+        HudController.instance.SetEndMatchVisibility((int) MatchInformation.instance.characterInfo[winner].character);
     }
 
     public void SetPlayerScore(int player)
