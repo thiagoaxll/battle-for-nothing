@@ -1,4 +1,5 @@
-﻿using CustomSystem.MenuControllers;
+﻿using Characters;
+using CustomSystem.MenuControllers;
 using UnityEngine.UI;
 using UnityEngine;
 

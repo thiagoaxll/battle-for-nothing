@@ -1,7 +1,10 @@
-﻿public enum CharactersRegister
+﻿namespace Characters
 {
-    Karoi,
-    Jorge,
-    MrSan,
-    Violet
+    public enum CharactersRegister
+    {
+        Karoi,
+        Jorge,
+        MrSan,
+        Violet
+    }
 }

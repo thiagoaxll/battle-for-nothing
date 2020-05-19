@@ -2,6 +2,8 @@
 using UnityEngine;
 
 using System;
+using Characters;
+
 public class MatchInformation : MonoBehaviour
 {
     public int selectedCharacterQuantity;
