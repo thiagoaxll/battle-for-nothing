@@ -9,10 +9,10 @@ using CharacterController = Characters.CharacterController;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    
+    public bool devMode;
     [SerializeField] private PauseMenu pauseMenu;
     public bool gameRunning = true;
-    public bool gamePaused;
+    public bool gamePaused = false;
     public Transform[] spawnPositions;
     public Transform powerUpSpawnPosition;
     public GameObject[] players;
@@ -39,8 +39,13 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
-        _auxMatchDuration = matchDuration;
+        if(!devMode)
+            StartRoutine();
+    }
 
+    private void StartRoutine()
+    {
+        _auxMatchDuration = matchDuration;
         for (int i = 0; i < players.Length; i++)
         {
             var position = spawnPositions[i].position;
@@ -84,6 +89,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if(devMode) return;
         if (!gameRunning) return;
         _auxMatchDuration -= Time.deltaTime;
         HudController.instance.UpdateTime(_auxMatchDuration);
@@ -92,6 +98,7 @@ public class GameController : MonoBehaviour
             CheckWinner();
         }
     }
+    
 
     private void CheckWinner()
     {
