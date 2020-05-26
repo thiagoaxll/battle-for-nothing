@@ -380,6 +380,10 @@ namespace Characters
         private void Jump(float force)
         {
             SoundManager.instance.PlayAudio(audioHolder.jumpEffect);
+            var tempTransform = transform;
+            var position = tempTransform.position;
+            position.y += 0.5f;
+            tempTransform.position = position;
             var jumpVector = new Vector2(_playerRb.velocity.x, force * Time.deltaTime);
             _playerRb.velocity = jumpVector;
         }
