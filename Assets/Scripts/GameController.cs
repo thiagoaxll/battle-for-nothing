@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public bool devMode;
     [SerializeField] private PauseMenu pauseMenu;
     public bool gameRunning = true;
-    public bool gamePaused = false;
+    public bool gamePaused; 
     public Transform[] spawnPositions;
     public Transform powerUpSpawnPosition;
     public GameObject[] players;
@@ -117,9 +117,11 @@ public class GameController : MonoBehaviour
         HudController.instance.SetEndMatchVisibility((int) MatchInformation.instance.characterInfo[winner].character);
     }
 
-    public void SetPlayerScore(int player)
+    public void SetPlayerScore(int player, bool killedByScenario = false)
     {
-        playerScore[player]++;
+        var scoreToAdd = 1;
+        if (killedByScenario) scoreToAdd *= -1;
+        playerScore[player] += scoreToAdd;
         HudController.instance.UpdateScore(player, playerScore[player]);
     }
 
