@@ -10,12 +10,12 @@ namespace Characters
 
         [SerializeField] private bool skillEnable;
 
-        private SpriteRenderer playerSpriteRenderer;
-        private Color playerColor;
+        private SpriteRenderer _playerSpriteRenderer;
+        private Color _playerColor;
 
         protected override void CustomStart()
         {
-            playerSpriteRenderer = GetComponent<SpriteRenderer>();
+            _playerSpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         protected override void EspecialSkill()
@@ -38,9 +38,9 @@ namespace Characters
 
         private void ChangeColor(float alpha)
         {
-            playerColor = playerSpriteRenderer.color;
-            playerColor.a = alpha;
-            playerSpriteRenderer.color = playerColor;
+            _playerColor = _playerSpriteRenderer.color;
+            _playerColor.a = alpha;
+            _playerSpriteRenderer.color = _playerColor;
         }
     }
 }

@@ -16,9 +16,9 @@ MonoBehaviour:
   id: 0
   maxHealth: 100
   moveSpeed: 1430
-  jumpForce: 2600
-  doubleJumpForce: 1819.9998
-  dashForce: 2000
+  jumpForce: 5000
+  doubleJumpForce: 4000
+  dashForce: 5000
   fireRate: 0.5
   coolDownSkill: 2
   midAirDuration: 2

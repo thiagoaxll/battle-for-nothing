@@ -30,7 +30,8 @@ public class HudController : LegacyInputImplementation
 
     private void Start()
     {
-        InstantiatePortraits();
+        if(!GameController.instance.devMode)
+            InstantiatePortraits();
     }
 
     public void SetPauseMenuVisibility(bool show)

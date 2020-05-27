@@ -16,6 +16,7 @@ namespace Characters
 
         public float currentHealth;
 
+        private float _scenarioDamageMultiply = 1;
         private float _shootDamageMultiply = 1;
         private float _takeDamageMultiply = 1;
         private float _knockBackMultiply = 1;
@@ -380,6 +381,10 @@ namespace Characters
         private void Jump(float force)
         {
             SoundManager.instance.PlayAudio(audioHolder.jumpEffect);
+            var tempTransform = transform;
+            var position = tempTransform.position;
+            position.y += 0.5f;
+            tempTransform.position = position;
             var jumpVector = new Vector2(_playerRb.velocity.x, force * Time.deltaTime);
             _playerRb.velocity = jumpVector;
         }
@@ -464,15 +469,27 @@ namespace Characters
 
         public void TakeDamage(float damage, int whomShoot)
         {
-            currentHealth -= damage * _takeDamageMultiply;
+            float damageMultiply;
+            bool hitByScenario = false;
+            int whoGetsThePoint = whomShoot;
+            
+            if (whomShoot == -1)
+            {
+                hitByScenario = true;
+                 damageMultiply = _scenarioDamageMultiply;
+                 whoGetsThePoint = whoControlMe;
+            }
+            else
+                damageMultiply = _takeDamageMultiply;
+            
+            currentHealth -= damage * damageMultiply;
             UpdateHpBar();
             if (currentHealth <= 0)
             {
-//            GetComponent<CircleCollider2D>().enabled = false;
                 transform.tag = "Untagged";
                 SoundManager.instance.PlayAudio(audioHolder.death);
                 _powerUpHandler.DropPowerUp();
-                GameController.instance.SetPlayerScore(whomShoot);
+                GameController.instance.SetPlayerScore(whoGetsThePoint, hitByScenario); 
                 GameController.instance.SpawnPlayer(id, whoControlMe);
                 DeathEffect();
                 Destroy(playerCanvas);
@@ -492,17 +509,18 @@ namespace Characters
 
         public void KnockBack(float knockBackForce, float projectilePosition)
         {
+            int direction = 1;
             knockBackForce *= _knockBackMultiply;
             if (projectilePosition > transform.position.x)
             {
                 knockBackForce *= -1;
+                direction = -1;
             }
-
             _canMove = false;
             _playerRb.velocity = new Vector2
             (
                 knockBackForce * Time.deltaTime,
-                _playerRb.velocity.y + (knockBackForce * Time.deltaTime / 2)
+                _playerRb.velocity.y + ((knockBackForce * Time.deltaTime) * direction)
             );
             StartCoroutine(DelayAfterKnockBack());
         }
@@ -589,6 +607,7 @@ namespace Characters
 
         public void SetMultiplyScenarioDamage(float multiply)
         {
+            _scenarioDamageMultiply *= multiply;
         }
     }
 }
