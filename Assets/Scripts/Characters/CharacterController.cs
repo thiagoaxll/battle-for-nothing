@@ -516,15 +516,7 @@ namespace Characters
                 knockBackForce *= -1;
                 direction = -1;
             }
-
-            _playerRb.velocity = Vector2.zero;
             _canMove = false;
-            // var tempTransform = transform;
-            // Vector2 temp = tempTransform.position;
-            // temp.x += 0.7f * direction;
-            // temp.y += 0.5f; 
-            // tempTransform.transform.position = temp;
-            
             _playerRb.velocity = new Vector2
             (
                 knockBackForce * Time.deltaTime,
