@@ -63,6 +63,7 @@ namespace Characters
         public int whoControlMe;
         private float _auxFireRate;
         private JoystickIndex _joystickIndex;
+        private bool _doCheckForJump;
 
         private void Awake()
         {
@@ -148,7 +149,7 @@ namespace Characters
 
             if (ButtonA())
             {
-                CheckForJump();
+                _doCheckForJump = true;
             }
 
             if (ButtonA(ButtonState.ButtonUp))
@@ -191,6 +192,15 @@ namespace Characters
             CoolDownStatus();
             MakeIndividualHudFollowPlayer();
             FireRateCalculate();
+        }
+
+        private void FixedUpdate()
+        {
+            if (_doCheckForJump)
+            {
+                CheckForJump();
+                _doCheckForJump = false;
+            }
         }
 
         private void MakeIndividualHudFollowPlayer()
@@ -288,7 +298,6 @@ namespace Characters
             }
             else
             {
-                if (!ButtonA()) return;
                 if (!canDoubleJump) return;
                 Jump(characterStatus.doubleJumpForce);
                 canDoubleJump = false;

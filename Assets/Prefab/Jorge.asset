@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Jorge
   id: 1
   maxHealth: 100
-  moveSpeed: 1430
+  moveSpeed: 1858.9999
   jumpForce: 4600
   doubleJumpForce: 1819.9998
   dashForce: 2000
