@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2acfca5301abde46b04c29d911a789f, type: 3}
   m_Name: Karoi
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Karoi
   id: 0
   maxHealth: 100
   moveSpeed: 2416.6997

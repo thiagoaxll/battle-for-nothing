@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2acfca5301abde46b04c29d911a789f, type: 3}
   m_Name: Violet
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Violet
   id: 3
   maxHealth: 100
   moveSpeed: 1430

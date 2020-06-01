@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2acfca5301abde46b04c29d911a789f, type: 3}
+  m_Name: Ellie
+  m_EditorClassIdentifier: 
+  characterName: Ellie
+  id: 5
+  maxHealth: 100
+  moveSpeed: 1430
+  jumpForce: 2600
+  doubleJumpForce: 1819.9998
+  dashForce: 2000
+  fireRate: 0.5
+  coolDownSkill: 2
+  midAirDuration: 2
+  dashDuration: 0.3
+  dashCoolDown: 2
+  weaponRotateSpeed: 10
+  projectileSpeed: 3000
