@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4842919466630766868}
   - component: {fileID: 4842919466630766869}
   m_Layer: 5
-  m_Name: VioletScoreDisplay
+  m_Name: DjScoreDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4842919468222061055}
   - component: {fileID: 4842919468222061052}
   m_Layer: 5
-  m_Name: violet
+  m_Name: dj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8637307958777317588, guid: 5d7ba587548a4d14b84c0e44484d00fb,
+  m_Sprite: {fileID: 8770986327325781645, guid: fc7c6dd893b76444b9042d6a9ebd8c4f,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0

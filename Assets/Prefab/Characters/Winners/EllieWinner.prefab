@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2509348707623964331}
   - component: {fileID: 2509348707623964328}
   m_Layer: 5
-  m_Name: VioletWinner
+  m_Name: EllieWinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,10 +62,11 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8637307958777317588, guid: 5d7ba587548a4d14b84c0e44484d00fb,
+  m_Sprite: {fileID: -6881935424565889850, guid: 714dd7e3efd9a0d4980015a6b0b2ae14,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -86,7 +87,7 @@ Animator:
   m_GameObject: {fileID: 2509348707623964334}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a047f1248613c9144b682ed17f60f2c1, type: 2}
+  m_Controller: {fileID: 9100000, guid: ec6577df9de502e43be5017a8f80f2a3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

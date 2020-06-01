@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -169,7 +170,7 @@ GameObject:
   - component: {fileID: 2179290314792664765}
   - component: {fileID: 2179290314792664762}
   m_Layer: 5
-  m_Name: MrSanWinner
+  m_Name: DjWinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,10 +219,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 912516620128315525, guid: 5887ca899432d834aa1b95a42c62294b, type: 3}
+  m_Sprite: {fileID: 8770986327325781645, guid: fc7c6dd893b76444b9042d6a9ebd8c4f,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -241,7 +244,7 @@ Animator:
   m_GameObject: {fileID: 2179290314792664760}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5188b567671d9aa46a59f2f9fb73186c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 33443a0a528b36f42914b0df6f6f2af4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
