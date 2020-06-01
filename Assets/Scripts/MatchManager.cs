@@ -10,6 +10,7 @@ public class MatchManager : MonoBehaviour
     {
         $"Arena_0",
         $"Arena_1",
+        $"Arena_2"
     };
     private void Awake()
     {

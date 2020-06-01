@@ -12,7 +12,6 @@ namespace Interactables
         {
            if (other.CompareTag("Player"))
            {
-               print("coll");
                CharacterController tempCharacterController = other.gameObject.GetComponent<CharacterController>();
                tempCharacterController.TakeDamage(damage, -1);
                tempCharacterController.KnockBack(knockBackForce , transform.position.x);
