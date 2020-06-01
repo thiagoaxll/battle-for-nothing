@@ -15,9 +15,9 @@ MonoBehaviour:
   characterName: 
   id: 0
   maxHealth: 100
-  moveSpeed: 1430
-  jumpForce: 5000
-  doubleJumpForce: 4000
+  moveSpeed: 2416.6997
+  jumpForce: 1000
+  doubleJumpForce: 800
   dashForce: 5000
   fireRate: 0.5
   coolDownSkill: 2
