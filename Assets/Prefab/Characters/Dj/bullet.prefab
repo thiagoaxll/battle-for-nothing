@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1641438687623452140}
   - component: {fileID: 1641438687623452141}
-  - component: {fileID: 1641438687623452114}
   - component: {fileID: 1641438687623452115}
   - component: {fileID: 1641438687623452112}
+  - component: {fileID: -7836870817049978041}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -48,6 +48,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 2032108381634805546, guid: 5887ca899432d834aa1b95a42c62294b,
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -8558764085488943377, guid: fc7c6dd893b76444b9042d6a9ebd8c4f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,24 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1641438687623452114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641438687623452113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07588aa810932f43bd1d96d9a36c340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  durationTime: 5
-  knockBackForce: 320
-  projectileRb: {fileID: 0}
-  whomShoot: 0
-  stayAlive: 0
 --- !u!50 &1641438687623452115
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +132,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4074545, y: 0.05285269}
   m_EdgeRadius: 0
+--- !u!114 &-7836870817049978041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641438687623452113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afc0d4349a7c1e419fd37622e017dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dj: {fileID: 0}
+  speed: 20

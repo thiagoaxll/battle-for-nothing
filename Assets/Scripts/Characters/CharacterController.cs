@@ -31,11 +31,11 @@ namespace Characters
         [SerializeField] protected GameObject projectile;
         [SerializeField] protected GameObject weapon;
         [SerializeField] private GameObject dashEffect;
-        [SerializeField] private Transform spawnProjectilePosition;
         [SerializeField] public GameObject playerCanvas;
         [SerializeField] public GameObject shield;
         [SerializeField] public TextMeshProUGUI indicatorTxt;
         [SerializeField] public GameObject deathEffect;
+        public Transform spawnProjectilePosition;
 
         [Header("Control")] [SerializeField] private bool canDoubleJump = true;
         [SerializeField] private bool isOnGround;
@@ -56,7 +56,7 @@ namespace Characters
         private float _defaultGravity;
         private bool _canMidAir = true;
         [SerializeField] private bool isMidAir;
-        [SerializeField] private bool canShoot = true;
+        public bool canShoot = true;
         [SerializeField] private float auxMidAirDuration;
         private PowerUpHandler _powerUpHandler;
         [HideInInspector] public AudioHolder audioHolder;
@@ -209,7 +209,7 @@ namespace Characters
             playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
         }
 
-        private void FireRateCalculate()
+        protected virtual void FireRateCalculate()
         {
             if (!canShoot)
             {
