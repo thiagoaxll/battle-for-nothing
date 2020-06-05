@@ -74,6 +74,66 @@ TextureImporter:
   - first:
       213: -5330029162197112602
     second: ellie_23
+  - first:
+      213: 1600516611175189956
+    second: ellie_0
+  - first:
+      213: 7931032943468663823
+    second: ellie_1
+  - first:
+      213: -4263578506510795484
+    second: ellie_2
+  - first:
+      213: 8714435616671236700
+    second: ellie_3
+  - first:
+      213: 6760993008526255368
+    second: ellie_4
+  - first:
+      213: -7572313109534054134
+    second: ellie_5
+  - first:
+      213: -4013929475510671389
+    second: ellie_6
+  - first:
+      213: -616496105433746971
+    second: ellie_7
+  - first:
+      213: -1417877013562776195
+    second: ellie_8
+  - first:
+      213: -2872060214756952243
+    second: ellie_9
+  - first:
+      213: -5766923715676150568
+    second: ellie_10
+  - first:
+      213: -6915962153028304271
+    second: ellie_11
+  - first:
+      213: -7386276767846863442
+    second: ellie_12
+  - first:
+      213: -2481696355723325665
+    second: ellie_13
+  - first:
+      213: 4031082828753592707
+    second: ellie_14
+  - first:
+      213: -2025253727123219387
+    second: ellie_15
+  - first:
+      213: -4036467741007186794
+    second: ellie_16
+  - first:
+      213: -2761957096758474818
+    second: ellie_17
+  - first:
+      213: 675070267664231932
+    second: ellie_18
+  - first:
+      213: 120276860314030859
+    second: ellie_19
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -197,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c4b29381347e70a0800000000000000
-      internalID: -6881935424565889850
+      spriteID: 4cd8532c06d263610800000000000000
+      internalID: 1600516611175189956
       vertices: []
       indices: 
       edges: []
@@ -218,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac0305ef29c836c30800000000000000
-      internalID: 4351476227929813194
+      spriteID: f04de511170b01e60800000000000000
+      internalID: 7931032943468663823
       vertices: []
       indices: 
       edges: []
@@ -239,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eff19cb0a57140d0800000000000000
-      internalID: -3440339307115446299
+      spriteID: 42dfe6f00f9b4d4c0800000000000000
+      internalID: -4263578506510795484
       vertices: []
       indices: 
       edges: []
@@ -260,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cec4ba20b0cd6a10800000000000000
-      internalID: 1904390080310857415
+      spriteID: c5283b5b505efe870800000000000000
+      internalID: 8714435616671236700
       vertices: []
       indices: 
       edges: []
@@ -281,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8344adbaa882fb570800000000000000
-      internalID: 8484544799043109944
+      spriteID: 8056b1ae15fd3dd50800000000000000
+      internalID: 6760993008526255368
       vertices: []
       indices: 
       edges: []
@@ -302,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3bf6792ba36301a0800000000000000
-      internalID: -6844517421886801093
+      spriteID: a096032c85db9e690800000000000000
+      internalID: -7572313109534054134
       vertices: []
       indices: 
       edges: []
@@ -323,161 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06a3b41d669299080800000000000000
-      internalID: -9180260843843274144
+      spriteID: 3e767b2a868ab48c0800000000000000
+      internalID: -4013929475510671389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: ellie_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18692714e60ec12a0800000000000000
-      internalID: -6765285776068274559
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_8
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee59984fd0956a010800000000000000
-      internalID: 1199744267212920302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_9
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eebd88c8aaba45bd0800000000000000
-      internalID: -2642298332369069074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f95c1bc8897575e0800000000000000
-      internalID: -1912488838318761484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_11
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fef12ed475256430800000000000000
-      internalID: 3775465046493232886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_12
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c822d6e90101ae640800000000000000
-      internalID: 5109914390768722572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_13
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 224
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd3e705f73d193c90800000000000000
-      internalID: -7189683203948944417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ellie_14
       rect:
         serializedVersion: 2
         x: 0
@@ -491,14 +404,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0da2b8d38e34db4d0800000000000000
-      internalID: -3117260702326510896
+      spriteID: 5e1b536fe04c177f0800000000000000
+      internalID: -616496105433746971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_15
+      name: ellie_8
       rect:
         serializedVersion: 2
         x: 16
@@ -512,14 +425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da8e4b496422947a0800000000000000
-      internalID: -6392540509537769299
+      spriteID: d75266f4e50b25ce0800000000000000
+      internalID: -1417877013562776195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_16
+      name: ellie_9
       rect:
         serializedVersion: 2
         x: 32
@@ -533,14 +446,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b19a69f20bfcd2e0800000000000000
-      internalID: -2099527336068476489
+      spriteID: d4731e593746428d0800000000000000
+      internalID: -2872060214756952243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_17
+      name: ellie_10
       rect:
         serializedVersion: 2
         x: 0
@@ -554,14 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bd834e2bfd302710800000000000000
-      internalID: 1666400011149348275
+      spriteID: 8d4e8506f65c7ffa0800000000000000
+      internalID: -5766923715676150568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_18
+      name: ellie_11
       rect:
         serializedVersion: 2
         x: 0
@@ -575,14 +488,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d20127b2cb822a150800000000000000
-      internalID: 5882308851947147309
+      spriteID: 172c3bc60119500a0800000000000000
+      internalID: -6915962153028304271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_19
+      name: ellie_12
       rect:
         serializedVersion: 2
         x: 0
@@ -596,14 +509,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eed7eedb48e7e42a0800000000000000
-      internalID: -6751319682794488338
+      spriteID: ead64cfe96cae7990800000000000000
+      internalID: -7386276767846863442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_20
+      name: ellie_13
       rect:
         serializedVersion: 2
         x: 16
@@ -617,14 +530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48f456126e41e83d0800000000000000
-      internalID: -3202599306378522748
+      spriteID: f1fcab4205e3f8dd0800000000000000
+      internalID: -2481696355723325665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_21
+      name: ellie_14
       rect:
         serializedVersion: 2
         x: 32
@@ -638,14 +551,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee99e731ce420ded0800000000000000
-      internalID: -2391370805775787538
+      spriteID: 381e804a97841f730800000000000000
+      internalID: 4031082828753592707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_22
+      name: ellie_15
       rect:
         serializedVersion: 2
         x: 0
@@ -659,14 +572,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0d99d5387678cce0800000000000000
-      internalID: -1384726626744820468
+      spriteID: 54cd8c6277ad4e3e0800000000000000
+      internalID: -2025253727123219387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ellie_23
+      name: ellie_16
       rect:
         serializedVersion: 2
         x: 32
@@ -680,8 +593,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e8a4c877bee706b0800000000000000
-      internalID: -5330029162197112602
+      spriteID: 69471f5c9f59bf7c0800000000000000
+      internalID: -4036467741007186794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ellie_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb787da67ae8ba9d0800000000000000
+      internalID: -2761957096758474818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ellie_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfded8ee4d45e5900800000000000000
+      internalID: 675070267664231932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ellie_19
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0397bdca2f4ba100800000000000000
+      internalID: 120276860314030859
       vertices: []
       indices: 
       edges: []

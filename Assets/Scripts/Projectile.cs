@@ -17,6 +17,11 @@ public class Projectile : MonoBehaviour
         Destroy(this.gameObject, durationTime);
     }
 
+    public void DestroyProjectile()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         

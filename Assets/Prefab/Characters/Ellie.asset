@@ -19,7 +19,7 @@ MonoBehaviour:
   jumpForce: 2600
   doubleJumpForce: 1819.9998
   dashForce: 2000
-  fireRate: 0.5
+  fireRate: 0.1
   coolDownSkill: 2
   midAirDuration: 2
   dashDuration: 0.3
