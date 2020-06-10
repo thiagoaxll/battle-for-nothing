@@ -78,7 +78,7 @@ MonoBehaviour:
   isOnGround: 0
   lookingLeft: 0
   groundCheckRadius: 0.2
-  canDash: 0
+  canDash: 1
   isDashing: 0
   isMidAir: 0
   canShoot: 1

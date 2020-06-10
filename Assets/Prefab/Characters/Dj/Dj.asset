@@ -15,10 +15,10 @@ MonoBehaviour:
   characterName: Dj
   id: 4
   maxHealth: 100
-  moveSpeed: 1430
-  jumpForce: 2600
-  doubleJumpForce: 1819.9998
-  dashForce: 2000
+  moveSpeed: 1400
+  jumpForce: 1000
+  doubleJumpForce: 800
+  dashForce: 2500
   fireRate: 0.5
   coolDownSkill: 2
   midAirDuration: 2

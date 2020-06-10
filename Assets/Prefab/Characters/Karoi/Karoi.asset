@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: Karoi
   id: 0
   maxHealth: 100
-  moveSpeed: 2416.6997
-  jumpForce: 1000
+  moveSpeed: 1600
+  jumpForce: 2000
   doubleJumpForce: 800
-  dashForce: 5000
-  fireRate: 0.5
-  coolDownSkill: 2
-  midAirDuration: 2
-  dashDuration: 0.3
-  dashCoolDown: 2
+  dashForce: 2600
+  fireRate: 0.25
+  coolDownSkill: 3
+  midAirDuration: 3
+  dashDuration: 0.2
+  dashCoolDown: 2.2
   weaponRotateSpeed: 10
-  projectileSpeed: 3000
+  projectileSpeed: 7000

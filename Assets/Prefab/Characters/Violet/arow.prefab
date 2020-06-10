@@ -48,6 +48,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,11 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07588aa810932f43bd1d96d9a36c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 18
   durationTime: 5
   knockBackForce: 200
   projectileRb: {fileID: 0}
   whomShoot: 0
+  whoControlMe: 0
   stayAlive: 0
 --- !u!50 &1641438687623452115
 Rigidbody2D:

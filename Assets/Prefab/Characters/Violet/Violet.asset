@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: Violet
   id: 3
   maxHealth: 100
-  moveSpeed: 1430
-  jumpForce: 2600
-  doubleJumpForce: 1819.9998
-  dashForce: 2000
-  fireRate: 0.5
+  moveSpeed: 1500
+  jumpForce: 1200
+  doubleJumpForce: 900
+  dashForce: 2700
+  fireRate: 0.15
   coolDownSkill: 2
-  midAirDuration: 2
+  midAirDuration: 5
   dashDuration: 0.3
   dashCoolDown: 2
   weaponRotateSpeed: 10
-  projectileSpeed: 3000
+  projectileSpeed: 4000

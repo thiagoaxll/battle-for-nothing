@@ -30,6 +30,7 @@ namespace Characters
 
         protected override void EspecialSkill()
         {
+            base.EspecialSkill();
             if (!_specialEnable)
             {
                 bulletMaxDistanceMulti *= specialBulletDistanceMultiply;

@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: Ellie
   id: 5
   maxHealth: 100
-  moveSpeed: 1430
-  jumpForce: 2600
-  doubleJumpForce: 1819.9998
-  dashForce: 2000
+  moveSpeed: 2000
+  jumpForce: 1500
+  doubleJumpForce: 1000
+  dashForce: 2800
   fireRate: 0.1
   coolDownSkill: 2
-  midAirDuration: 2
-  dashDuration: 0.3
-  dashCoolDown: 2
+  midAirDuration: 5
+  dashDuration: 0.2
+  dashCoolDown: 1.5
   weaponRotateSpeed: 10
   projectileSpeed: 3000

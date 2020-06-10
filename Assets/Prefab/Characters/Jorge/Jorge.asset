@@ -15,14 +15,14 @@ MonoBehaviour:
   characterName: Jorge
   id: 1
   maxHealth: 100
-  moveSpeed: 1858.9999
-  jumpForce: 4600
-  doubleJumpForce: 1819.9998
+  moveSpeed: 1300
+  jumpForce: 900
+  doubleJumpForce: 1200
   dashForce: 2000
-  fireRate: 0.5
+  fireRate: 0.7
   coolDownSkill: 2
-  midAirDuration: 2
-  dashDuration: 0.3
-  dashCoolDown: 2
+  midAirDuration: 3
+  dashDuration: 0.5
+  dashCoolDown: 2.5
   weaponRotateSpeed: 10
-  projectileSpeed: 3000
+  projectileSpeed: 5000
