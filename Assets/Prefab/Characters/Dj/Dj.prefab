@@ -54,7 +54,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 4
-  characterStatus: {fileID: 11400000, guid: 50d622f1ecefb7547b064b25d90c2c74, type: 2}
+  characterStatusConfig: {fileID: 11400000, guid: 50d622f1ecefb7547b064b25d90c2c74,
+    type: 2}
   currentHealth: 0
   groundCheckPosition: {fileID: 3041354021036937487}
   hpBar: {fileID: 6507553433545397970}

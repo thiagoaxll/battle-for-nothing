@@ -3,7 +3,7 @@
 namespace Prefab
 {
    [CreateAssetMenu(fileName = "CharacterStatus", menuName = "GameObjects/CharacterStatus")] 
-    public class CharacterStatus : ScriptableObject
+    public class CharacterStatusConfig : ScriptableObject
     {
         public string characterName;
         public int id;

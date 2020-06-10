@@ -389,6 +389,11 @@ PrefabInstance:
       propertyPath: powerUpSpawnPosition
       value: 
       objectReference: {fileID: 4764902259356073710}
+    - target: {fileID: 3657120614132457953, guid: 92bfbf8a72869d247a803647bbf700fa,
+        type: 3}
+      propertyPath: matchDuration
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 3657120614819035706, guid: 92bfbf8a72869d247a803647bbf700fa,
         type: 3}
       propertyPath: m_Name

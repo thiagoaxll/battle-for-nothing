@@ -576,7 +576,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 5
-  characterStatus: {fileID: 11400000, guid: dd90fa912d0c494458927f0f43840bbd, type: 2}
+  characterStatusConfig: {fileID: 11400000, guid: dd90fa912d0c494458927f0f43840bbd,
+    type: 2}
   currentHealth: 0
   groundCheckPosition: {fileID: 1461897808694665918}
   hpBar: {fileID: 7220328272271172963}
@@ -589,12 +590,12 @@ MonoBehaviour:
   weapon: {fileID: 1461897809286743145}
   dashEffect: {fileID: 402939679333515178, guid: 651669ada377aeb43ba2dfb2bf1484c0,
     type: 3}
-  spawnProjectilePosition: {fileID: 1461897808559673549}
   playerCanvas: {fileID: 7220328273212726508}
   shield: {fileID: 6344182534397854372, guid: 0634ed2d344b54148a14dd71a44c36c2, type: 3}
   indicatorTxt: {fileID: 8181598987567132727}
   deathEffect: {fileID: 2865642305280925037, guid: 6a973db1d1fd72541a091f3b26264e9e,
     type: 3}
+  spawnProjectilePosition: {fileID: 1461897808559673549}
   canDoubleJump: 1
   isOnGround: 0
   lookingLeft: 0
