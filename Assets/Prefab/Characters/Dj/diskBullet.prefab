@@ -98,7 +98,7 @@ MonoBehaviour:
   speed: 20
   defaultObjectImage: {fileID: 4049794658355730037}
   specialObjectImage: {fileID: 3135121762198116654}
-  damage: 15
+  damage: 20
   knockBackForce: 500
   whomShoot: 0
   whoControlMe: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 11
   m_Sprite: {fileID: -1947680307472581546, guid: fc7c6dd893b76444b9042d6a9ebd8c4f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -253,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 11
   m_Sprite: {fileID: -8558764085488943377, guid: fc7c6dd893b76444b9042d6a9ebd8c4f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
