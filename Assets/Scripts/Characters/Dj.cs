@@ -30,7 +30,7 @@ namespace Characters
         {
             if (!_specialEnable)
             {
-                bulletMaxDistanceMulti *= specialSpeedMultiply;
+                bulletMaxDistanceMulti *= specialBulletDistanceMultiply;
                 _specialEnable = true;
                 _djBullet.SetSpecialSpeed(specialSpeedMultiply);
                 StartCoroutine(SpecialDuration());

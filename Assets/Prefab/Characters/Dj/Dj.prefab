@@ -85,7 +85,7 @@ MonoBehaviour:
   audioHolder: {fileID: 0}
   whoControlMe: 0
   bulletMaxDistanceMulti: 8
-  specialBulletDistanceMultiply: 1.25
+  specialBulletDistanceMultiply: 2
   specialDuration: 5
   specialSpeedMultiply: 3
   diskGoing: 0
