@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Characters
 {
@@ -7,16 +8,39 @@ namespace Characters
         public Dj dj;
         private Vector2 _destination;
         public float speed;
-       private void Start()
-       {
+        private float _defaultSpeed;
+        [SerializeField] private GameObject defaultObjectImage;
+        [SerializeField] private GameObject specialObjectImage;
         
-       }
+        private void Start()
+        {
+            _defaultSpeed = speed;
+        }
 
-       public void SetDestination(Vector2 destination)
-       {
-           this._destination = destination;
-       }
-       
+        public void SetSpecialSpeed(float multiply)
+        {
+            speed *= multiply;
+            ChangeImage(false);
+        }
+
+        public void SetDefaultSpeed()
+        {
+            speed = _defaultSpeed;
+            ChangeImage(true);
+        }
+
+        private void ChangeImage(bool enable)
+        {
+            defaultObjectImage.SetActive(enable);
+            specialObjectImage.SetActive(!enable);
+        }
+
+        public void SetDestination(Vector2 destination)
+        {
+            _destination = destination;
+        }
+
+
         private void Update()
         {
             if (dj.canShoot)
@@ -27,7 +51,8 @@ namespace Characters
             {
                 if (!dj.diskGoing) _destination = dj.spawnProjectilePosition.position;
                 MoveBullet();
-                if (transform.position.x == _destination.x && transform.position.y == _destination.y)
+                if (Math.Abs(transform.position.x - _destination.x) < 0.1f &&
+                    Math.Abs(transform.position.y - _destination.y) < 0.1f)
                 {
                     dj.DestinationArrived();
                 }

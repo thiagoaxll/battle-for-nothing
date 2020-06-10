@@ -5461,6 +5461,60 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: -14, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -13, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -12, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -11, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -10, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -9, y: -6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: 16, y: -6, z: 0}
     second:
       serializedVersion: 2
@@ -6052,8 +6106,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 6
+    m_Data: {fileID: 11400000, guid: 62b5adeda2c6bd0428d4ca5ad67b51fb, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: a2c36bc7f9c967d46933e4760b59746b, type: 2}
   - m_RefCount: 72
@@ -6065,8 +6119,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 6
+    m_Data: {fileID: 7918522965169776436, guid: 4640d1d162db37a4a859e1402fbc7a1e,
+      type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 8490642196906846815, guid: 3e42b932c1e077045894a611bc772451,
       type: 3}
@@ -6077,7 +6132,7 @@ Tilemap:
     m_Data: {fileID: 1873917168148291061, guid: 3e42b932c1e077045894a611bc772451,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 54
+  - m_RefCount: 60
     m_Data:
       e00: 1
       e01: 0
@@ -6150,7 +6205,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 110
+  - m_RefCount: 116
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -6212,6 +6267,22 @@ CompositeCollider2D:
         Y: 90000000
       - X: 160000000
         Y: -100000000
+    - - X: -79999900
+        Y: -60000041
+      - X: -79999900
+        Y: -49999959
+      - X: -79999959
+        Y: -49999900
+      - X: -140000041
+        Y: -49999900
+      - X: -140000100
+        Y: -49999959
+      - X: -140000100
+        Y: -60000041
+      - X: -140000041
+        Y: -60000100
+      - X: -79999959
+        Y: -60000100
   m_CompositePaths:
     m_Paths:
     - - {x: 16.999996, y: -11}
@@ -6222,6 +6293,10 @@ CompositeCollider2D:
       - {x: -18, y: -9.999997}
       - {x: -17.999996, y: 9}
       - {x: 16, y: 8.999997}
+    - - {x: -7.9999986, y: -6.00001}
+      - {x: -7.9999986, y: -4.99999}
+      - {x: -14.00001, y: -4.999999}
+      - {x: -14.000002, y: -6.00001}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
 --- !u!19719996 &1022708065
@@ -6492,21 +6567,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 396933814040362507, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: diskSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 396933814040362507, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: canShoot
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 396933814040362507, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1896468509933683181, guid: 4bf39de36d21a354fb305c3e6213d981,
         type: 3}
       propertyPath: m_Name
@@ -6515,12 +6575,12 @@ PrefabInstance:
     - target: {fileID: 1896468509933683184, guid: 4bf39de36d21a354fb305c3e6213d981,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.962894
+      value: -10.49
       objectReference: {fileID: 0}
     - target: {fileID: 1896468509933683184, guid: 4bf39de36d21a354fb305c3e6213d981,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.7724705
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 1896468509933683184, guid: 4bf39de36d21a354fb305c3e6213d981,
         type: 3}
@@ -6565,26 +6625,6 @@ PrefabInstance:
     - target: {fileID: 1896468509933683184, guid: 4bf39de36d21a354fb305c3e6213d981,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001907757524397875, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001907757524397875, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001907757524397875, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5001907757524397875, guid: 4bf39de36d21a354fb305c3e6213d981,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
