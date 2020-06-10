@@ -13,6 +13,7 @@ namespace Characters
         private bool _specialEnable;
         protected  override void EspecialSkill()
         {
+            base.EspecialSkill();
             projectile = specialBullet;
             StartCoroutine(SpecialDuration());
             weaponAnimator.SetTrigger($"special");
