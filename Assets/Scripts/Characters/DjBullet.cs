@@ -11,7 +11,12 @@ namespace Characters
         private float _defaultSpeed;
         [SerializeField] private GameObject defaultObjectImage;
         [SerializeField] private GameObject specialObjectImage;
-        
+
+        public float damage;
+        public float knockBackForce;
+        public int whomShoot;
+        public int whoControlMe;
+
         private void Start()
         {
             _defaultSpeed = speed;
@@ -62,6 +67,19 @@ namespace Characters
         private void MoveBullet()
         {
             transform.position = Vector2.MoveTowards(transform.position, _destination, speed * Time.deltaTime);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (other.GetComponent<CharacterController>().whoControlMe != whomShoot)
+                {
+                    other.GetComponent<CharacterController>().TakeDamage(damage, whomShoot);
+                    other.GetComponent<CharacterController>()
+                        .KnockBack(knockBackForce, transform.position.x);
+                }
+            }
         }
     }
 }

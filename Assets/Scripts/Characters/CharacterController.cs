@@ -123,7 +123,7 @@ namespace Characters
             SetPlayerTag("Player");
             Destroy(temp);
         }
-        
+
         private void SetPlayerTag(string playerTag)
         {
             transform.tag = playerTag;
@@ -132,6 +132,7 @@ namespace Characters
         protected virtual void CustomStart()
         {
         }
+
         private void Update()
         {
             if (!GameController.instance.gameRunning) return;
@@ -140,7 +141,7 @@ namespace Characters
             {
                 GameController.instance.PauseGame(_joystickIndex);
             }
-            
+
             playerDirection = ButtonDirection();
             if (_canMove)
             {
@@ -310,7 +311,7 @@ namespace Characters
             {
                 _playerRb.gravityScale = _defaultGravity;
             }
-        
+
             _aiming = false;
             characterStatus.moveSpeed = _auxMoveSpeed;
             RotateWeapon(new Vector2(180, 0));
@@ -444,13 +445,14 @@ namespace Characters
             temp.GetComponent<Projectile>().whomShoot = whoControlMe;
             var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed);
+            temp.transform.rotation =
+                Quaternion.Slerp(weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed);
 
             if (Math.Abs(direct.x) > 0 || Math.Abs(direct.y) > 0)
             {
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2
                 (
-                    direct.x * characterStatus.projectileSpeed * Time.deltaTime, 
+                    direct.x * characterStatus.projectileSpeed * Time.deltaTime,
                     direct.y * characterStatus.projectileSpeed * Time.deltaTime * -1
                 );
             }
@@ -481,16 +483,16 @@ namespace Characters
             float damageMultiply;
             bool hitByScenario = false;
             int whoGetsThePoint = whomShoot;
-            
+
             if (whomShoot == -1)
             {
                 hitByScenario = true;
-                 damageMultiply = _scenarioDamageMultiply;
-                 whoGetsThePoint = whoControlMe;
+                damageMultiply = _scenarioDamageMultiply;
+                whoGetsThePoint = whoControlMe;
             }
             else
                 damageMultiply = _takeDamageMultiply;
-            
+
             currentHealth -= damage * damageMultiply;
             UpdateHpBar();
             if (currentHealth <= 0)
@@ -498,12 +500,17 @@ namespace Characters
                 transform.tag = "Untagged";
                 SoundManager.instance.PlayAudio(audioHolder.death);
                 _powerUpHandler.DropPowerUp();
-                GameController.instance.SetPlayerScore(whoGetsThePoint, hitByScenario); 
+                GameController.instance.SetPlayerScore(whoGetsThePoint, hitByScenario);
                 GameController.instance.SpawnPlayer(id, whoControlMe);
                 DeathEffect();
-                Destroy(playerCanvas);
-                Destroy(gameObject);
+                DestroyPlayer();
             }
+        }
+
+        protected virtual void DestroyPlayer()
+        {
+            Destroy(playerCanvas);
+            Destroy(gameObject);
         }
 
         private void DeathEffect()
@@ -525,6 +532,7 @@ namespace Characters
                 knockBackForce *= -1;
                 direction = -1;
             }
+
             _canMove = false;
             _playerRb.velocity = new Vector2
             (

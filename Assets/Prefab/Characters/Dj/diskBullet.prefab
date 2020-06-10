@@ -98,6 +98,10 @@ MonoBehaviour:
   speed: 20
   defaultObjectImage: {fileID: 4049794658355730037}
   specialObjectImage: {fileID: 3135121762198116654}
+  damage: 15
+  knockBackForce: 500
+  whomShoot: 0
+  whoControlMe: 0
 --- !u!1 &3135121762198116654
 GameObject:
   m_ObjectHideFlags: 0

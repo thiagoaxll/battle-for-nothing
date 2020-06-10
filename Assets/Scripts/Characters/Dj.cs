@@ -16,14 +16,16 @@ namespace Characters
         private bool _specialEnable;
         private DjBullet _djBullet;
         private float _defaultMaxDistance;
-
+        private GameObject _bulletObjectReference;
 
         protected override void CustomStart()
         {
-            var temp = Instantiate(diskBullet, transform.position, Quaternion.identity);
-            _djBullet = temp.GetComponent<DjBullet>();
+            _bulletObjectReference = Instantiate(diskBullet, transform.position, Quaternion.identity);
+            _djBullet = _bulletObjectReference.GetComponent<DjBullet>();
             _djBullet.dj = this;
             _defaultMaxDistance = bulletMaxDistanceMulti;
+            _djBullet.whoControlMe = whoControlMe;
+            _djBullet.whomShoot = whoControlMe;
         }
 
         protected override void EspecialSkill()
@@ -77,6 +79,12 @@ namespace Characters
         protected override void FireRateCalculate()
         {
             // Its overwritten so the variable canShoot will not be set to true like in other characters
+        }
+
+        protected override void DestroyPlayer()
+        {
+            Destroy(_bulletObjectReference);
+            base.DestroyPlayer();
         }
     }
 }
