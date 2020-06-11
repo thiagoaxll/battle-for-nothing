@@ -18,6 +18,7 @@ namespace Characters
 
         private float _rotateSpeed = 250f;
         private float _defaultRotateSpeed;
+        public CircleCollider2D diskCollider;
         
         private void Start()
         {

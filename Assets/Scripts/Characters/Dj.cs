@@ -59,6 +59,7 @@ namespace Characters
             tempDirection.x += bulletMaxDistanceMulti * direct.x;
             tempDirection.y += bulletMaxDistanceMulti * direct.y * -1;
             _djBullet.SetDestination(tempDirection);
+            _djBullet.diskCollider.enabled = true;
             diskGoing = true;
             canShoot = false;
         }
@@ -72,6 +73,7 @@ namespace Characters
             }
             else
             {
+                _djBullet.diskCollider.enabled = false;
                 canShoot = true;
             }
         }

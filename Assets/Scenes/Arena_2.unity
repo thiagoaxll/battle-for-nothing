@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 5225190369365810256, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5225190369365810256, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
@@ -186,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 5225190369365810257, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
       propertyPath: characterInfo.Array.data[0].character
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5225190369365810257, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
@@ -4583,7 +4583,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2310813807900227902
 PrefabInstance:
@@ -4635,7 +4635,7 @@ PrefabInstance:
     - target: {fileID: 2310813807533658641, guid: f88fd25864a92f14faae9f01d53fe02d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2310813807533658641, guid: f88fd25864a92f14faae9f01d53fe02d,
         type: 3}

@@ -75,7 +75,7 @@ MonoBehaviour:
   damage: 20
   knockBackForce: 500
   whomShoot: 0
-  whoControlMe: 0
+  diskCollider: {fileID: 8732673112763660566}
 --- !u!58 &8732673112763660566
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,7 +83,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641438687623452113}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
