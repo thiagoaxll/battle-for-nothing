@@ -24,7 +24,6 @@ namespace Characters
             _djBullet = _bulletObjectReference.GetComponent<DjBullet>();
             _djBullet.dj = this;
             _defaultMaxDistance = bulletMaxDistanceMulti;
-            _djBullet.whoControlMe = whoControlMe;
             _djBullet.whomShoot = whoControlMe;
         }
 

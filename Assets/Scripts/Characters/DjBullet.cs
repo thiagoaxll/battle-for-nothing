@@ -15,22 +15,27 @@ namespace Characters
         public float damage;
         public float knockBackForce;
         public int whomShoot;
-        public int whoControlMe;
 
+        private float _rotateSpeed = 250f;
+        private float _defaultRotateSpeed;
+        
         private void Start()
         {
             _defaultSpeed = speed;
+            _defaultRotateSpeed = _rotateSpeed;
         }
 
         public void SetSpecialSpeed(float multiply)
         {
             speed *= multiply;
+            _rotateSpeed *= -4;
             ChangeImage(false);
         }
 
         public void SetDefaultSpeed()
         {
             speed = _defaultSpeed;
+            _rotateSpeed = _defaultRotateSpeed;
             ChangeImage(true);
         }
 
@@ -62,6 +67,12 @@ namespace Characters
                     dj.DestinationArrived();
                 }
             }
+            Rotate();
+        }
+
+        private void Rotate()
+        {
+            transform.Rotate(0,0, _rotateSpeed * Time.deltaTime * -1, Space.Self);
         }
 
         private void MoveBullet()
