@@ -500,7 +500,7 @@ namespace Characters
 
         public void TakeDamage(float damage, int whomShoot)
         {
-            float damageMultiply;
+            float damageMultiply = 1;
             bool hitByScenario = false;
             int whoGetsThePoint = whomShoot;
 
@@ -509,6 +509,11 @@ namespace Characters
                 hitByScenario = true;
                 damageMultiply = _scenarioDamageMultiply;
                 whoGetsThePoint = whoControlMe;
+            }
+            else if (whomShoot == -2)
+            {
+                whoGetsThePoint = whoControlMe;
+                hitByScenario = true;
             }
             else
                 damageMultiply = _takeDamageMultiply;
