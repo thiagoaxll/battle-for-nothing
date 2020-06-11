@@ -498,6 +498,8 @@ namespace Characters
             Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
         }
 
+        // -1 Damage from scenario
+        // -2 Killed from scenario
         public void TakeDamage(float damage, int whomShoot)
         {
             float damageMultiply = 1;
