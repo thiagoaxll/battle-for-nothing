@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -6392540509537769299, guid: 714dd7e3efd9a0d4980015a6b0b2ae14,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07588aa810932f43bd1d96d9a36c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throughWall: 1
   damage: 35
   durationTime: 5
   knockBackForce: 200
   projectileRb: {fileID: 0}
   whomShoot: 0
   whoControlMe: 0
-  stayAlive: 0
+  stayAlive: 1
 --- !u!50 &1641438687623452115
 Rigidbody2D:
   serializedVersion: 4

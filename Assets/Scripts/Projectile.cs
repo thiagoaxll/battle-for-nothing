@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private bool throughWall;
     public float damage;
     public float durationTime;
     public float knockBackForce;
@@ -10,6 +11,7 @@ public class Projectile : MonoBehaviour
     public int whomShoot;
     public int whoControlMe;
     public bool stayAlive;
+
 
     private void Start()
     {
@@ -24,16 +26,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
         if (other.CompareTag("Shield"))
         {
             if (other.GetComponentInParent<Characters.CharacterController>().whoControlMe != whomShoot)
             {
                 Destroy(gameObject);
             }
-            
         }
-        
+
         if (other.CompareTag("Player"))
         {
             if (other.GetComponent<Characters.CharacterController>().whoControlMe != whomShoot)
@@ -51,13 +51,16 @@ public class Projectile : MonoBehaviour
                 projectileRb.velocity = Vector2.zero;
             }
 
-            try
+            if (!throughWall)
             {
-                GetComponent<BoxCollider2D>().enabled = false;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
+                try
+                {
+                    GetComponent<BoxCollider2D>().enabled = false;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
     }
