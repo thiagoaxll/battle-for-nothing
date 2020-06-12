@@ -1699,7 +1699,7 @@ PrefabInstance:
     - target: {fileID: 5225190369365810257, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
       propertyPath: characterInfo.Array.data[0].character
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5225190369365810257, guid: 7f03abcd1ccf4c84a9021faea54bb4da,
         type: 3}
