@@ -16,6 +16,8 @@ namespace CustomSystem.MenuScripts
         
         public GameObject characterHolder;
         public GameObject mapHolder;
+        public GameObject frameOne;
+        public GameObject frameTwo;
         
         public int currentIndex;
         public int currentMaxIndex;
@@ -71,13 +73,14 @@ namespace CustomSystem.MenuScripts
                 case (SelectCharacterStatus.SelectingCharacter):
                     currentMaxIndex = characterSelectionMenu.maps.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingMap;
-                    characterBackground.color = Color.black;
+                    frameOne.SetActive(false);
+                    frameTwo.SetActive(true);
                     selectedCharacterIndex = currentIndex;
                     MatchInformation.instance.selectedCharacterQuantity++;
                     break;
                 case (SelectCharacterStatus.SelectingMap):
                     selectedMapIndex = currentIndex;
-                    mapBackground.color = Color.black;
+                    mapBackground.color = Color.green;
                     currentMaxIndex = characterSelectionMenu.maps.Length;
                     selectCharacterStatus = SelectCharacterStatus.Finish;
                     
@@ -109,14 +112,16 @@ namespace CustomSystem.MenuScripts
                 case (SelectCharacterStatus.SelectingMap):
                     currentMaxIndex = characterSelectionMenu.characters.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingCharacter;
-                    characterBackground.color = Color.white;
+                    frameOne.SetActive(true);
+                    frameTwo.SetActive(false);
                     MatchInformation.instance.selectedCharacterQuantity--;
                     break;
                 case (SelectCharacterStatus.Finish):
                     currentMaxIndex = characterSelectionMenu.characters.Length;
                     selectCharacterStatus = SelectCharacterStatus.SelectingCharacter;
-                    characterBackground.color = Color.white;
                     mapBackground.color = Color.white;
+                    frameOne.SetActive(true);
+                    frameTwo.SetActive(false);
                     MatchInformation.instance.selectedCharacterQuantity--;
                     MatchInformation.instance.selectedMapQuantity--;
                     break;
