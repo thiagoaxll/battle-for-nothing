@@ -151,9 +151,9 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 9e9336b7c9b35244b9b8a50f734159f1, type: 2}
   effectAudioSource: {fileID: 3657120615884622430}
   musicAudioSource: {fileID: 3657120615884622425}
-  masterVolume: 100
-  effectVolume: 52
-  musicVolume: 50
+  masterVolume: -30
+  effectVolume: 15
+  musicVolume: 15
 --- !u!82 &3657120615884622424
 AudioSource:
   m_ObjectHideFlags: 0
