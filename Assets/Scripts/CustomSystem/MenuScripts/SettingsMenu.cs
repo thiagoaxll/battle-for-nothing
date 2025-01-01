@@ -24,14 +24,31 @@ namespace CustomSystem.MenuScripts
 
         private NavigationController _navigationController;
         private bool _controlSettingsOpen;
-        private float _maxVolume = 100;
+        private float _minVolume = -10;
+        private float _maxVolume = 30;
+        private float _scaleVolumeSlider = 4;
+        private float _defaultMusicVolume = 15;
+        private float _defaultEffectVolume = 15;
         private MenuUtils _menuUtils;
 
         private void Start()
         {
             _menuUtils = new MenuUtils();
-            volMusic = musicSlider.value;
-            volEffect = effectSlider.value;
+
+            musicSlider.minValue = _minVolume;
+            musicSlider.maxValue = _maxVolume;
+            musicSlider.value = _defaultMusicVolume;
+            
+            effectSlider.minValue = _minVolume;
+            effectSlider.maxValue = _maxVolume;
+            effectSlider.value = _defaultEffectVolume;
+            
+            volMusic = _defaultMusicVolume;
+            volEffect = _defaultEffectVolume;
+            
+            SetMusicVol(volMusic);
+            SetEffectVol(volEffect);
+            
             menuIndexMax = options.Length;
             _navigationController = gameObject.AddComponent<NavigationController>();
             SetupSettingsMenu();
@@ -105,13 +122,13 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 0:
-                    volMusic -= 10;
-                    if (volMusic <= 0) volMusic = 0;
+                    volMusic -= _scaleVolumeSlider;
+                    if (volMusic <= _minVolume) volMusic = _minVolume;
                     SetMusicVol(volMusic);
                     break;
                 case 1:
-                    volEffect -= 10;
-                    if (volEffect <= 0) volEffect = 0;
+                    volEffect -= _scaleVolumeSlider;
+                    if (volEffect <= _minVolume) volEffect = _minVolume;
                     SetEffectVol(volEffect);
                     break;
             }
@@ -122,13 +139,13 @@ namespace CustomSystem.MenuScripts
             switch (menuIndex)
             {
                 case 0:
-                    volMusic += 10;
-                    if (volMusic >= _maxVolume) volMusic = 100;
+                    volMusic += _scaleVolumeSlider;
+                    if (volMusic >= _maxVolume) volMusic = _maxVolume;
                     SetMusicVol(volMusic);
                     break;
                 case 1:
-                    volEffect += 10;
-                    if (volEffect >= _maxVolume) volEffect = 100;
+                    volEffect += _scaleVolumeSlider;
+                    if (volEffect >= _maxVolume) volEffect = _maxVolume;
                     SetEffectVol(volEffect);
                     break;
             }

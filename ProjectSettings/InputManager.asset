@@ -313,9 +313,9 @@ InputManager:
     m_Name: J1ButtonA
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: joystick 1 button 0
     positiveButton: joystick 1 button 0
-    altNegativeButton: 
+    altNegativeButton: return
     altPositiveButton: space
     gravity: 1000
     dead: 0.001
@@ -377,9 +377,9 @@ InputManager:
     m_Name: J1ButtonB
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: joystick 1 button 1
     positiveButton: joystick 1 button 1
-    altNegativeButton: 
+    altNegativeButton: escape
     altPositiveButton: left ctrl
     gravity: 1000
     dead: 0.001

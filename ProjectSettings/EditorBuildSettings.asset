@@ -11,19 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena_0.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: 
-    guid: 845fb077e47822944be405eff5bfe4a7
-  - enabled: 0
-    path: 
-    guid: 608b3472a912da44b866713b5557abf2
   - enabled: 1
     path: Assets/Scenes/Arena_1.unity
     guid: fd5c32fca43cf71418a9549e3abdb990
   - enabled: 1
-    path: Assets/Scenes/Arena_0.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Arena_0.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Arena_2.unity
+    guid: 40965668175e92342b3e4bbd476194be
   m_configObjects: {}

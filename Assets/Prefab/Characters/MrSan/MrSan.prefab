@@ -55,7 +55,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 2
-  characterStatus: {fileID: 11400000, guid: aa16d620e592d0c4a83816d6c9db1712, type: 2}
+  characterStatusConfig: {fileID: 11400000, guid: aa16d620e592d0c4a83816d6c9db1712,
+    type: 2}
   currentHealth: 0
   groundCheckPosition: {fileID: 3041354021036937487}
   hpBar: {fileID: 6507553433545397970}
@@ -68,12 +69,12 @@ MonoBehaviour:
   weapon: {fileID: 3041354021526009816}
   dashEffect: {fileID: 402939679333515178, guid: 688becddfaa9ec34b854b727d6427c69,
     type: 3}
-  spawnProjectilePosition: {fileID: 3041354020635091836}
   playerCanvas: {fileID: 6507553434222980957}
   shield: {fileID: 6344182534397854372, guid: 0634ed2d344b54148a14dd71a44c36c2, type: 3}
   indicatorTxt: {fileID: 5001907757524397875}
   deathEffect: {fileID: 3463787391099079089, guid: 6e2781383fb609349a08dd2c41346362,
     type: 3}
+  spawnProjectilePosition: {fileID: 3041354020635091836}
   canDoubleJump: 1
   isOnGround: 0
   lookingLeft: 0
@@ -124,6 +125,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -341,6 +343,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -437,6 +440,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -510,6 +514,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -606,6 +611,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -875,6 +881,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -949,6 +956,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1108,6 +1116,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6507553434222980953}
     m_Modifications:
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.54901963
+      objectReference: {fileID: 0}
     - target: {fileID: 8461132922253928557, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
         type: 3}
       propertyPath: m_Name
@@ -1222,21 +1245,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.8941177
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.8313726
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.54901963
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468e0e5e5c6f0a24a81fe37b68736c47, type: 3}

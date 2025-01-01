@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     private void StartRoutine()
     {
         _auxMatchDuration = matchDuration;
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 0; i < spawnPositions.Length; i++)
         {
             var position = spawnPositions[i].position;
             var temp = Instantiate(players[(int) MatchInformation.instance.characterInfo[i].character], position, Quaternion.identity);

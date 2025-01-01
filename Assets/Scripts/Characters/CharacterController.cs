@@ -12,7 +12,7 @@ namespace Characters
     public class CharacterController : LegacyInputImplementation
     {
         [Header("Configuration")] public int id;
-        public CharacterStatus characterStatus;
+        public CharacterStatusConfig characterStatusConfig;
 
         public float currentHealth;
 
@@ -31,11 +31,11 @@ namespace Characters
         [SerializeField] protected GameObject projectile;
         [SerializeField] protected GameObject weapon;
         [SerializeField] private GameObject dashEffect;
-        [SerializeField] private Transform spawnProjectilePosition;
         [SerializeField] public GameObject playerCanvas;
         [SerializeField] public GameObject shield;
         [SerializeField] public TextMeshProUGUI indicatorTxt;
         [SerializeField] public GameObject deathEffect;
+        public Transform spawnProjectilePosition;
 
         [Header("Control")] [SerializeField] private bool canDoubleJump = true;
         [SerializeField] private bool isOnGround;
@@ -56,7 +56,7 @@ namespace Characters
         private float _defaultGravity;
         private bool _canMidAir = true;
         [SerializeField] private bool isMidAir;
-        [SerializeField] private bool canShoot = true;
+        public bool canShoot = true;
         [SerializeField] private float auxMidAirDuration;
         private PowerUpHandler _powerUpHandler;
         [HideInInspector] public AudioHolder audioHolder;
@@ -64,9 +64,11 @@ namespace Characters
         private float _auxFireRate;
         private JoystickIndex _joystickIndex;
         private bool _doCheckForJump;
+        private CharacterStatus _characterStatus;
 
         private void Awake()
         {
+            BuildCharacter();
             _playerRb = GetComponent<Rigidbody2D>();
             _powerUpHandler = GetComponent<PowerUpHandler>();
             playerCanvas.transform.SetParent(null);
@@ -75,17 +77,35 @@ namespace Characters
 
         private void Start()
         {
-            _auxFireRate = characterStatus.fireRate;
+            _auxFireRate = _characterStatus.fireRate;
             audioHolder = GetComponent<AudioHolder>();
-            auxMidAirDuration = characterStatus.midAirDuration;
-            currentHealth = characterStatus.maxHealth;
-            _auxMoveSpeed = characterStatus.moveSpeed;
+            auxMidAirDuration = _characterStatus.midAirDuration;
+            currentHealth = _characterStatus.maxHealth;
+            _auxMoveSpeed = _characterStatus.moveSpeed;
             _defaultGravity = _playerRb.gravityScale;
             CheckJoystick();
-
             indicatorTxt.SetText("P" + (whoControlMe + 1));
-
             CustomStart();
+        }
+
+        private void BuildCharacter()
+        {
+            _characterStatus = new CharacterStatus(
+                characterStatusConfig.characterName,
+                characterStatusConfig.id,
+                characterStatusConfig.maxHealth,
+                characterStatusConfig.moveSpeed,
+                characterStatusConfig.jumpForce,
+                characterStatusConfig.doubleJumpForce,
+                characterStatusConfig.dashForce,
+                characterStatusConfig.fireRate,
+                characterStatusConfig.coolDownSkill,
+                characterStatusConfig.midAirDuration,
+                characterStatusConfig.dashDuration,
+                characterStatusConfig.dashCoolDown,
+                characterStatusConfig.weaponRotateSpeed,
+                characterStatusConfig.projectileSpeed
+                );
         }
 
         private void CheckJoystick()
@@ -123,7 +143,7 @@ namespace Characters
             SetPlayerTag("Player");
             Destroy(temp);
         }
-        
+
         private void SetPlayerTag(string playerTag)
         {
             transform.tag = playerTag;
@@ -132,6 +152,7 @@ namespace Characters
         protected virtual void CustomStart()
         {
         }
+
         private void Update()
         {
             if (!GameController.instance.gameRunning) return;
@@ -140,7 +161,7 @@ namespace Characters
             {
                 GameController.instance.PauseGame(_joystickIndex);
             }
-            
+
             playerDirection = ButtonDirection();
             if (_canMove)
             {
@@ -209,7 +230,7 @@ namespace Characters
             playerCanvas.transform.position = new Vector2(position.x, position.y + 0.1f);
         }
 
-        private void FireRateCalculate()
+        protected virtual void FireRateCalculate()
         {
             if (!canShoot)
             {
@@ -217,7 +238,7 @@ namespace Characters
                 if (_auxFireRate <= 0)
                 {
                     canShoot = true;
-                    _auxFireRate = characterStatus.fireRate;
+                    _auxFireRate = _characterStatus.fireRate;
                 }
             }
         }
@@ -236,7 +257,7 @@ namespace Characters
             Aim();
             if (_canMidAir && !isOnGround)
             {
-                auxMidAirDuration = characterStatus.midAirDuration;
+                auxMidAirDuration = _characterStatus.midAirDuration;
                 _canMidAir = false;
                 isMidAir = true;
             }
@@ -254,12 +275,12 @@ namespace Characters
 
         private void CoolDownStatus()
         {
-            if (_auxCoolDownSkill < characterStatus.coolDownSkill)
+            if (_auxCoolDownSkill < _characterStatus.coolDownSkill)
             {
                 _auxCoolDownSkill += Time.deltaTime;
-                coolDownBar.fillAmount = (_auxCoolDownSkill * 1f / characterStatus.coolDownSkill);
+                coolDownBar.fillAmount = (_auxCoolDownSkill * 1f / _characterStatus.coolDownSkill);
             }
-            else if (_auxCoolDownSkill >= characterStatus.coolDownSkill && !_canUseSkill)
+            else if (_auxCoolDownSkill >= _characterStatus.coolDownSkill && !_canUseSkill)
             {
                 _canUseSkill = true;
                 coolDownBar.color = Color.green;
@@ -294,12 +315,12 @@ namespace Characters
             if (isOnGround)
             {
                 JumpEffect(0.8f * transform.localScale.x, 1.5f);
-                Jump(characterStatus.jumpForce);
+                Jump(_characterStatus.jumpForce);
             }
             else
             {
                 if (!canDoubleJump) return;
-                Jump(characterStatus.doubleJumpForce);
+                Jump(_characterStatus.doubleJumpForce);
                 canDoubleJump = false;
             }
         }
@@ -310,9 +331,9 @@ namespace Characters
             {
                 _playerRb.gravityScale = _defaultGravity;
             }
-        
+
             _aiming = false;
-            characterStatus.moveSpeed = _auxMoveSpeed;
+            _characterStatus.moveSpeed = _auxMoveSpeed;
             RotateWeapon(new Vector2(180, 0));
         }
 
@@ -328,7 +349,7 @@ namespace Characters
         private void Aim()
         {
             _aiming = true;
-            characterStatus.moveSpeed = _auxMoveSpeed / 5;
+            _characterStatus.moveSpeed = _auxMoveSpeed / 5;
             var v = playerDirection;
             if (lookingLeft)
             {
@@ -366,7 +387,7 @@ namespace Characters
             var angle = Mathf.Atan2(direct.y, direct.x) * Mathf.Rad2Deg;
             var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             weapon.transform.rotation = Quaternion.Slerp(
-                weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed * Time.deltaTime
+                weapon.transform.rotation, rotation, _characterStatus.weaponRotateSpeed * Time.deltaTime
             );
         }
 
@@ -383,7 +404,7 @@ namespace Characters
         private void Move(float directionX)
         {
             _playerRb.velocity = new Vector2(
-                directionX * characterStatus.moveSpeed * Time.deltaTime, _playerRb.velocity.y
+                directionX * _characterStatus.moveSpeed * Time.deltaTime, _playerRb.velocity.y
             );
         }
 
@@ -415,11 +436,11 @@ namespace Characters
             canDash = false;
             isDashing = true;
             StartCoroutine(DashEffect());
-            var velocity = new Vector2(characterStatus.dashForce * Time.deltaTime * dashDirection.x,
-                characterStatus.dashForce * Time.deltaTime * dashDirection.y * -1);
+            var velocity = new Vector2(_characterStatus.dashForce * Time.deltaTime * dashDirection.x,
+                _characterStatus.dashForce * Time.deltaTime * dashDirection.y * -1);
             _playerRb.velocity = velocity;
-            StartCoroutine(DashDurationDelay(characterStatus.dashDuration));
-            StartCoroutine(DashCoolDown(characterStatus.dashCoolDown));
+            StartCoroutine(DashDurationDelay(_characterStatus.dashDuration));
+            StartCoroutine(DashCoolDown(_characterStatus.dashCoolDown));
         }
 
         private IEnumerator DashDurationDelay(float delay)
@@ -444,14 +465,15 @@ namespace Characters
             temp.GetComponent<Projectile>().whomShoot = whoControlMe;
             var angle = Mathf.Atan2(direct.y * -1, direct.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            temp.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, rotation, characterStatus.weaponRotateSpeed);
+            temp.transform.rotation =
+                Quaternion.Slerp(weapon.transform.rotation, rotation, _characterStatus.weaponRotateSpeed);
 
             if (Math.Abs(direct.x) > 0 || Math.Abs(direct.y) > 0)
             {
                 temp.GetComponent<Rigidbody2D>().velocity = new Vector2
                 (
-                    direct.x * characterStatus.projectileSpeed * Time.deltaTime, 
-                    direct.y * characterStatus.projectileSpeed * Time.deltaTime * -1
+                    direct.x * _characterStatus.projectileSpeed * Time.deltaTime,
+                    direct.y * _characterStatus.projectileSpeed * Time.deltaTime * -1
                 );
             }
             else
@@ -465,7 +487,7 @@ namespace Characters
                 }
 
                 temp.GetComponent<Rigidbody2D>().velocity =
-                    new Vector2(Time.deltaTime * characterStatus.projectileSpeed * transform.localScale.x, 0);
+                    new Vector2(Time.deltaTime * _characterStatus.projectileSpeed * transform.localScale.x, 0);
             }
         }
 
@@ -476,21 +498,28 @@ namespace Characters
             Gizmos.DrawSphere(groundCheckPosition.position, groundCheckRadius);
         }
 
+        // -1 Damage from scenario
+        // -2 Killed from scenario
         public void TakeDamage(float damage, int whomShoot)
         {
-            float damageMultiply;
+            float damageMultiply = 1;
             bool hitByScenario = false;
             int whoGetsThePoint = whomShoot;
-            
+
             if (whomShoot == -1)
             {
                 hitByScenario = true;
-                 damageMultiply = _scenarioDamageMultiply;
-                 whoGetsThePoint = whoControlMe;
+                damageMultiply = _scenarioDamageMultiply;
+                whoGetsThePoint = whoControlMe;
+            }
+            else if (whomShoot == -2)
+            {
+                whoGetsThePoint = whoControlMe;
+                hitByScenario = true;
             }
             else
                 damageMultiply = _takeDamageMultiply;
-            
+
             currentHealth -= damage * damageMultiply;
             UpdateHpBar();
             if (currentHealth <= 0)
@@ -498,12 +527,17 @@ namespace Characters
                 transform.tag = "Untagged";
                 SoundManager.instance.PlayAudio(audioHolder.death);
                 _powerUpHandler.DropPowerUp();
-                GameController.instance.SetPlayerScore(whoGetsThePoint, hitByScenario); 
+                GameController.instance.SetPlayerScore(whoGetsThePoint, hitByScenario);
                 GameController.instance.SpawnPlayer(id, whoControlMe);
                 DeathEffect();
-                Destroy(playerCanvas);
-                Destroy(gameObject);
+                DestroyPlayer();
             }
+        }
+
+        protected virtual void DestroyPlayer()
+        {
+            Destroy(playerCanvas);
+            Destroy(gameObject);
         }
 
         private void DeathEffect()
@@ -513,7 +547,7 @@ namespace Characters
 
         private void UpdateHpBar()
         {
-            hpBar.fillAmount = (currentHealth * 1f / characterStatus.maxHealth);
+            hpBar.fillAmount = (currentHealth * 1f / _characterStatus.maxHealth);
         }
 
         public void KnockBack(float knockBackForce, float projectilePosition)
@@ -525,6 +559,7 @@ namespace Characters
                 knockBackForce *= -1;
                 direction = -1;
             }
+
             _canMove = false;
             _playerRb.velocity = new Vector2
             (
@@ -589,14 +624,14 @@ namespace Characters
 
         public void SetMultiplyMoveSpeed(float multiply)
         {
-            characterStatus.moveSpeed *= multiply;
-            _auxMoveSpeed = characterStatus.moveSpeed;
+            _characterStatus.moveSpeed *= multiply;
+            _auxMoveSpeed = _characterStatus.moveSpeed;
         }
 
         public void SetMultiplyJumpForce(float multiply)
         {
-            characterStatus.jumpForce *= multiply;
-            characterStatus.doubleJumpForce *= multiply;
+            _characterStatus.jumpForce *= multiply;
+            _characterStatus.doubleJumpForce *= multiply;
         }
 
         public void SetMultiplyKnockBack(float multiply)

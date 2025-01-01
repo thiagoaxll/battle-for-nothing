@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -259,6 +261,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -379,7 +382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickNumber: 
   id: 1
-  characterStatus: {fileID: 11400000, guid: c573da24fc16a7c4abe63eb42a040fd5, type: 2}
+  characterStatusConfig: {fileID: 11400000, guid: c573da24fc16a7c4abe63eb42a040fd5,
+    type: 2}
   currentHealth: 0
   groundCheckPosition: {fileID: 1476132474210770729}
   hpBar: {fileID: 7207501763870742772}
@@ -392,12 +396,12 @@ MonoBehaviour:
   weapon: {fileID: 1476132474695186942}
   dashEffect: {fileID: 402939679333515178, guid: b7657b952d327e6428480bde3200b18a,
     type: 3}
-  spawnProjectilePosition: {fileID: 1476132475690659162}
   playerCanvas: {fileID: 7207501764271497595}
   shield: {fileID: 6344182534397854372, guid: 0634ed2d344b54148a14dd71a44c36c2, type: 3}
   indicatorTxt: {fileID: 7539452909709972830}
   deathEffect: {fileID: 6442930534013765959, guid: 8b0928bc70c9e6d4e9452c03dd450c35,
     type: 3}
+  spawnProjectilePosition: {fileID: 1476132475690659162}
   canDoubleJump: 1
   isOnGround: 0
   lookingLeft: 0
@@ -442,6 +446,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -793,6 +798,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -969,6 +975,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -989,6 +996,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7207501764271497599}
     m_Modifications:
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.49803925
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.30588236
+      objectReference: {fileID: 0}
     - target: {fileID: 8461132922253928557, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
         type: 3}
       propertyPath: m_Name
@@ -1103,21 +1125,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.49803925
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.3254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6387708924000549686, guid: 468e0e5e5c6f0a24a81fe37b68736c47,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.30588236
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468e0e5e5c6f0a24a81fe37b68736c47, type: 3}

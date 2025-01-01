@@ -63,11 +63,11 @@ namespace CustomSystem.Audio
             }
         }
 
-        public void ApplyVolumeChanges()
+        private void ApplyVolumeChanges()
         {
-            audioMixer.SetFloat("Master", masterVolume - 80);
-            audioMixer.SetFloat("Effect", effectVolume - 80);
-            audioMixer.SetFloat("Music", musicVolume - 80);
+            audioMixer.SetFloat("Master", masterVolume);
+            audioMixer.SetFloat("Effect", effectVolume);
+            audioMixer.SetFloat("Music", musicVolume);
         }
 
         public enum AudioType

@@ -5,6 +5,8 @@
         Karoi,
         Jorge,
         MrSan,
-        Violet
+        Violet,
+        Dj,
+        Ellie
     }
 }
